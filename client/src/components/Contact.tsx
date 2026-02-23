@@ -63,7 +63,7 @@ export default function Contact() {
             </h3>
             <p className="text-[#172A3A]/55 mb-8 leading-relaxed">
               Nossa equipe está pronta para ajudar você a implementar a automação
-              inteligente no seu negócio. Responderemos em até 24 horas.
+              inteligente no seu negócio. Responderemos em até 4 horas.
             </p>
 
             <div className="space-y-5">
@@ -73,7 +73,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="font-display font-semibold text-[#172A3A] text-sm">E-mail</p>
-                  <p className="text-[#172A3A]/55 text-sm">contato@crescix.com.br</p>
+                  <p className="text-[#172A3A]/55 text-sm">cashflowcontatomg@gmail.com</p>
                 </div>
               </div>
 
@@ -93,7 +93,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="font-display font-semibold text-[#172A3A] text-sm">Localização</p>
-                  <p className="text-[#172A3A]/55 text-sm">São Paulo, Brasil</p>
+                  <p className="text-[#172A3A]/55 text-sm">Minas Gerais, Brasil</p>
                 </div>
               </div>
             </div>
