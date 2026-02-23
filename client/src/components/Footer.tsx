@@ -27,10 +27,10 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Product */}
+          {/* Produto */}
           <div>
             <h4 className="font-display font-bold text-sm text-white/80 mb-4 uppercase tracking-wider">
-            PRODUTO
+            Produto
             </h4>
             <ul className="space-y-2.5">
               {[
@@ -38,6 +38,7 @@ export default function Footer() {
                 { label: "Recursos", href: "#recursos" },
                 { label: "Para Quem", href: "#para-quem" },
                 { label: "Preços", href: "#precos" },
+                { label: "Contato", href: "#contato" },
               ].map((item) => (
               <li key={item.label}>
                 <a
@@ -50,19 +51,26 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Company */}
+          {/* Redes Sociais */}
           <div>
             <h4 className="font-display font-bold text-sm text-white/80 mb-4 uppercase tracking-wider">
-              Empresa
+            Redes Sociais
             </h4>
             <ul className="space-y-2.5">
-              {["Sobre Nós", "Blog", "Carreiras", "Contato"].map((item) => (
-                <li key={item}>
-                  <a href="#" className="text-sm text-white/40 hover:text-[#A3C3D9] transition-colors">
-                    {item}
+              {[
+                { label: "Instagram", href: "https://instagram.com/seuusuario" },
+                { label: "LinkedIn", href: "https://linkedin.com/company/suaempresa" },
+              ].map((item) => (
+              <li key={item.label}>
+                <a
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-white/40 hover:text-[#A3C3D9] transition-colors">
+                  {item.label}
                   </a>
-                </li>
-              ))}
+                  </li>
+                ))}
             </ul>
           </div>
         </div>
