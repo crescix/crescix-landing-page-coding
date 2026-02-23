@@ -30,7 +30,7 @@ export default function Footer() {
           {/* Product */}
           <div>
             <h4 className="font-display font-bold text-sm text-white/80 mb-4 uppercase tracking-wider">
-            Produto
+            PRODUTO
             </h4>
             <ul className="space-y-2.5">
               {[

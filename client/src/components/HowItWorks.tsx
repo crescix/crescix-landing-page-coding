@@ -27,7 +27,7 @@ const steps = [
   {
     icon: Database,
     number: "03",
-    title: "Dados organizados automaticamente",
+    title: "Dados organizados",
     description:
       "Informações importantes como leads, pedidos e feedbacks são extraídas e organizadas em dados estruturados.",
     color: "#004346",
@@ -35,7 +35,7 @@ const steps = [
   {
     icon: ShieldCheck,
     number: "04",
-    title: "Armazenamento seguro e criptografado",
+    title: "Armazenamento seguro",
     description:
       "Todos os dados são armazenados com criptografia avançada, garantindo segurança e privacidade total.",
     color: "#172A3A",

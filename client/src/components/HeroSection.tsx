@@ -81,7 +81,7 @@ export default function HeroSection() {
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-[#09636B]" />
-                <span>Setup em 2 minutos</span>
+                <span>Setup em 5 minutos</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-[#09636B]" />
@@ -123,7 +123,7 @@ export default function HeroSection() {
                   </div>
                   <div>
                     <p className="text-xs font-semibold text-[#172A3A]">Áudio enviado</p>
-                    <p className="text-[10px] text-[#172A3A]/50">0:47</p>
+                    <p className="text-[10px] text-[#172A3A]/50">0:23</p>
                   </div>
                 </div>
                 <div className="flex gap-0.5 items-center">
