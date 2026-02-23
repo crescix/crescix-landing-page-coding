@@ -1,25 +1,35 @@
-import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
-import { Streamdown } from 'streamdown';
-
-/**
- * All content in this page are only for example, replace with your own feature implementation
- * When building pages, remember your instructions in Frontend Best Practices, Design Guide and Common Pitfalls
+/*
+ * CrescIX Landing Page — Home
+ * Design: "Fluid Data Streams" — Organic Modernism
+ * Paleta: #D8DDEF, #A3C3D9, #508991, #09636B, #004346, #172A3A
+ * Tipografia: Plus Jakarta Sans (display) + DM Sans (body)
  */
-export default function Home() {
-  // If theme is switchable in App.tsx, we can implement theme toggling like this:
-  // const { theme, toggleTheme } = useTheme();
+import Navbar from "@/components/Navbar";
+import HeroSection from "@/components/HeroSection";
+import HowItWorks from "@/components/HowItWorks";
+import Features from "@/components/Features";
+import SocialProof from "@/components/SocialProof";
+import ForWhom from "@/components/ForWhom";
+import Pricing from "@/components/Pricing";
+import CTASection from "@/components/CTASection";
+import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
 
+export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
+      <Navbar />
       <main>
-        {/* Example: lucide-react for icons */}
-        <Loader2 className="animate-spin" />
-        Example Page
-        {/* Example: Streamdown for markdown rendering */}
-        <Streamdown>Any **markdown** content</Streamdown>
-        <Button variant="default">Example Button</Button>
+        <HeroSection />
+        <HowItWorks />
+        <Features />
+        <SocialProof />
+        <ForWhom />
+        <Pricing />
+        <CTASection />
+        <Contact />
       </main>
+      <Footer />
     </div>
   );
 }
