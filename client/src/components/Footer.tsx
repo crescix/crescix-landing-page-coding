@@ -11,7 +11,7 @@ export default function Footer() {
       <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-[#09636B]/30 to-transparent" />
 
       <div className="container relative z-10">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 mb-12 max-w-6xl mx-auto">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
             <a href="#inicio" className="flex items-center gap-2 mb-4">
@@ -57,22 +57,6 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2.5">
               {["Sobre Nós", "Blog", "Carreiras", "Contato"].map((item) => (
-                <li key={item}>
-                  <a href="#" className="text-sm text-white/40 hover:text-[#A3C3D9] transition-colors">
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Legal */}
-          <div>
-            <h4 className="font-display font-bold text-sm text-white/80 mb-4 uppercase tracking-wider">
-              Legal
-            </h4>
-            <ul className="space-y-2.5">
-              {["Termos de Uso", "Política de Privacidade", "LGPD", "Segurança"].map((item) => (
                 <li key={item}>
                   <a href="#" className="text-sm text-white/40 hover:text-[#A3C3D9] transition-colors">
                     {item}
