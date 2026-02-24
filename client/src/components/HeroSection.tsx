@@ -83,10 +83,6 @@ export default function HeroSection() {
                 <CheckCircle2 className="w-4 h-4 text-[#09636B]" />
                 <span>Setup em 5 minutos</span>
               </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-[#09636B]" />
-                <span>Teste grátis</span>
-              </div>
             </div>
           </motion.div>
 
