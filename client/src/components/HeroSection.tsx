@@ -119,7 +119,7 @@ export default function HeroSection() {
                   </div>
                   <div>
                     <p className="text-xs font-semibold text-[#172A3A]">Áudio enviado</p>
-                    <p className="text-[10px] text-[#172A3A]/50">0:23</p>
+                    <p className="text-[10px] text-[#172A3A]/50">0:15</p>
                   </div>
                 </div>
                 <div className="flex gap-0.5 items-center">
@@ -148,9 +148,9 @@ export default function HeroSection() {
                 </div>
                 <div className="space-y-1.5 text-[11px] text-[#172A3A]/70 font-mono">
                   <p className="text-[#09636B] font-semibold">Dados extraídos:</p>
-                  <p>Cliente: Maria Silva</p>
+                  <p>Cliente: Lucas Moreira</p>
                   <p>Pedido: 3x Produto A</p>
-                  <p>Valor: R$ 450,00</p>
+                  <p>Total: R$ 450,00</p>
                 </div>
                 <div className="flex items-center gap-1.5 mt-2 pt-2 border-t border-[#A3C3D9]/30">
                   <ShieldCheck className="w-3 h-3 text-[#09636B]" />
