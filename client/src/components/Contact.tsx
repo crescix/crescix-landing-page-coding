@@ -73,7 +73,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="font-display font-semibold text-[#172A3A] text-sm">E-mail</p>
-                  <p className="text-[#172A3A]/55 text-sm">cashflowcontatomg@gmail.com</p>
+                  <p className="text-[#172A3A]/55 text-sm">xxx@email.com</p>
                 </div>
               </div>
 
@@ -83,7 +83,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="font-display font-semibold text-[#172A3A] text-sm">WhatsApp</p>
-                  <p className="text-[#172A3A]/55 text-sm">+55 (11) 99999-0000</p>
+                  <p className="text-[#172A3A]/55 text-sm">+XX (XX) XXXXX-XXXX</p>
                 </div>
               </div>
 
