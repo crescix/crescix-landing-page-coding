@@ -1,9 +1,3 @@
-/*
- * CrescIX Landing Page — Home
- * Design: "Fluid Data Streams" — Organic Modernism
- * Paleta: #D8DDEF, #A3C3D9, #508991, #09636B, #004346, #172A3A
- * Tipografia: Plus Jakarta Sans (display) + DM Sans (body)
- */
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import HowItWorks from "@/components/HowItWorks";
