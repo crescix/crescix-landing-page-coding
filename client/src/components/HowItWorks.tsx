@@ -13,7 +13,7 @@ const steps = [
     number: "01",
     title: "Envie mensagens e áudios",
     description:
-      "O usuário envia mensagens ou áudios normalmente pelo WhatsApp. Sem complicação, sem apps extras.",
+      "O usuário envia mensagens ou áudios normalmente pelo Telegram. Sem complicação, sem apps extras.",
     color: "#508991",
   },
   {
@@ -66,7 +66,7 @@ export default function HowItWorks() {
             <span className="text-[#09636B]">inteligente</span>
           </h2>
           <p className="text-lg text-[#172A3A]/55 max-w-2xl mx-auto">
-            Em apenas 4 passos, suas conversas do WhatsApp se transformam em dados
+            Em apenas 4 passos, suas conversas do Telegram se transformam em dados
             organizados e prontos para uso.
           </p>
         </motion.div>

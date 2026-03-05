@@ -23,7 +23,7 @@ export default function Footer() {
               </span>
             </a>
             <p className="text-white/40 text-sm leading-relaxed max-w-xs">
-              Transformando conversas do WhatsApp em dados organizados com Inteligência Artificial.
+              Transformando conversas do Telegram em dados organizados com Inteligência Artificial.
             </p>
           </div>
 
@@ -37,7 +37,6 @@ export default function Footer() {
                 { label: "Como Funciona", href: "#como-funciona" },
                 { label: "Recursos", href: "#recursos" },
                 { label: "Para Quem", href: "#para-quem" },
-                { label: "Preços", href: "#precos" },
                 { label: "Contato", href: "#contato" },
               ].map((item) => (
               <li key={item.label}>

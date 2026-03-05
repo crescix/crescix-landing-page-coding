@@ -33,13 +33,6 @@ export default function HeroSection() {
             transition={{ duration: 0.7, ease: "easeOut" }}
             className="order-2 lg:order-1"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#09636B]/10 border border-[#09636B]/20 mb-6">
-              <div className="w-2 h-2 rounded-full bg-[#09636B] animate-pulse" />
-              <span className="text-sm font-medium text-[#09636B]">
-                Automação inteligente via WhatsApp
-              </span>
-            </div>
-
             <h1 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-6xl leading-[1.1] tracking-tight text-[#172A3A] mb-6">
               Transforme{" "}
               <span className="relative">
@@ -50,7 +43,7 @@ export default function HeroSection() {
             </h1>
 
             <p className="text-lg lg:text-xl text-[#172A3A]/65 leading-relaxed mb-8 max-w-xl">
-              A CrescIX converte automaticamente suas conversas do WhatsApp em informações
+              A CrescIX converte automaticamente suas conversas do Telegram em informações
               estruturadas, organizadas e seguras. Automatize processos, venda mais e
               mantenha tudo sob controle.
             </p>
@@ -86,7 +79,7 @@ export default function HeroSection() {
             </div>
           </motion.div>
 
-          {/* Right: WhatsApp Mockup */}
+          {/* Right: Telegram Mockup */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
@@ -101,7 +94,7 @@ export default function HeroSection() {
               >
                 <img
                   src={WHATSAPP_IMG}
-                  alt="CrescIX WhatsApp AI - Conversão de áudios em dados estruturados"
+                  alt="CrescIX Telegram IA - Conversão de áudios em dados estruturados"
                   className="w-full h-auto"
                 />
               </div>

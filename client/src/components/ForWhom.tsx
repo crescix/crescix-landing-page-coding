@@ -19,7 +19,7 @@ const audiences = [
     icon: ShoppingCart,
     title: "E-commerces",
     description:
-      "Capture pedidos via WhatsApp e transforme-os em dados estruturados para seu sistema.",
+      "Capture pedidos via Telegram e transforme-os em dados estruturados para seu sistema.",
   },
   {
     icon: Headphones,
@@ -43,7 +43,7 @@ const audiences = [
     icon: Stethoscope,
     title: "Profissionais de Saúde",
     description:
-      "Registre informações de pacientes de forma segura e organizada via WhatsApp.",
+      "Registre informações de pacientes de forma segura e organizada via Telegram.",
   },
 ];
 
@@ -77,7 +77,7 @@ export default function ForWhom() {
             <span className="text-[#A3C3D9]">resultados</span>
           </h2>
           <p className="text-lg text-white/55 max-w-2xl mx-auto">
-            A CrescIX atende diferentes perfis de negócios que utilizam o WhatsApp
+            A CrescIX atende diferentes perfis de negócios que utilizam o Telegram
             como canal de comunicação.
           </p>
         </motion.div>

@@ -22,7 +22,7 @@ const features = [
     icon: Mic,
     title: "Transcrição de Áudios",
     description:
-      "Converta áudios do WhatsApp em texto com precisão usando IA avançada de reconhecimento de voz.",
+      "Converta áudios do Telegram em texto com precisão usando IA avançada de reconhecimento de voz.",
   },
   {
     icon: FileText,
@@ -46,7 +46,7 @@ const features = [
     icon: Zap,
     title: "Automação de Processos",
     description:
-      "Automatize fluxos de trabalho, vendas e suporte diretamente a partir das conversas do WhatsApp.",
+      "Automatize fluxos de trabalho, vendas e suporte diretamente a partir das conversas do Telegram.",
   },
   {
     icon: Users,

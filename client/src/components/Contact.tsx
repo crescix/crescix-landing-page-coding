@@ -1,13 +1,9 @@
-/*
- * CrescIX "Contato" — Fluid Data Streams Design
- * - Formulário de contato + informações
- * - CTA final persuasivo
- */
 import { Button } from "@/components/ui/button";
 import { Mail, MessageCircle, MapPin, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { toast } from "sonner";
+import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -46,7 +42,7 @@ export default function Contact() {
             <span className="text-[#09636B]">transformar</span> seu negócio?
           </h2>
           <p className="text-lg text-[#172A3A]/55 max-w-2xl mx-auto">
-            Entre em contato e descubra como a CrescIX pode automatizar seus processos via WhatsApp.
+            Entre em contato e descubra como a CrescIX pode automatizar seus processos via Telegram.
           </p>
         </motion.div>
 
@@ -69,21 +65,21 @@ export default function Contact() {
             <div className="space-y-5">
               <div className="flex items-start gap-4">
                 <div className="w-11 h-11 rounded-xl bg-[#09636B]/10 flex items-center justify-center flex-shrink-0">
-                  <Mail className="w-5 h-5 text-[#09636B]" />
+                  <FaInstagram className="w-5 h-5 text-[#09636B]" />
                 </div>
                 <div>
-                  <p className="font-display font-semibold text-[#172A3A] text-sm">E-mail</p>
-                  <p className="text-[#172A3A]/55 text-sm">xxx@email.com</p>
+                  <p className="font-display font-semibold text-[#172A3A] text-sm">Instagram</p>
+                  <p className="text-[#172A3A]/55 text-sm">@crescix_</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
                 <div className="w-11 h-11 rounded-xl bg-[#09636B]/10 flex items-center justify-center flex-shrink-0">
-                  <MessageCircle className="w-5 h-5 text-[#09636B]" />
+                  <FaWhatsapp className="w-5 h-5 text-[#09636B]" />
                 </div>
                 <div>
                   <p className="font-display font-semibold text-[#172A3A] text-sm">WhatsApp</p>
-                  <p className="text-[#172A3A]/55 text-sm">+XX (XX) XXXXX-XXXX</p>
+                  <p className="text-[#172A3A]/55 text-sm">+55 (35) 98421-9965</p>
                 </div>
               </div>
 
