@@ -1,8 +1,6 @@
 import { Store, Briefcase, Headphones, ShoppingCart, Building2, Stethoscope } from "lucide-react";
 import { motion } from "framer-motion";
 
-const ABSTRACT_BG = "https://private-us-east-1.manuscdn.com/sessionFile/NILrLvhOseMgl2wuRyzK9T/sandbox/JIQattWdqpo9ecdM28nzWV-img-5_1771841721000_na1fn_Y3Jlc2NpeC1hYnN0cmFjdC1iZw.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvTklMckx2aE9zZU1nbDJ3dVJ5eks5VC9zYW5kYm94L0pJUWF0dFdkcXBvOWVjZE0yOG56V1YtaW1nLTVfMTc3MTg0MTcyMTAwMF9uYTFmbl9ZM0psYzJOcGVDMWhZbk4wY21GamRDMWlady5wbmc~eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsd18xOTIwLGhfMTkyMC9mb3JtYXQsd2VicC9xdWFsaXR5LHFfODAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTg3NjE2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=J0KdOqRPRwRqM5ySGoEs~Pkg86la1aIh-M~PH9JRDiHXoJj0QWDr6tl1~FyTFY86ygFwkgPsYIglSQQpQsW4TSXwzK-r86gMAhWHWgcJrNk92B99WXBoIowrGXl9VoR14-IuqyVCFSaH7kKCZX4rq9FpX3YoQj~SPGhI7Mc3HLKV~Gzb5Ipxx8m3UtGE6ETAV7k1yZpeuKm8RDI9cqw8bOC6-1OPAZS~iqaw~77hEdWj~xgfKVNob7-u77rtNCPSoOjTCXxGEUS6T4b8DhWY5~fffoou07XQoQ42tXBwK1didjkJOd0JIJlF9Z8ChGwE9beon4A-yNgqLpfSPW3gFQ__";
-
 const audiences = [
   {
     icon: Store,
@@ -51,7 +49,7 @@ export default function ForWhom() {
       {/* Background image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${ABSTRACT_BG})` }}
+        style={{ backgroundImage: "url('/images/for-whom-image.png')" }}
       />
       <div className="absolute inset-0 bg-[#172A3A]/85" />
 

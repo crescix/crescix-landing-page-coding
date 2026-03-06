@@ -2,8 +2,6 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
 
-const SECURITY_IMG = "https://private-us-east-1.manuscdn.com/sessionFile/NILrLvhOseMgl2wuRyzK9T/sandbox/JIQattWdqpo9ecdM28nzWV-img-3_1771841716000_na1fn_Y3Jlc2NpeC1zZWN1cml0eQ.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvTklMckx2aE9zZU1nbDJ3dVJ5eks5VC9zYW5kYm94L0pJUWF0dFdkcXBvOWVjZE0yOG56V1YtaW1nLTNfMTc3MTg0MTcxNjAwMF9uYTFmbl9ZM0psYzJOcGVDMXpaV04xY21sMGVRLnBuZz94LW9zcy1wcm9jZXNzPWltYWdlL3Jlc2l6ZSx3XzE5MjAsaF8xOTIwL2Zvcm1hdCx3ZWJwL3F1YWxpdHkscV84MCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5ODc2MTYwMH19fV19&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=Mlrd5EoTKYY~TZEK8AmmABv8Am8EniWIG1rFeVKlWCmpnn9WnKQHZlvV4lXb36oKLWosPzexaJu4AzjcOfeqNrUDS5ZQAmkZgMgsET2GnI9XDSTcrYRmXyk9XqwJrm9~EVXkTzuGBLzB7EFj5ZjIBPv0-16vLEvh3IxJ9E~oD1VmTls-RMV5MADGEHQ7gP2alIkrM0yl5nVQmlQR3LQww-l1vD53IgRgWJaREpEWnMik~6RDEqkM0k6XsFY039qUHcDRmUaxks7mftUTdC7F54BNEPg52FlAFvbb7y2bFtGLjZ9k0mE6Ets7ea5b5cYpkDSLpZVGXKLrXpl2mYv-3Q__";
-
 export default function CTASection() {
   return (
     <section className="py-24 lg:py-32 bg-white relative overflow-hidden">
@@ -18,7 +16,7 @@ export default function CTASection() {
           {/* Background image */}
           <div
             className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${SECURITY_IMG})` }}
+            style={{ backgroundImage: "url('/images/security-image.png')" }}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#172A3A]/95 via-[#004346]/90 to-[#172A3A]/80" />
 
