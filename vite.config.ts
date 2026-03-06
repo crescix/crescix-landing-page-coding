@@ -75,21 +75,7 @@ export default defineConfig({
     emptyOutDir: true,
   },
   server: {
-    port: 3000,
-    strictPort: false, 
+    port: 3000, 
     host: true,
-    allowedHosts: [
-      ".manuspre.computer",
-      ".manus.computer",
-      ".manus-asia.computer",
-      ".manuscomputer.ai",
-      ".manusvm.computer",
-      "localhost",
-      "127.0.0.1",
-    ],
-    fs: {
-      strict: true,
-      deny: ["**/.*"],
-    },
   },
 });
