@@ -21,8 +21,8 @@ export default function HowWeStarted() {
             className="relative"
           >
             <img
-              src="/images/historia-crescix.jpg"
-              alt="Como surgiu a CrescIX"
+              src="/images/how-we-arose-image.png"
+              alt="Desenvolvedor de Software estudando"
               className="rounded-2xl shadow-lg w-full object-cover"
             />
           </motion.div>
@@ -43,8 +43,8 @@ export default function HowWeStarted() {
             </h2>
 
             <p className="text-[#172A3A]/70 leading-relaxed mb-4">
-              A CrescIX surgiu a partir da iniciativa de estudantes do
-              Inatel e da Unifei, que identificaram um problema comum em muitas empresas: informações importantes ficavam presas em áudios e mensagens
+              A CrescIX surgiu a partir da iniciativa de estudantes da
+              UNIFEI e da FAI, que identificaram um problema comum em muitas empresas: informações importantes ficavam presas em áudios e mensagens
               de Telegram ou WhatsApp, dificultando a organização e o uso estratégico desses dados.
             </p>
 
