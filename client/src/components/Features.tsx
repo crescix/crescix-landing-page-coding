@@ -10,8 +10,6 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 
-const AUTOMATION_IMG = "https://private-us-east-1.manuscdn.com/sessionFile/NILrLvhOseMgl2wuRyzK9T/sandbox/JIQattWdqpo9ecdM28nzWV-img-4_1771841711000_na1fn_Y3Jlc2NpeC1hdXRvbWF0aW9u.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvTklMckx2aE9zZU1nbDJ3dVJ5eks5VC9zYW5kYm94L0pJUWF0dFdkcXBvOWVjZE0yOG56V1YtaW1nLTRfMTc3MTg0MTcxMTAwMF9uYTFmbl9ZM0psYzJOcGVDMWhkWFJ2YldGMGFXOXUucG5nP3gtb3NzLXByb2Nlc3M9aW1hZ2UvcmVzaXplLHdfMTkyMCxoXzE5MjAvZm9ybWF0LHdlYnAvcXVhbGl0eSxxXzgwIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzk4NzYxNjAwfX19XX0_&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=gDS724Ik7e4XmUV2hRGNMWy~QoNL8Qjc9Q2CuOpb9INUembxNgc3wrJhfJJNxnikHpCF8r1sSXkxBi5FMpj3~hnb4~jTicgLPG6h10iXM5pjbc~K5OouYfWrTEQkZh2dY8MxW2Hl0r8bKYqgHzBzyaOfhmx76k-Q-wWf1foriaoMMu~i~bSxKJ353D9TM3S0WHHxtGrRt4OwBeG9bJsTfox551EaeYYYcEUNv9NvT-q1Ogezmm0qH8oplzd2P0PMDBETnOEkx6gHe1lfIfdZx2KV~QEQqx-fPMn5sxdO3Xzf64rB4tAZg-bXNKjONx5VJY0hU7nNUwnC60oO1SmVFg__";
-
 const features = [
   {
     icon: Mic,
@@ -84,8 +82,8 @@ export default function Features() {
           className="mb-16 rounded-2xl overflow-hidden shadow-2xl shadow-[#172A3A]/10 max-w-4xl mx-auto"
         >
           <img
-            src={AUTOMATION_IMG}
-            alt="CrescIX - Automação e organização de dados com IA"
+            src="/images/features-image.png"
+            alt="Empresa em crescimento"
             className="w-full h-auto object-cover"
           />
         </motion.div>
