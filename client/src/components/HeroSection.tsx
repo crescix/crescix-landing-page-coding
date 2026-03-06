@@ -1,8 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { Play, ArrowRight, Mic, ShieldCheck, CheckCircle2 } from "lucide-react";
+import { Play, ArrowRight, Mic, ShieldCheck, CheckCircle2, BotMessageSquare, BotMessageSquareIcon } from "lucide-react";
 import { motion } from "framer-motion";
-
-const WHATSAPP_IMG = "https://private-us-east-1.manuscdn.com/sessionFile/NILrLvhOseMgl2wuRyzK9T/sandbox/JIQattWdqpo9ecdM28nzWV-img-2_1771841715000_na1fn_Y3Jlc2NpeC13aGF0c2FwcC1haQ.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvTklMckx2aE9zZU1nbDJ3dVJ5eks5VC9zYW5kYm94L0pJUWF0dFdkcXBvOWVjZE0yOG56V1YtaW1nLTJfMTc3MTg0MTcxNTAwMF9uYTFmbl9ZM0psYzJOcGVDMTNhR0YwYzJGd2NDMWhhUS5wbmc~eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsd18xOTIwLGhfMTkyMC9mb3JtYXQsd2VicC9xdWFsaXR5LHFfODAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTg3NjE2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=QSaC~oyZQW0QXzYXgVwssRWIuIfIDhIP17bY5FbEkU5T~5CfU2o6w8RyS3KJfFuY4z2oWpEfHb-7V-V6-835W~UVD5zBZNJ5XnQsUrrD~oDLTYoxnTLbovvu4ZBHMyb34u46iD35cH3v0GbdsS3SccGFja-Gk6fip9vMw1sH7XVXaQdbdH~XhzoAOOW4kFkcTxfeVHpxubsHbkn7fE5oDaAcEJe9d09MC~gXjAUH~I3WrfF~aXONx4vIfB3nc3BLZHUQj60tI6XpK9bsa3gpDrBwWiLa4APSYq1iDJZ9gfOgtlpV0BvXajoDMuVUi~HzA43x2N2WYThg~L~N5a9CkQ__";
 
 export default function HeroSection() {
   return (
@@ -83,13 +81,11 @@ export default function HeroSection() {
             <div className="relative">
               {/* Phone mockup with generated image */}
               <div
-                className="relative w-[280px] sm:w-[320px] lg:w-[360px] rounded-[2rem] overflow-hidden shadow-2xl shadow-[#172A3A]/20"
+                className="relative w-[320px] sm:w-[420px] lg:w-[500px] rounded-[2rem] overflow-hidden shadow-2xl shadow-[#172A3A]/20"
                 style={{ animation: "float 6s ease-in-out infinite" }}
               >
                 <img
-                  src={WHATSAPP_IMG}
-                  alt="CrescIX Telegram IA - Conversão de áudios em dados estruturados"
-                  className="w-full h-auto"
+                  src="/images/hero-section-image.png" alt="CrescIX Telegram IA - Conversão de áudios em dados estruturados" className="w-full h-auto"
                 />
               </div>
 
@@ -98,7 +94,7 @@ export default function HeroSection() {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.8, duration: 0.5 }}
-                className="absolute -left-8 sm:-left-16 top-1/4 glass-card-light rounded-2xl p-3.5 shadow-xl max-w-[200px]"
+                className="absolute -left-8 sm:-left-16 top-1/2 glass-card-light rounded-2xl p-3.5 shadow-xl max-w-[200px]"
               >
                 <div className="flex items-center gap-2 mb-1.5">
                   <div className="w-8 h-8 rounded-full bg-[#25D366] flex items-center justify-center">
@@ -129,7 +125,7 @@ export default function HeroSection() {
               >
                 <div className="flex items-center gap-2 mb-2">
                   <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#09636B] to-[#004346] flex items-center justify-center">
-                    <span className="text-white text-[10px] font-bold">IX</span>
+                    <BotMessageSquare className="w-4 h-4 text-white" />
                   </div>
                   <p className="text-xs font-semibold text-[#172A3A]">CrescIX IA</p>
                 </div>
@@ -138,10 +134,6 @@ export default function HeroSection() {
                   <p>Cliente: Lucas Moreira</p>
                   <p>Pedido: 3x Produto A</p>
                   <p>Total: R$ 450,00</p>
-                </div>
-                <div className="flex items-center gap-1.5 mt-2 pt-2 border-t border-[#A3C3D9]/30">
-                  <ShieldCheck className="w-3 h-3 text-[#09636B]" />
-                  <span className="text-[10px] text-[#09636B] font-medium">Salvo com segurança</span>
                 </div>
               </motion.div>
             </div>
