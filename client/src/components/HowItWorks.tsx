@@ -1,9 +1,3 @@
-/*
- * CrescIX "Como Funciona" — Fluid Data Streams Design
- * - 4 etapas sequenciais com ícones, títulos e descrições
- * - Linhas de conexão pontilhadas entre etapas
- * - Scroll-triggered fade-in animations
- */
 import { MessageSquare, Brain, Database, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
 

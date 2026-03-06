@@ -1,8 +1,3 @@
-/*
- * CrescIX "Recursos" — Fluid Data Streams Design
- * - Grid de features com ícones e glassmorphism cards
- * - Imagem gerada de automação como destaque
- */
 import {
   Mic,
   FileText,
@@ -76,7 +71,7 @@ export default function Features() {
             <span className="text-[#09636B]">crescer</span>
           </h2>
           <p className="text-lg text-[#172A3A]/55 max-w-2xl mx-auto">
-            Ferramentas poderosas de IA para transformar suas conversas em resultados concretos.
+            Ferramenta poderosa de IA para transformar suas conversas em resultados concretos.
           </p>
         </motion.div>
 

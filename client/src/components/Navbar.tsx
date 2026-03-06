@@ -1,9 +1,3 @@
-/*
- * CrescIX Navbar — Fluid Data Streams Design
- * - Logo esquerda, links centralizados, CTA direita
- * - Glassmorphism no scroll
- * - Mobile hamburger menu
- */
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
@@ -13,6 +7,7 @@ const navLinks = [
   { label: "Início", href: "#inicio" },
   { label: "Como Funciona", href: "#como-funciona" },
   { label: "Recursos", href: "#recursos" },
+  { label: "Nossa História", href: "#nossa-historia" },
   { label: "Para Quem", href: "#para-quem" },
   { label: "Contato", href: "#contato" },
 ];

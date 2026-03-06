@@ -1,9 +1,3 @@
-/*
- * CrescIX Hero Section — Fluid Data Streams Design
- * - Split layout: texto esquerda, mockup WhatsApp direita
- * - Headline forte + subheadline + 2 CTAs
- * - Chat mockup com mensagem de áudio e resposta IA
- */
 import { Button } from "@/components/ui/button";
 import { Play, ArrowRight, Mic, ShieldCheck, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";

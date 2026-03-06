@@ -1,8 +1,3 @@
-/*
- * CrescIX "Para Quem" — Fluid Data Streams Design
- * - Segmentos de público-alvo com cards visuais
- * - Background escuro com glassmorphism
- */
 import { Store, Briefcase, Headphones, ShoppingCart, Building2, Stethoscope } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -13,7 +8,7 @@ const audiences = [
     icon: Store,
     title: "Empreendedores",
     description:
-      "Automatize o atendimento e organize pedidos, leads e feedbacks sem esforço manual.",
+      "Automatize o atendimento e organize pedidos, informações e feedbacks sem esforço manual.",
   },
   {
     icon: ShoppingCart,

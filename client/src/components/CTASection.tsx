@@ -1,7 +1,3 @@
-/*
- * CrescIX CTA Final — Fluid Data Streams Design
- * - Seção de conversão final com imagem de segurança
- */
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";

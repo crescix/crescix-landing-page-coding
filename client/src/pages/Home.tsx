@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import HowItWorks from "@/components/HowItWorks";
 import Features from "@/components/Features";
-import SocialProof from "@/components/SocialProof";
+import HowWeArose from "@/components/HowWeArose";
 import ForWhom from "@/components/ForWhom";
 import CTASection from "@/components/CTASection";
 import Contact from "@/components/Contact";
@@ -16,7 +16,7 @@ export default function Home() {
         <HeroSection />
         <HowItWorks />
         <Features />
-        <SocialProof />
+        <HowWeArose />
         <ForWhom />
         <CTASection />
         <Contact />

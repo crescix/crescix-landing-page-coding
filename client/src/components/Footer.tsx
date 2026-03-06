@@ -1,9 +1,3 @@
-/*
- * CrescIX Footer — Fluid Data Streams Design
- * - Logo, links, redes sociais
- * - Background escuro navy
- */
-
 export default function Footer() {
   return (
     <footer className="bg-[#172A3A] text-white py-16 relative overflow-hidden">
@@ -36,6 +30,7 @@ export default function Footer() {
               {[
                 { label: "Como Funciona", href: "#como-funciona" },
                 { label: "Recursos", href: "#recursos" },
+                { label: "Nossa História", href: "#nossa-historia" },
                 { label: "Para Quem", href: "#para-quem" },
                 { label: "Contato", href: "#contato" },
               ].map((item) => (
