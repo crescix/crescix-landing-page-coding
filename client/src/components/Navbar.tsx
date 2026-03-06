@@ -56,11 +56,17 @@ export default function Navbar() {
 
         {/* Desktop CTA */}
         <div className="hidden lg:block">
+          <a
+            href="https://wa.me/5535984219965?text=Ol%C3%A1,%20gostaria%20de%20saber%20mais%20sobre%20a%20CrescIX%20IA..."
+            target="_blank"
+            rel="noopener noreferrer"
+          >
           <Button
             className="bg-gradient-to-r from-[#09636B] to-[#004346] hover:from-[#004346] hover:to-[#172A3A] text-white font-display font-semibold px-6 py-2.5 rounded-xl shadow-lg shadow-[#09636B]/25 hover:shadow-xl hover:shadow-[#004346]/30 transition-all duration-300 hover:-translate-y-0.5"
           >
             Testar Agora
           </Button>
+          </a>
         </div>
 
         {/* Mobile Menu Button */}

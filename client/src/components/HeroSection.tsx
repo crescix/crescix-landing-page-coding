@@ -41,6 +41,11 @@ export default function HeroSection() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-10">
+              <a
+                href="https://wa.me/5535984219965?text=Ol%C3%A1,%20gostaria%20de%20saber%20mais%20sobre%20a%20CrescIX%20IA..."
+                target="_blank"
+                rel="noopener noreferrer"
+              >
               <Button
                 size="lg"
                 className="bg-gradient-to-r from-[#09636B] to-[#004346] hover:from-[#004346] hover:to-[#172A3A] text-white font-display font-bold text-base px-8 py-6 rounded-xl shadow-xl shadow-[#09636B]/25 hover:shadow-2xl hover:shadow-[#004346]/30 transition-all duration-300 hover:-translate-y-0.5 group"
@@ -48,6 +53,13 @@ export default function HeroSection() {
                 Testar Agora
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
+              </a>
+              
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
               <Button
                 size="lg"
                 variant="outline"
@@ -56,6 +68,7 @@ export default function HeroSection() {
                 <Play className="mr-2 w-5 h-5 text-[#09636B] group-hover:scale-110 transition-transform" />
                 Ver Vídeo
               </Button>
+              </a>
             </div>
 
             {/* Trust badges */}
