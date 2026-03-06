@@ -98,7 +98,7 @@ export default function HeroSection() {
                 style={{ animation: "float 6s ease-in-out infinite" }}
               >
                 <img
-                  src="/images/hero-section-image.png" alt="CrescIX Telegram IA - Conversão de áudios em dados estruturados" className="w-full h-auto"
+                  src="/images/hero-section-image.png" alt="CrescIX IA - Conversão de áudio em dados organizados" className="w-full h-auto"
                 />
               </div>
 
