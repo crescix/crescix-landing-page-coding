@@ -1,3 +1,5 @@
+import { FaInstagram, FaLinkedin } from "react-icons/fa";
+
 export default function Footer() {
   return (
     <footer className="bg-[#172A3A] text-white py-16 relative overflow-hidden">
@@ -48,24 +50,27 @@ export default function Footer() {
           {/* Redes Sociais */}
           <div>
             <h4 className="font-display font-bold text-sm text-white/80 mb-4 uppercase tracking-wider">
-            Redes Sociais
+              Redes Sociais
             </h4>
-            <ul className="space-y-2.5">
-              {[
-                { label: "Instagram", href: "https://instagram.com/seuusuario" },
-                { label: "LinkedIn", href: "https://linkedin.com/company/suaempresa" },
-              ].map((item) => (
-              <li key={item.label}>
-                <a
-                href={item.href}
+            
+            <div className="flex gap-4">
+              <a
+                href="https://www.instagram.com/crescix_"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-white/40 hover:text-[#A3C3D9] transition-colors">
-                  {item.label}
-                  </a>
-                  </li>
-                ))}
-            </ul>
+                className="text-white/40 hover:text-[#A3C3D9] transition-colors"
+              >
+              <FaInstagram className="w-8 h-8" />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/crescix/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/40 hover:text-[#A3C3D9] transition-colors"
+              >
+              <FaLinkedin className="w-8 h-8" />
+              </a>
+            </div>
           </div>
         </div>
 
