@@ -59,7 +59,7 @@ export default function Contact() {
             </h3>
             <p className="text-[#172A3A]/55 mb-8 leading-relaxed">
               Nossa equipe está pronta para ajudar você a implementar a automação
-              inteligente no seu negócio. Responderemos em até 4 horas.
+              inteligente no seu negócio. Responderemos em até 8 horas.
             </p>
 
             <div className="space-y-5">

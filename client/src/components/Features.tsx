@@ -34,7 +34,7 @@ const features = [
     icon: BarChart3,
     title: "Extração de Dados",
     description:
-      "Leads, pedidos, feedbacks e informações-chave são extraídos automaticamente das conversas.",
+      "Dados como pedidos, feedbacks e informações-chave são extraídos automaticamente das conversas.",
   },
   {
     icon: Lock,
@@ -44,27 +44,15 @@ const features = [
   },
   {
     icon: Zap,
-    title: "Automação de Processos",
+    title: "Economia de Tempo",
     description:
-      "Automatize fluxos de trabalho, vendas e suporte diretamente a partir das conversas do Telegram.",
-  },
-  {
-    icon: Users,
-    title: "Gestão de Leads",
-    description:
-      "Capture e organize leads automaticamente, sem perder nenhuma oportunidade de negócio.",
-  },
-  {
-    icon: Bell,
-    title: "Notificações Inteligentes",
-    description:
-      "Receba alertas sobre informações importantes extraídas das suas conversas em tempo real.",
+      "Reduza o trabalho manual e dedique mais tempo às áreas estratégicas do seu negócio.",
   },
   {
     icon: Globe,
-    title: "Integração Simples",
+    title: "Gestão do Negócio",
     description:
-      "Conecte facilmente com suas ferramentas favoritas. Sem configuração complexa, sem código.",
+      "Gerencie facilmente informações de clientes, compras e histórico em um local centralizado.",
   },
 ];
 

@@ -29,7 +29,7 @@ const steps = [
     number: "03",
     title: "Dados organizados",
     description:
-      "Informações importantes como leads, pedidos e feedbacks são extraídas e organizadas em dados estruturados.",
+      "Informações importantes como pedidos e feedbacks são extraídas e organizadas em dados estruturados.",
     color: "#004346",
   },
   {
