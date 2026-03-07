@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ShieldCheck } from "lucide-react";
+import { ShieldCheck, Send } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function CTASection() {
@@ -37,20 +37,19 @@ export default function CTASection() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+              href="https://wa.me/5535984219965?text=Ol%C3%A1,%20gostaria%20de%20saber%20mais%20sobre%20a%20CrescIX%20IA..."
+              target="_blank"
+              rel="noopener noreferrer"
+              >
               <Button
                 size="lg"
                 className="bg-white text-[#004346] hover:bg-[#D8DDEF] font-display font-bold text-base px-8 py-6 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-0.5 group"
               >
-                Testar Agora — É Grátis
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                Fale com a CrescIX
+                <Send className="ml-2 w-8 h-8 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-white/20 text-white hover:bg-white/10 font-display font-semibold text-base px-8 py-6 rounded-xl transition-all duration-300"
-              >
-                Agendar Demonstração
-              </Button>
+              </a>
             </div>
           </div>
         </motion.div>
