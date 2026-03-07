@@ -70,8 +70,7 @@ export default function ForWhom() {
             <span className="text-[#A3C3D9]">resultados</span>
           </h2>
           <p className="text-lg text-white/55 max-w-2xl mx-auto">
-            A CrescIX atende diferentes perfis de negócios que utilizam o Telegram
-            como canal de comunicação.
+            A CrescIX atende diferentes perfis de negócios que desejam organizar suas vendas e atendimentos de forma prática e eficiente.
           </p>
         </motion.div>
 
