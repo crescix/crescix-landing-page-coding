@@ -1,42 +1,42 @@
-import { Store, Briefcase, Headphones, ShoppingCart, Building2, Stethoscope } from "lucide-react";
+import { UserRound, BriefcaseBusiness, Laptop, Store, Building, Rocket } from "lucide-react";
 import { motion } from "framer-motion";
 
 const audiences = [
   {
-    icon: Store,
+    icon: UserRound,
     title: "Empreendedores",
     description:
-      "Automatize o atendimento e organize pedidos, informações e feedbacks sem esforço manual.",
+      "Digitalize atendimentos e organize pedidos, informações e feedbacks sem trabalho manual.",
   },
   {
-    icon: ShoppingCart,
-    title: "E-commerces",
+    icon: BriefcaseBusiness,
+    title: "Consultores",
     description:
-      "Capture pedidos via Telegram e transforme-os em dados estruturados para seu sistema.",
+      "Registre dados de clientes e projetos automaticamente, mantendo tudo organizado.",
   },
   {
-    icon: Headphones,
-    title: "Equipes de Suporte",
+    icon: Laptop,
+    title: "Freelancers",
     description:
-      "Registre e categorize tickets de suporte automaticamente a partir das conversas.",
+      "Agilize seu fluxo de trabalho e acompanhe todos os projetos com facilidade.",
   },
   {
-    icon: Briefcase,
-    title: "Consultores e Freelancers",
+    icon: Store,
+    title: "Pequenas Empresas",
     description:
-      "Organize briefings, feedbacks e informações de clientes de forma automática.",
+      "Organize pedidos, briefings e informações de clientes automaticamente em um só lugar.",
   },
   {
-    icon: Building2,
-    title: "Pequenas e Médias Empresas",
+    icon: Building,
+    title: "Médias Empresas",
     description:
-      "Digitalize e automatize processos operacionais sem investir em sistemas complexos.",
+      "Automatize registros e otimize processos operacionais sem sistemas complexos.",
   },
   {
-    icon: Stethoscope,
-    title: "Profissionais de Saúde",
+    icon: Rocket,
+    title: "Startups",
     description:
-      "Registre informações de pacientes de forma segura e organizada via Telegram.",
+      "Estruture dados de clientes e operações desde o início para crescer com organização.",
   },
 ];
 
