@@ -33,8 +33,7 @@ export default function CTASection() {
               <span className="text-[#A3C3D9]">agora mesmo</span>
             </h2>
             <p className="text-lg text-white/55 max-w-2xl mx-auto mb-8">
-              Junte-se a centenas de empresas que já estão economizando tempo e
-              aumentando vendas com a CrescIX.
+              Transforme seu negócio com mais eficiência e menos trabalho manual com a CrescIX.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
