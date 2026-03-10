@@ -13,10 +13,25 @@ export default function Contact() {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+
+  const data = new FormData(e.currentTarget);
+
+  const response = await fetch("https://formspree.io/f/xyknelaq", {
+    method: "POST",
+    body: data,
+    headers: {
+      Accept: "application/json",
+    },
+  });
+
+  if (response.ok) {
     toast.success("Mensagem enviada com sucesso! Entraremos em contato em breve.");
     setFormData({ name: "", email: "", company: "", message: "" });
+  } else {
+    toast.error("Erro ao enviar mensagem. Tente novamente.");
+  }
   };
 
   return (
@@ -112,6 +127,7 @@ export default function Contact() {
                     Nome
                   </label>
                   <input
+                    name="name"
                     type="text"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -125,6 +141,7 @@ export default function Contact() {
                     E-mail
                   </label>
                   <input
+                    name="email"
                     type="email"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -140,6 +157,7 @@ export default function Contact() {
                   Empresa
                 </label>
                 <input
+                  name="company"
                   type="text"
                   value={formData.company}
                   onChange={(e) => setFormData({ ...formData, company: e.target.value })}
@@ -153,6 +171,7 @@ export default function Contact() {
                   Mensagem
                 </label>
                 <textarea
+                  name="message"
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   rows={4}
