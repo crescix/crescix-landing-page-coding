@@ -163,6 +163,7 @@ export default function Contact() {
                   onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                   className="w-full px-4 py-3 rounded-xl border border-[#D8DDEF] bg-[#f8f9fd] text-[#172A3A] text-sm focus:outline-none focus:ring-2 focus:ring-[#09636B]/30 focus:border-[#09636B]/50 transition-all"
                   placeholder="Nome da empresa"
+                  required
                 />
               </div>
 
