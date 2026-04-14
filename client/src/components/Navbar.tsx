@@ -33,12 +33,11 @@ export default function Navbar() {
       <div className="container flex items-center justify-between h-18 lg:h-20">
         {/* Logo */}
         <a href="#inicio" className="flex items-center gap-2 group">
-          <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-[#09636B] to-[#004346] flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow">
-            <span className="text-white font-display font-extrabold text-sm tracking-tight">IX</span>
-          </div>
-          <span className="font-display font-extrabold text-xl tracking-tight text-[#172A3A]">
-            Cresc<span className="text-[#09636B]">IX</span>
-          </span>
+          <img 
+              src="/images/logo.jpeg" 
+              alt="CresciX" 
+              className="h-12 w-auto rounded-md"
+            />
         </a>
 
         {/* Desktop Links */}
