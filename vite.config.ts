@@ -11,8 +11,8 @@ type LogSource = "browserConsole" | "networkRequests" | "sessionReplay";
 const plugins = [react(), tailwindcss(), jsxLocPlugin()];
 
 export default defineConfig({
-  base: "/crescix-landing-page-coding/",
-  plugins: [react()],
+  base: "/",
+  plugins: [react(), tailwindcss(), jsxLocPlugin()],
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "client", "src"),

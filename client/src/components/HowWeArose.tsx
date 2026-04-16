@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import heroImage from "@assets/images/how-we-arose-image.png";
+import howImage from "../../public/images/how-we-arose-image.png";
 
 export default function HowWeStarted() {
   return (
@@ -20,11 +22,7 @@ export default function HowWeStarted() {
             transition={{ duration: 0.6 }}
             className="relative"
           >
-            <img
-              src="/images/how-we-arose-image.png"
-              alt="Desenvolvedor de Software estudando"
-              className="rounded-2xl shadow-lg w-full object-cover"
-            />
+            <img src={`${import.meta.env.BASE_URL}images/how-we-arose-image.png`} alt="Hero section"/>
           </motion.div>
 
           {/* Texto */}

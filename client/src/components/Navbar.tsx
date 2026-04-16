@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import logo from "../../public/images/logo.jpeg";
+import heroImage from "@assets/images/logo.jpeg";
 
 const navLinks = [
   { label: "Início", href: "#inicio" },
@@ -34,10 +36,9 @@ export default function Navbar() {
         {/* Logo */}
         <a href="#inicio" className="flex items-center gap-2 group">
           <img 
-              src="/images/logo.jpeg" 
-              alt="CresciX" 
-              className="h-12 w-auto rounded-md"
-            />
+            src={`${import.meta.env.BASE_URL}images/logo.jpeg`} 
+            alt="logo"
+            className="w-32 h-auto rounded-md"/>
         </a>
 
         {/* Desktop Links */}

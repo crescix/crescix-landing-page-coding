@@ -1,3 +1,6 @@
+import heroImage from "@assets/images/features-image.png";
+import featuresImage from "../../public/images/features-image.png";
+
 import {
   Mic,
   FileText,
@@ -81,11 +84,7 @@ export default function Features() {
           transition={{ duration: 0.6 }}
           className="mb-16 rounded-2xl overflow-hidden shadow-2xl shadow-[#172A3A]/10 max-w-4xl mx-auto"
         >
-          <img
-            src="/images/features-image.png"
-            alt="Empresa em crescimento"
-            className="w-full h-auto object-cover"
-          />
+          <img src={`${import.meta.env.BASE_URL}images/features-image.png`} alt="hero"/>
         </motion.div>
 
         {/* Features grid */}

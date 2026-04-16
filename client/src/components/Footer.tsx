@@ -11,12 +11,10 @@ export default function Footer() {
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
             <a href="#inicio" className="flex items-center gap-2 mb-4">
-              <div className="w-9 h-9 rounded-lg bg-linear-to-br from-[#09636B] to-[#004346] flex items-center justify-center">
-                <span className="text-white font-display font-extrabold text-sm tracking-tight">IX</span>
-              </div>
-              <span className="font-display font-extrabold text-xl tracking-tight text-white">
-                Cresc<span className="text-[#A3C3D9]">IX</span>
-              </span>
+              <img 
+                src={`${import.meta.env.BASE_URL}images/logo.jpeg`} 
+                alt="logo"
+                className="w-32 h-auto rounded-md"/>
             </a>
             <p className="text-white/40 text-sm leading-relaxed max-w-xs">
               Transformando conversas do Telegram em dados organizados com Inteligência Artificial.

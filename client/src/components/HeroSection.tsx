@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Play, ArrowRight, Mic, ShieldCheck, CheckCircle2, BotMessageSquare, BotMessageSquareIcon } from "lucide-react";
 import { motion } from "framer-motion";
+import heroImage from "@assets/images/hero-section-image.png";
+import heroSection from "../../public/images/hero-section-image.png";
 
 export default function HeroSection() {
   return (
@@ -97,9 +99,7 @@ export default function HeroSection() {
                 className="relative w-[320px] sm:w-[420px] lg:w-[500px] rounded-[2rem] overflow-hidden shadow-2xl shadow-[#172A3A]/20"
                 style={{ animation: "float 6s ease-in-out infinite" }}
               >
-                <img
-                  src="/images/hero-section-image.png" alt="CrescIX IA - Conversão de áudio em dados organizados" className="w-full h-auto"
-                />
+                <img src={`${import.meta.env.BASE_URL}images/hero-section-image.png`} alt="Hero section"/>
               </div>
 
               {/* Floating chat bubble - Audio sent */}
