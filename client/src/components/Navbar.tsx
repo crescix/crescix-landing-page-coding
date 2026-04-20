@@ -2,8 +2,6 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import logo from "../../public/images/logo.jpeg";
-import heroImage from "@assets/images/logo.jpeg";
 
 const navLinks = [
   { label: "Início", href: "#inicio" },
@@ -24,6 +22,13 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const id = href.replace("#", "");
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -34,11 +39,16 @@ export default function Navbar() {
     >
       <div className="container flex items-center justify-between h-18 lg:h-20">
         {/* Logo */}
-        <a href="#inicio" className="flex items-center gap-2 group">
-          <img 
-            src={`${import.meta.env.BASE_URL}images/logo.jpeg`} 
+        <a
+          href="#inicio"
+          onClick={(e) => handleNavClick(e, "#inicio")}
+          className="flex items-center gap-2 group"
+        >
+          <img
+            src="/images/logo.jpeg"
             alt="logo"
-            className="w-32 h-auto rounded-md"/>
+            className="w-32 h-auto rounded-md"
+          />
         </a>
 
         {/* Desktop Links */}
@@ -47,6 +57,7 @@ export default function Navbar() {
             <a
               key={link.href}
               href={link.href}
+              onClick={(e) => handleNavClick(e, link.href)}
               className="px-3.5 py-2 text-sm font-medium text-[#172A3A]/70 hover:text-[#09636B] transition-colors rounded-lg hover:bg-[#D8DDEF]/40"
             >
               {link.label}
@@ -61,11 +72,9 @@ export default function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
           >
-          <Button
-            className="bg-gradient-to-r from-[#09636B] to-[#004346] hover:from-[#004346] hover:to-[#172A3A] text-white font-display font-semibold px-6 py-2.5 rounded-xl shadow-lg shadow-[#09636B]/25 hover:shadow-xl hover:shadow-[#004346]/30 transition-all duration-300 hover:-translate-y-0.5"
-          >
-            Testar Agora
-          </Button>
+            <Button className="bg-gradient-to-r from-[#09636B] to-[#004346] hover:from-[#004346] hover:to-[#172A3A] text-white font-display font-semibold px-6 py-2.5 rounded-xl shadow-lg shadow-[#09636B]/25 hover:shadow-xl hover:shadow-[#004346]/30 transition-all duration-300 hover:-translate-y-0.5">
+              Testar Agora
+            </Button>
           </a>
         </div>
 
@@ -97,15 +106,16 @@ export default function Navbar() {
                 <a
                   key={link.href}
                   href={link.href}
-                  onClick={() => setMobileOpen(false)}
+                  onClick={(e) => {
+                    handleNavClick(e, link.href);
+                    setMobileOpen(false);
+                  }}
                   className="px-4 py-3 text-sm font-medium text-[#172A3A]/70 hover:text-[#09636B] hover:bg-[#D8DDEF]/30 rounded-lg transition-colors"
                 >
                   {link.label}
                 </a>
               ))}
-              <Button
-                className="mt-3 bg-gradient-to-r from-[#09636B] to-[#004346] text-white font-display font-semibold rounded-xl"
-              >
+              <Button className="mt-3 bg-gradient-to-r from-[#09636B] to-[#004346] text-white font-display font-semibold rounded-xl">
                 Testar Agora
               </Button>
             </div>
