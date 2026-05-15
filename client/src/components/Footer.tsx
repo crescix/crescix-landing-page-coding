@@ -12,7 +12,7 @@ export default function Footer() {
           <div className="sm:col-span-2 lg:col-span-1">
             <a href="#inicio" className="flex items-center gap-2 mb-4">
               <img 
-                src={`${import.meta.env.BASE_URL}images/logo.jpeg`} 
+                src={`${import.meta.env.BASE_URL}images/logo.png`} 
                 alt="logo"
                 className="w-32 h-auto rounded-md"/>
             </a>
@@ -53,7 +53,7 @@ export default function Footer() {
             
             <div className="flex gap-4">
               <a
-                href="https://www.instagram.com/crescix_"
+                href="https://www.instagram.com/crescix_tecnologia"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white/40 hover:text-[#A3C3D9] transition-colors"

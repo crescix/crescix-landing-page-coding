@@ -45,7 +45,7 @@ export default function Navbar() {
           className="flex items-center gap-2 group"
         >
           <img
-            src="/images/logo.jpeg"
+            src="/images/logo.png"
             alt="logo"
             className="w-32 h-auto rounded-md"
           />
