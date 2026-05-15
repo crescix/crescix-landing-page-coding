@@ -84,7 +84,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="font-display font-semibold text-[#172A3A] text-sm">Instagram</p>
-                  <p className="text-[#172A3A]/55 text-sm">@crescix_</p>
+                  <p className="text-[#172A3A]/55 text-sm">@crescix_tecnologia</p>
                 </div>
               </div>
 
@@ -104,7 +104,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="font-display font-semibold text-[#172A3A] text-sm">Localização</p>
-                  <p className="text-[#172A3A]/55 text-sm">Minas Gerais, Brasil</p>
+                  <p className="text-[#172A3A]/55 text-sm">Santa Rita do Sapucaí, Minas Gerais, Brasil</p>
                 </div>
               </div>
             </div>
