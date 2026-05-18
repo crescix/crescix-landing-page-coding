@@ -1,20 +1,22 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLocation } from "wouter";
 
 const navLinks = [
   { label: "Início", href: "#inicio" },
   { label: "Como Funciona", href: "#como-funciona" },
   { label: "Recursos", href: "#recursos" },
-  { label: "Nossa História", href: "#nossa-historia" },
   { label: "Para Quem", href: "#para-quem" },
+  { label: "Nossa História", href: "#nossa-historia" },
   { label: "Contato", href: "#contato" },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [, navigate] = useLocation();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -33,7 +35,7 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white/80 backdrop-blur-xl shadow-lg shadow-[#004346]/5 border-b border-[#A3C3D9]/20"
+          ? "bg-[#0B1622]/85 backdrop-blur-xl border-b border-white/5 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.5)]"
           : "bg-transparent"
       }`}
     >
@@ -45,8 +47,8 @@ export default function Navbar() {
           className="flex items-center gap-2 group"
         >
           <img
-            src="/images/logo.png"
-            alt="logo"
+            src={`${import.meta.env.BASE_URL}images/logo.png`}
+            alt="CrescIX"
             className="w-32 h-auto rounded-md"
           />
         </a>
@@ -58,7 +60,7 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               onClick={(e) => handleNavClick(e, link.href)}
-              className="px-3.5 py-2 text-sm font-medium text-[#172A3A]/70 hover:text-[#09636B] transition-colors rounded-lg hover:bg-[#D8DDEF]/40"
+              className="px-3.5 py-2 text-sm font-medium text-white/70 hover:text-white transition-colors rounded-lg hover:bg-white/5"
             >
               {link.label}
             </a>
@@ -66,28 +68,35 @@ export default function Navbar() {
         </div>
 
         {/* Desktop CTA */}
-        <div className="hidden lg:block">
+        <div className="hidden lg:flex items-center gap-2">
+          <button
+            onClick={() => navigate("/teste-gratis")}
+            className="hidden xl:inline-flex items-center gap-1.5 text-sm font-medium text-white/70 hover:text-green-400 px-3 py-2 rounded-lg transition-colors"
+          >
+            <Sparkles className="w-3.5 h-3.5" />
+            Teste Grátis
+          </button>
           <a
             href="https://wa.me/5535984219965?text=Ol%C3%A1,%20gostaria%20de%20saber%20mais%20sobre%20a%20CrescIX%20IA..."
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Button className="bg-gradient-to-r from-[#09636B] to-[#004346] hover:from-[#004346] hover:to-[#172A3A] text-white font-display font-semibold px-6 py-2.5 rounded-xl shadow-lg shadow-[#09636B]/25 hover:shadow-xl hover:shadow-[#004346]/30 transition-all duration-300 hover:-translate-y-0.5">
-              Testar Agora
+            <Button className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white font-display font-semibold px-6 py-2.5 rounded-xl shadow-lg shadow-green-500/25 hover:shadow-xl hover:shadow-green-500/40 transition-all duration-300 hover:-translate-y-0.5 glow-brand-hover">
+              Falar no WhatsApp
             </Button>
           </a>
         </div>
 
         {/* Mobile Menu Button */}
         <button
-          className="lg:hidden p-2 rounded-lg hover:bg-[#D8DDEF]/40 transition-colors"
+          className="lg:hidden p-2 rounded-lg hover:bg-white/5 transition-colors"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Menu"
         >
           {mobileOpen ? (
-            <X className="w-6 h-6 text-[#172A3A]" />
+            <X className="w-6 h-6 text-white" />
           ) : (
-            <Menu className="w-6 h-6 text-[#172A3A]" />
+            <Menu className="w-6 h-6 text-white" />
           )}
         </button>
       </div>
@@ -99,7 +108,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-white/95 backdrop-blur-xl border-b border-[#A3C3D9]/20 overflow-hidden"
+            className="lg:hidden bg-[#0B1622]/95 backdrop-blur-xl border-b border-white/5 overflow-hidden"
           >
             <div className="container py-4 flex flex-col gap-1">
               {navLinks.map((link) => (
@@ -110,14 +119,31 @@ export default function Navbar() {
                     handleNavClick(e, link.href);
                     setMobileOpen(false);
                   }}
-                  className="px-4 py-3 text-sm font-medium text-[#172A3A]/70 hover:text-[#09636B] hover:bg-[#D8DDEF]/30 rounded-lg transition-colors"
+                  className="px-4 py-3 text-sm font-medium text-white/70 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
                 >
                   {link.label}
                 </a>
               ))}
-              <Button className="mt-3 bg-gradient-to-r from-[#09636B] to-[#004346] text-white font-display font-semibold rounded-xl">
-                Testar Agora
-              </Button>
+              <button
+                onClick={() => {
+                  navigate("/teste-gratis");
+                  setMobileOpen(false);
+                }}
+                className="px-4 py-3 text-sm font-medium text-green-400 hover:text-green-300 hover:bg-green-500/10 rounded-lg transition-colors flex items-center gap-2 text-left"
+              >
+                <Sparkles className="w-4 h-4" />
+                Teste Grátis
+              </button>
+              <a
+                href="https://wa.me/5535984219965?text=Ol%C3%A1,%20gostaria%20de%20saber%20mais%20sobre%20a%20CrescIX%20IA..."
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileOpen(false)}
+              >
+                <Button className="mt-3 w-full bg-gradient-to-r from-green-500 to-green-600 text-white font-display font-semibold rounded-xl">
+                  Falar no WhatsApp
+                </Button>
+              </a>
             </div>
           </motion.div>
         )}
