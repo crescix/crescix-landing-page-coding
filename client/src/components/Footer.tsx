@@ -112,14 +112,40 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-white/30">
-            &copy; {new Date().getFullYear()} CrescIX. Todos os direitos
-            reservados.
-          </p>
-          <p className="text-xs text-white/30 font-mono">
-            Feito em Santa Rita do Sapucaí, MG 🇧🇷
-          </p>
+        <div className="pt-8 border-t border-white/5 flex flex-col gap-4">
+          {/* Links legais (LGPD) — visíveis sempre, em primeiro plano */}
+          <nav className="flex items-center justify-center sm:justify-start gap-4 flex-wrap text-xs text-white/45">
+            <button
+              onClick={() => navigate("/privacidade")}
+              className="hover:text-green-400 transition-colors"
+            >
+              Política de Privacidade
+            </button>
+            <span aria-hidden="true" className="text-white/15">·</span>
+            <button
+              onClick={() => navigate("/termos")}
+              className="hover:text-green-400 transition-colors"
+            >
+              Termos de uso
+            </button>
+            <span aria-hidden="true" className="text-white/15">·</span>
+            <a
+              href="mailto:privacidade@crescix.com.br"
+              className="hover:text-green-400 transition-colors"
+            >
+              DPO
+            </a>
+          </nav>
+
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-2">
+            <p className="text-xs text-white/30">
+              &copy; {new Date().getFullYear()} CrescIX. Todos os direitos
+              reservados.
+            </p>
+            <p className="text-xs text-white/30 font-mono">
+              Feito em Santa Rita do Sapucaí, MG 🇧🇷
+            </p>
+          </div>
         </div>
       </div>
     </footer>
