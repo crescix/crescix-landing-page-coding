@@ -67,8 +67,8 @@ export default function Contact() {
             <span className="gradient-green">transformar</span> seu negócio?
           </h2>
           <p className="text-lg text-white/60 max-w-2xl mx-auto">
-            Manda uma mensagem que respondemos em até 8h. Sem robô — você fala
-            com a equipe que construiu o produto.
+            Manda uma mensagem que respondemos em até 8h. Sem robô. Você fala
+            direto com a equipe que construiu o produto.
           </p>
         </motion.div>
 
@@ -136,7 +136,7 @@ export default function Contact() {
                     Localização
                   </p>
                   <p className="text-white/55 text-sm">
-                    Santa Rita do Sapucaí — MG
+                    Santa Rita do Sapucaí, MG
                   </p>
                 </div>
               </div>

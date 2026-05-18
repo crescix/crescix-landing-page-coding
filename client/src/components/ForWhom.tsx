@@ -76,7 +76,7 @@ export default function ForWhom() {
           </h2>
           <p className="text-lg text-white/60">
             Se você passa o dia atendendo, vendendo e correndo pra anotar tudo
-            depois — a CrescIX foi feita exatamente pra te tirar dessa.
+            depois, a CrescIX foi feita pra te tirar dessa.
           </p>
         </motion.div>
 

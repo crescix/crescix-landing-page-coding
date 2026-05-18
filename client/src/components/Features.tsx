@@ -22,13 +22,13 @@ const features = [
     icon: Bot,
     title: "IA com escopo restrito",
     description:
-      "Modelo blindado contra jailbreak — responde só sobre vendas, compras, despesas e relatórios. Foco no que importa.",
+      "Modelo blindado contra jailbreak. Responde só sobre vendas, compras, despesas e relatórios. Foco no que importa.",
   },
   {
     icon: BarChart3,
     title: "Painel financeiro completo",
     description:
-      "Dashboard, fluxo de caixa, contas a pagar/receber, estoque e pedidos — tudo conectado pelo mesmo backend.",
+      "Dashboard, fluxo de caixa, contas a pagar e receber, estoque e pedidos. Tudo conectado pelo mesmo backend.",
   },
   {
     icon: FileSpreadsheet,
@@ -40,13 +40,13 @@ const features = [
     icon: Lock,
     title: "Multi-tenancy seguro",
     description:
-      "Cada negócio tem seus dados isolados. JWT, rate limiting, criptografia bcrypt — pronto pra produção.",
+      "Cada negócio tem seus dados isolados. JWT, rate limiting e criptografia bcrypt. Pronto pra produção.",
   },
   {
     icon: Clock,
     title: "Setup em 2 minutos",
     description:
-      "Cadastro, pareamento do Telegram, primeira venda registrada — tudo em menos de 120 segundos.",
+      "Cadastro, pareamento do Telegram e primeira venda registrada em menos de 2 minutos.",
   },
   {
     icon: Zap,
@@ -58,7 +58,7 @@ const features = [
     icon: FileText,
     title: "Histórico imutável",
     description:
-      "Movimentações de estoque não podem ser editadas — só compensadas via ajuste manual. Auditoria sempre íntegra.",
+      "Movimentações de estoque não podem ser editadas, só compensadas via ajuste manual. Auditoria sempre íntegra.",
   },
   {
     icon: Globe,
