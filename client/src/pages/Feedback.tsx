@@ -214,7 +214,7 @@ export default function Feedback() {
                   </label>
                   <p className="text-white/50 text-sm mb-3">
                     Pode ser bug, dificuldade no setup, recurso que faltou,
-                    UX confusa — tudo conta.
+                    UX confusa. Tudo conta.
                   </p>
                   <textarea
                     value={form.o_que_mudar}
@@ -234,7 +234,7 @@ export default function Feedback() {
                     Pagaria pra continuar usando?
                   </label>
                   <p className="text-white/50 text-sm mb-4">
-                    Sem compromisso — é só pra entender o quanto somos úteis.
+                    Sem compromisso. É só pra entender o quanto somos úteis.
                   </p>
                   <div className="grid sm:grid-cols-2 gap-2">
                     {PAGARIA_OPTS.map((opt) => {
@@ -270,7 +270,7 @@ export default function Feedback() {
                     onChange={(e) =>
                       setForm((p) => ({ ...p, email: e.target.value }))
                     }
-                    placeholder="seu@email.com — pra gente poder responder você"
+                    placeholder="seu@email.com (pra gente poder responder)"
                     className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-sm placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-green-500/30 focus:border-green-500/40 transition-all"
                   />
                 </div>

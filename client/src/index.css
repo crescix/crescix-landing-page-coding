@@ -28,7 +28,7 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  /* Brand colors — fonte de verdade do design system CrescIX. */
+  /* Brand colors: fonte de verdade do design system CrescIX. */
   --color-brand-green: #22C55E;
   --color-brand-green-light: #4ADE80;
   --color-brand-green-dark: #16A34A;
@@ -130,7 +130,7 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
   }
 
-  /* Gradient texts — destaque em verde da marca */
+  /* Gradient texts: destaque em verde da marca */
   .gradient-green {
     background: linear-gradient(135deg, #4ADE80 0%, #22C55E 50%, #16A34A 100%);
     -webkit-background-clip: text;
@@ -139,7 +139,7 @@
     color: transparent;
   }
 
-  /* Glow brand pulse — usado em CTAs e elementos focais */
+  /* Glow brand pulse: usado em CTAs e elementos focais */
   .glow-brand {
     box-shadow:
       0 0 30px rgba(34, 197, 94, 0.35),
@@ -152,7 +152,7 @@
       0 0 80px rgba(34, 197, 94, 0.2);
   }
 
-  /* Grid pattern de fundo (tech feel) — overlay sutil */
+  /* Grid pattern de fundo (tech feel): overlay sutil */
   .bg-grid {
     background-image:
       linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),

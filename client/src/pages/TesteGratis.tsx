@@ -363,8 +363,8 @@ export default function TesteGratis() {
                 </div>
 
                 <p className="text-center text-xs text-white/40 mt-6">
-                  Seus dados ficam protegidos. Sem spam — só usamos pra
-                  liberar seu acesso e te dar suporte.
+                  Seus dados ficam protegidos. Sem spam. A gente usa só pra
+                  liberar seu acesso e dar suporte.
                 </p>
               </motion.div>
             ) : (

@@ -22,8 +22,8 @@ export default function Footer() {
             </a>
             <p className="text-white/50 text-sm leading-relaxed max-w-md">
               Gestão financeira no automático pra pequenas empresas. Áudio do
-              Telegram entra como lançamento estruturado — sem planilha, sem
-              digitação.
+              Telegram entra como lançamento estruturado, sem planilha nem
+              digitação manual.
             </p>
 
             <div className="flex gap-3 mt-6">
@@ -118,7 +118,7 @@ export default function Footer() {
             reservados.
           </p>
           <p className="text-xs text-white/30 font-mono">
-            Feito em Santa Rita do Sapucaí — MG 🇧🇷
+            Feito em Santa Rita do Sapucaí, MG 🇧🇷
           </p>
         </div>
       </div>

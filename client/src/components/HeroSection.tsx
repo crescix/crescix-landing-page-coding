@@ -64,9 +64,8 @@ export default function HeroSection() {
             <p className="text-lg lg:text-xl text-white/70 leading-relaxed mb-8 max-w-xl">
               Mande um <span className="text-white font-semibold">áudio</span>{" "}
               ou <span className="text-white font-semibold">texto</span> pelo
-              Telegram — a CrescIX entende, registra e organiza vendas,
-              despesas e compras do seu negócio. Tudo sob controle, em
-              segundos.
+              Telegram. A CrescIX entende, registra e organiza vendas, despesas
+              e compras do seu negócio. Tudo sob controle, em segundos.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 mb-10">
