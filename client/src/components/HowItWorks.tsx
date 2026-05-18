@@ -5,46 +5,43 @@ const steps = [
   {
     icon: MessageSquare,
     number: "01",
-    title: "Envie mensagens e áudios",
+    title: "Você manda no Telegram",
     description:
-      "O usuário envia mensagens ou áudios normalmente pelo Telegram. Sem complicação, sem apps extras.",
-    color: "#508991",
+      'Áudio ou texto curto: "Vendi 4 águas a 3 reais", "Paguei 150 de aluguel". Sem app extra, sem formulário.',
   },
   {
     icon: Brain,
     number: "02",
-    title: "IA converte e interpreta",
+    title: "A IA entende",
     description:
-      "A CrescIX transcreve áudios em texto e interpreta as mensagens automaticamente com Inteligência Artificial.",
-    color: "#09636B",
+      "Whisper transcreve o áudio e a IA estrutura: tipo da operação, item, valor unitário, quantidade. Tudo em segundos.",
   },
   {
     icon: Database,
     number: "03",
-    title: "Dados organizados",
+    title: "Você confirma",
     description:
-      "Informações importantes como pedidos e feedbacks são extraídas e organizadas em dados estruturados.",
-    color: "#004346",
+      "O bot mostra um resumo do que entendeu. Você clica em ✅ e o lançamento entra direto no caixa do CrescIX.",
   },
   {
     icon: ShieldCheck,
     number: "04",
-    title: "Armazenamento seguro",
+    title: "Tudo guardado",
     description:
-      "Todos os dados são armazenados com criptografia avançada, garantindo segurança e privacidade total.",
-    color: "#172A3A",
+      "Dados criptografados, multi-tenancy, relatórios em planilha quando quiser. Sem perda, sem retrabalho.",
   },
 ];
 
 export default function HowItWorks() {
   return (
-    <section id="como-funciona" className="py-24 lg:py-32 bg-white relative overflow-hidden">
-      {/* Decorative */}
-      <div className="absolute top-0 right-0 w-[300px] h-[300px] rounded-full bg-[#D8DDEF]/30 blur-[80px]" />
-      <div className="absolute bottom-0 left-0 w-[250px] h-[250px] rounded-full bg-[#A3C3D9]/20 blur-[60px]" />
+    <section
+      id="como-funciona"
+      className="py-24 lg:py-32 relative overflow-hidden bg-[#0B1622]"
+    >
+      <div className="absolute inset-0 bg-grid-dim mask-radial pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-green-500/10 blur-[100px] pointer-events-none" />
 
       <div className="container relative z-10">
-        {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -52,55 +49,51 @@ export default function HowItWorks() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16 lg:mb-20"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-[#09636B]/10 text-[#09636B] text-sm font-semibold mb-4">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-green-500/10 border border-green-500/25 text-green-400 text-xs font-bold uppercase tracking-wider mb-4">
             Como Funciona
           </span>
-          <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-[#172A3A] mb-4">
-            Simples, rápido e{" "}
-            <span className="text-[#09636B]">inteligente</span>
+          <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white mb-4">
+            Quatro passos.{" "}
+            <span className="gradient-green">Zero fricção.</span>
           </h2>
-          <p className="text-lg text-[#172A3A]/55 max-w-2xl mx-auto">
-            Em apenas 4 passos, suas conversas do Telegram se transformam em dados
-            organizados e prontos para uso.
+          <p className="text-lg text-white/60 max-w-2xl mx-auto">
+            Conversa normal no Telegram entra como lançamento estruturado no
+            seu painel financeiro.
           </p>
         </motion.div>
 
-        {/* Steps grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-5">
           {steps.map((step, index) => (
             <motion.div
               key={step.number}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: index * 0.15 }}
+              transition={{ duration: 0.5, delay: index * 0.12 }}
               className="relative group"
             >
-              {/* Connector line (hidden on last item and mobile) */}
+              {/* Connector */}
               {index < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-12 left-[calc(50%+40px)] right-[-calc(50%-40px)] w-[calc(100%-40px)]">
-                  <div className="border-t-2 border-dashed border-[#A3C3D9]/40 w-full" />
+                <div className="hidden lg:block absolute top-16 left-full w-full z-0">
+                  <div className="border-t-2 border-dashed border-green-500/20 w-[80%] mx-auto" />
                 </div>
               )}
 
-              <div className="relative bg-white rounded-2xl p-6 lg:p-8 border border-[#D8DDEF]/60 hover:border-[#A3C3D9]/60 shadow-sm hover:shadow-lg hover:shadow-[#09636B]/5 transition-all duration-300 group-hover:-translate-y-1">
-                {/* Number badge */}
-                <div className="absolute -top-3 -right-2 w-8 h-8 rounded-full bg-[#D8DDEF] flex items-center justify-center">
-                  <span className="text-xs font-bold text-[#004346] font-mono">{step.number}</span>
+              <div className="relative glass-card rounded-2xl p-6 lg:p-7 hover:border-green-500/30 transition-all duration-300 group-hover:-translate-y-1">
+                {/* Number monospace */}
+                <div className="flex items-center justify-between mb-5">
+                  <div className="w-14 h-14 rounded-xl bg-green-500/10 border border-green-500/25 flex items-center justify-center group-hover:bg-green-500/15 group-hover:scale-110 transition-all duration-300">
+                    <step.icon className="w-6 h-6 text-green-400" />
+                  </div>
+                  <span className="text-3xl font-mono font-black text-white/10 group-hover:text-green-500/30 transition-colors">
+                    {step.number}
+                  </span>
                 </div>
 
-                {/* Icon */}
-                <div
-                  className="w-14 h-14 rounded-xl flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110"
-                  style={{ backgroundColor: `${step.color}15` }}
-                >
-                  <step.icon className="w-7 h-7" style={{ color: step.color }} />
-                </div>
-
-                <h3 className="font-display font-bold text-lg text-[#172A3A] mb-3">
+                <h3 className="font-display font-bold text-lg text-white mb-2.5">
                   {step.title}
                 </h3>
-                <p className="text-sm text-[#172A3A]/55 leading-relaxed">
+                <p className="text-sm text-white/55 leading-relaxed">
                   {step.description}
                 </p>
               </div>
