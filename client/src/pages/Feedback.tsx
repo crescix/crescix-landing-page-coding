@@ -13,6 +13,7 @@ import {
   MessageSquare,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useSEO } from "@/hooks/useSEO";
 
 interface FeedbackForm {
   nps: number | null;
@@ -39,6 +40,12 @@ const PAGARIA_OPTS = [
 ];
 
 export default function Feedback() {
+  useSEO({
+    title: "Feedback — CrescIX",
+    description:
+      "Sua opinião nos ajuda a melhorar o CrescIX. Conta pra gente o que tá funcionando, o que falta e como podemos crescer junto com você.",
+  });
+
   const [, navigate] = useLocation();
   const [form, setForm] = useState<FeedbackForm>({
     nps: null,

@@ -1,5 +1,6 @@
 import { ArrowLeft, FileText } from "lucide-react";
 import { useLocation } from "wouter";
+import { useSEO } from "@/hooks/useSEO";
 
 /**
  * Termos de Uso da CrescIX — versão landing-page. Espelha o conteúdo
@@ -10,6 +11,12 @@ import { useLocation } from "wouter";
 const UPDATED_AT = "18 de maio de 2026";
 
 export default function Termos() {
+  useSEO({
+    title: "Termos de Uso — CrescIX",
+    description:
+      "Termos de uso da CrescIX: o que esperar do serviço, suas responsabilidades, propriedade dos dados e como podemos crescer junto.",
+  });
+
   const [, navigate] = useLocation();
 
   return (
