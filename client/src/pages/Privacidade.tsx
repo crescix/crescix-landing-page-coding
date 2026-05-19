@@ -1,5 +1,6 @@
 import { ArrowLeft, Shield } from "lucide-react";
 import { useLocation } from "wouter";
+import { useSEO } from "@/hooks/useSEO";
 
 /**
  * Política de Privacidade da CrescIX — versão landing-page.
@@ -13,6 +14,12 @@ import { useLocation } from "wouter";
 const UPDATED_AT = "18 de maio de 2026";
 
 export default function Privacidade() {
+  useSEO({
+    title: "Política de Privacidade — CrescIX",
+    description:
+      "Como a CrescIX coleta, usa e protege seus dados, em linguagem clara e de acordo com a LGPD (Lei 13.709/2018).",
+  });
+
   const [, navigate] = useLocation();
 
   return (

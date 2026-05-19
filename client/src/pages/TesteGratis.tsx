@@ -15,6 +15,7 @@ import {
   MessageSquare,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useSEO } from "@/hooks/useSEO";
 
 type Step = 1 | 2 | 3 | "success";
 
@@ -51,6 +52,12 @@ const initialForm: FormState = {
 };
 
 export default function TesteGratis() {
+  useSEO({
+    title: "Teste grátis — CrescIX",
+    description:
+      "Solicite seu acesso ao CrescIX e teste de graça por 14 dias. Sem cartão, sem compromisso — só preencher e começar a usar.",
+  });
+
   const [, navigate] = useLocation();
   const [step, setStep] = useState<Step>(1);
   const [form, setForm] = useState<FormState>(initialForm);
