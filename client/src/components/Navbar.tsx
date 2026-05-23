@@ -9,7 +9,9 @@ const navLinks = [
   { label: "Como Funciona", href: "#como-funciona" },
   { label: "Recursos", href: "#recursos" },
   { label: "Para Quem", href: "#para-quem" },
+  { label: "Preços", href: "#precos" },
   { label: "Nossa História", href: "#nossa-historia" },
+  { label: "FAQ", href: "#faq" },
   { label: "Contato", href: "#contato" },
 ];
 
