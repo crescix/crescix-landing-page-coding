@@ -55,7 +55,7 @@ export default function TesteGratis() {
   useSEO({
     title: "Teste grátis — CrescIX",
     description:
-      "Solicite seu acesso ao CrescIX e teste de graça por 14 dias. Sem cartão, sem compromisso — só preencher e começar a usar.",
+      "Solicite seu acesso ao CrescIX e teste de graça por 7 dias. Sem cartão, sem compromisso — só preencher e começar a usar.",
   });
 
   const [, navigate] = useLocation();
@@ -145,7 +145,7 @@ export default function TesteGratis() {
                   <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-green-500/10 border border-green-500/25 mb-5">
                     <Sparkles className="w-3.5 h-3.5 text-green-400" />
                     <span className="text-xs font-bold text-green-400 uppercase tracking-wider">
-                      14 dias grátis
+                      7 dias grátis
                     </span>
                   </div>
                   <h1 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white leading-[1.1] mb-3">
@@ -409,7 +409,7 @@ export default function TesteGratis() {
                     </li>
                     <li className="flex gap-2.5">
                       <span className="text-green-400 font-mono">03</span>
-                      <span>14 dias de uso completo, com suporte humano</span>
+                      <span>7 dias de uso completo, com suporte humano</span>
                     </li>
                   </ul>
                 </div>
