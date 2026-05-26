@@ -15,19 +15,19 @@ import {
 const faqs = [
   {
     q: "O que é o CrescIX e pra quem serve?",
-    a: "É um sistema de gestão financeira pra pequenos negócios — comércios, restaurantes, mercados, salões, autônomos. Você registra vendas, compras e despesas direto pelo WhatsApp, Telegram ou pelo app, e a gente organiza tudo num dashboard com fluxo de caixa, contas a pagar/receber, estoque e insights mensais com IA.",
+    a: "É um sistema de gestão financeira pra pequenos negócios — comércios, restaurantes, mercados, salões, autônomos. Você registra vendas, compras e despesas direto pelo Telegram ou pelo app, e a gente organiza tudo num dashboard com fluxo de caixa, contas a pagar/receber, estoque e insights mensais com IA.",
   },
   {
     q: "Preciso instalar alguma coisa?",
-    a: "Não. O app web roda no navegador (computador ou celular). Os bots usam o WhatsApp e o Telegram que você já tem instalados. Sem download, sem instalação, sem complicação.",
+    a: "Não. O app web roda no navegador (computador ou celular). O bot usa o Telegram que você já tem instalado no celular. Sem download, sem instalação, sem complicação.",
   },
   {
     q: "Como funciona o teste grátis de 7 dias?",
     a: "Você se cadastra com e-mail e senha (sem cartão de crédito) e tem acesso completo a tudo por 7 dias. Depois, se quiser continuar, escolhe um plano e paga via PIX. Se não pagar, sua conta vira somente-leitura — você consegue consultar tudo que registrou, mas não cria registros novos.",
   },
   {
-    q: "Os bots de WhatsApp e Telegram são pagos à parte?",
-    a: "Não. Os dois canais estão inclusos em qualquer plano. Você usa o que preferir — ou os dois ao mesmo tempo, vinculados à mesma conta.",
+    q: "O bot do Telegram é pago à parte?",
+    a: "Não. O bot está incluso em qualquer plano. Você usa o app web e o bot do Telegram com a mesma conta.",
   },
   {
     q: "Posso cancelar a qualquer momento?",
