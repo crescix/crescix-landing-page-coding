@@ -22,8 +22,8 @@ const faqs = [
     a: "Não. O app web roda no navegador (computador ou celular). O bot usa o Telegram que você já tem instalado no celular. Sem download, sem instalação, sem complicação.",
   },
   {
-    q: "Como funciona o teste grátis de 7 dias?",
-    a: "Você se cadastra com e-mail e senha (sem cartão de crédito) e tem acesso completo a tudo por 7 dias. Depois, se quiser continuar, escolhe um plano e paga via PIX. Se não pagar, sua conta vira somente-leitura — você consegue consultar tudo que registrou, mas não cria registros novos.",
+    q: "Como funciona o teste grátis de 30 dias?",
+    a: "Você se cadastra com e-mail e senha (sem cartão de crédito) e tem acesso completo a tudo por 30 dias. Depois, se quiser continuar, escolhe um plano e paga via PIX ou cartão. Se não pagar, sua conta vira somente-leitura — você consegue consultar tudo que registrou, mas não cria registros novos.",
   },
   {
     q: "O bot do Telegram é pago à parte?",
