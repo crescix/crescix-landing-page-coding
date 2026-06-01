@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useLocation } from "wouter";
 
 const benefits = [
-  "7 dias grátis, sem cartão",
+  "30 dias grátis, sem cartão",
   "Cancele quando quiser",
   "Suporte humano durante o teste",
   "Migração de dados sem custo",
@@ -44,7 +44,7 @@ export default function CTASection() {
 
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-6xl text-white mb-5 max-w-3xl mx-auto leading-[1.05]">
               Experimente{" "}
-              <span className="gradient-green">7 dias grátis</span>.
+              <span className="gradient-green">30 dias grátis</span>.
               <br />
               Decida depois.
             </h2>

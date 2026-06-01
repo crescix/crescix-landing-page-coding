@@ -106,7 +106,7 @@ export default function HeroSection() {
               </div>
               <div className="flex items-center gap-2">
                 <TrendingUp className="w-4 h-4 text-green-400" />
-                <span>7 dias grátis</span>
+                <span>30 dias grátis</span>
               </div>
             </div>
           </motion.div>

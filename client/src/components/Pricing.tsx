@@ -70,7 +70,7 @@ export default function Pricing() {
             Preços simples e transparentes
           </h2>
           <p className="text-white/70 text-base md:text-lg leading-relaxed">
-            Comece com 7 dias grátis. Depois, escolha o plano que faz mais
+            Comece com 30 dias grátis. Depois, escolha o plano que faz mais
             sentido pra você. Sem letras miúdas.
           </p>
         </motion.div>
@@ -113,7 +113,7 @@ export default function Pricing() {
               href="/teste-gratis"
               className="mt-8 inline-flex items-center justify-center h-11 w-full rounded-xl bg-white/10 hover:bg-white/15 text-white font-semibold text-sm transition-colors"
             >
-              Começar teste grátis de 7 dias
+              Começar teste grátis de 30 dias
             </Link>
           </motion.div>
 
@@ -164,7 +164,7 @@ export default function Pricing() {
               href="/teste-gratis"
               className="mt-8 inline-flex items-center justify-center h-11 w-full rounded-xl bg-green-500 hover:bg-green-400 text-[#0B1622] font-semibold text-sm transition-colors"
             >
-              Começar teste grátis de 7 dias
+              Começar teste grátis de 30 dias
             </Link>
           </motion.div>
         </div>
