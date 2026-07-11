@@ -14,14 +14,14 @@ import { Link } from "wouter";
  */
 
 const MENSAL = {
-  valor: 69.9,
+  valor: 79.9,
   label: "Mensal",
   subtitle: "Pago todo mês",
   description: "Pague mês a mês. Cancele quando quiser.",
 };
 
 const ANUAL = {
-  valor: 598.8,
+  valor: 718.8,
   label: "Anual",
   subtitle: "Cobrado uma vez por ano",
 };
