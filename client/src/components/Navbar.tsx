@@ -4,11 +4,15 @@ import { Menu, X, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocation } from "wouter";
 
-const navLinks = [
+/**
+ * `href` com "#" rola até a seção do home. `route` leva a outra página
+ * (produto próprio, com público e discurso diferentes do bot financeiro).
+ */
+const navLinks: { label: string; href?: string; route?: string }[] = [
   { label: "Início", href: "#inicio" },
   { label: "Como Funciona", href: "#como-funciona" },
   { label: "Recursos", href: "#recursos" },
-  { label: "Para Quem", href: "#para-quem" },
+  { label: "Atendimento", route: "/atendimento" },
   { label: "Preços", href: "#precos" },
   { label: "Nossa História", href: "#nossa-historia" },
   { label: "FAQ", href: "#faq" },
@@ -57,16 +61,26 @@ export default function Navbar() {
 
         {/* Desktop Links */}
         <div className="hidden lg:flex items-center gap-1">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={(e) => handleNavClick(e, link.href)}
-              className="px-3.5 py-2 text-sm font-medium text-white/70 hover:text-white transition-colors rounded-lg hover:bg-white/5"
-            >
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map((link) =>
+            link.route ? (
+              <button
+                key={link.route}
+                onClick={() => navigate(link.route!)}
+                className="px-3.5 py-2 text-sm font-medium text-green-400/90 hover:text-green-300 transition-colors rounded-lg hover:bg-green-500/10"
+              >
+                {link.label}
+              </button>
+            ) : (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={(e) => handleNavClick(e, link.href!)}
+                className="px-3.5 py-2 text-sm font-medium text-white/70 hover:text-white transition-colors rounded-lg hover:bg-white/5"
+              >
+                {link.label}
+              </a>
+            )
+          )}
         </div>
 
         {/* Desktop CTA */}
@@ -113,19 +127,32 @@ export default function Navbar() {
             className="lg:hidden bg-[#0B1622]/95 backdrop-blur-xl border-b border-white/5 overflow-hidden"
           >
             <div className="container py-4 flex flex-col gap-1">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={(e) => {
-                    handleNavClick(e, link.href);
-                    setMobileOpen(false);
-                  }}
-                  className="px-4 py-3 text-sm font-medium text-white/70 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
-                >
-                  {link.label}
-                </a>
-              ))}
+              {navLinks.map((link) =>
+                link.route ? (
+                  <button
+                    key={link.route}
+                    onClick={() => {
+                      navigate(link.route!);
+                      setMobileOpen(false);
+                    }}
+                    className="px-4 py-3 text-sm font-medium text-green-400/90 hover:text-green-300 hover:bg-green-500/10 rounded-lg transition-colors text-left"
+                  >
+                    {link.label}
+                  </button>
+                ) : (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    onClick={(e) => {
+                      handleNavClick(e, link.href!);
+                      setMobileOpen(false);
+                    }}
+                    className="px-4 py-3 text-sm font-medium text-white/70 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                )
+              )}
               <button
                 onClick={() => {
                   navigate("/teste-gratis");
