@@ -8,6 +8,7 @@ import CookieBanner from "./components/CookieBanner";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import Atendimento from "./pages/Atendimento";
+import Erp from "./pages/Erp";
 import TesteGratis from "./pages/TesteGratis";
 import Feedback from "./pages/Feedback";
 import Privacidade from "./pages/Privacidade";
@@ -18,6 +19,7 @@ function AppRouter() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/atendimento" component={Atendimento} />
+      <Route path="/erp" component={Erp} />
       <Route path="/teste-gratis" component={TesteGratis} />
       <Route path="/feedback" component={Feedback} />
       <Route path="/privacidade" component={Privacidade} />

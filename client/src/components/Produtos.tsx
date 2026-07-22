@@ -41,12 +41,7 @@ const PRODUTOS = [
     descricao:
       "PDV, controle de estoque, emissão de NFC-e, crediário e frente de caixa. Tudo que um mercado precisa pra vender e controlar.",
     bullets: ["Frente de caixa", "Estoque e NFC-e", "Crediário e fiado"],
-    acao: {
-      label: "Falar com a gente",
-      tipo: "whatsapp",
-      destino:
-        "https://wa.me/5535984219965?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20ERP%20da%20CrescIX%20para%20o%20meu%20mercado.",
-    },
+    acao: { label: "Conhecer", tipo: "rota", destino: "/erp" },
     destaque: false,
   },
 ];
