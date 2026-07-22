@@ -124,13 +124,23 @@ const PARA_QUEM = [
     titulo: "Salões e estética",
     texto: "Agenda cheia, muitas remarcações e cliente que some sem avisar.",
   },
+  {
+    icone: Building2,
+    titulo: "Oficinas e assistências",
+    texto: "Orçamento, status do serviço e agendamento de entrega ou retirada.",
+  },
+  {
+    icone: MessageCircle,
+    titulo: "Comércio e serviços",
+    texto: "Loja, escritório, prestador. Se o cliente chama no WhatsApp, encaixa.",
+  },
 ];
 
 export default function Atendimento() {
   useSEO({
     title: "Atendimento automático no WhatsApp — CrescIX",
     description:
-      "Assistente que atende, direciona e agenda sozinho no WhatsApp da sua clínica, academia ou laboratório. Responde em segundos, 24 horas por dia.",
+      "Assistente que atende, direciona e agenda sozinho no WhatsApp do seu negócio. Feito sob medida pra qualquer estabelecimento. Responde em segundos, 24 horas por dia.",
   });
 
   const [, navigate] = useLocation();
@@ -425,11 +435,15 @@ export default function Atendimento() {
                 Para quem
               </span>
               <h2 className="font-display font-bold text-3xl sm:text-4xl leading-tight tracking-tight mt-4">
-                Quem vive de agenda cheia.
+                Serve pra qualquer negócio que atende cliente.
               </h2>
+              <p className="text-lg text-white/55 mt-5 leading-relaxed">
+                Se as pessoas falam com você pelo WhatsApp, o assistente se
+                encaixa. Estes são só alguns exemplos de quem já faz sentido:
+              </p>
             </div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-12">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-12">
               {PARA_QUEM.map((s) => (
                 <div
                   key={s.titulo}
@@ -446,6 +460,36 @@ export default function Atendimento() {
                   </p>
                 </div>
               ))}
+            </div>
+
+            {/* Feito sob medida — o argumento central */}
+            <div className="mt-6 bg-gradient-to-br from-[#172A3A] to-[#1F3447] border border-green-500/20 rounded-2xl p-8 sm:p-10 flex flex-col md:flex-row md:items-center gap-6">
+              <div className="flex-1">
+                <span className="inline-flex items-center gap-2 text-xs font-mono font-semibold tracking-[0.16em] uppercase text-green-400">
+                  <Check className="w-3.5 h-3.5" />
+                  Feito sob medida
+                </span>
+                <h3 className="font-display font-bold text-2xl sm:text-3xl leading-tight tracking-tight mt-3">
+                  Não achou o seu tipo de negócio? A gente monta do seu jeito.
+                </h3>
+                <p className="text-white/60 mt-4 leading-relaxed max-w-2xl">
+                  Cada negócio atende de um jeito. Por isso o assistente é
+                  configurado pra você: os serviços, os setores, os horários e
+                  as respostas são montados de acordo com o que o seu
+                  estabelecimento precisa. Se tiver uma necessidade específica,
+                  a gente adapta.
+                </p>
+              </div>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="shrink-0"
+              >
+                <Button className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white font-display font-semibold px-7 py-6 text-base rounded-xl shadow-lg shadow-green-500/25 transition-all duration-300 hover:-translate-y-0.5">
+                  Contar o que preciso
+                </Button>
+              </a>
             </div>
           </div>
         </section>
