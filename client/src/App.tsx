@@ -1,8 +1,8 @@
+import { useEffect } from "react";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
 import { Route, Switch, Router } from "wouter";
-import { useHashLocation } from "wouter/use-hash-location";
 import ErrorBoundary from "./components/ErrorBoundary";
 import CookieBanner from "./components/CookieBanner";
 import { ThemeProvider } from "./contexts/ThemeContext";
@@ -30,13 +30,37 @@ function AppRouter() {
   );
 }
 
+/**
+ * Migra links antigos com hash routing pra rotas limpas.
+ *
+ * Antes o roteador usava `useHashLocation`, então links compartilhados vinham
+ * como "crescix.com.br/#/atendimento". Agora usamos rotas normais
+ * ("crescix.com.br/atendimento"). Este efeito detecta esse padrão antigo e
+ * substitui a URL sem recarregar a página, pra:
+ *   1. Links já compartilhados no WhatsApp continuarem funcionando
+ *   2. O Google não indexar dois endereços para a mesma página
+ *
+ * O hash "#produtos" (âncora de seção na home) NÃO é rota — começa sem barra,
+ * então é preservado pelo teste `startsWith("#/")`.
+ */
+function LegacyHashRedirect() {
+  useEffect(() => {
+    if (window.location.hash.startsWith("#/")) {
+      const path = window.location.hash.slice(1); // "#/atendimento" → "/atendimento"
+      window.history.replaceState(null, "", path + window.location.search);
+    }
+  }, []);
+  return null;
+}
+
 function App() {
   return (
     <ErrorBoundary>
       <ThemeProvider defaultTheme="dark">
         <TooltipProvider>
           <Toaster theme="dark" richColors position="top-right" />
-          <Router hook={useHashLocation}>
+          <LegacyHashRedirect />
+          <Router>
             <AppRouter />
             <CookieBanner />
           </Router>
