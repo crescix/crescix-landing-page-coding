@@ -113,7 +113,7 @@ export default function Footer() {
         </div>
 
         <div className="pt-8 border-t border-white/5 flex flex-col gap-4">
-          {/* Links legais (LGPD) — visíveis sempre, em primeiro plano */}
+          {/* Links legais (LGPD): visíveis sempre, em primeiro plano */}
           <nav className="flex items-center justify-center sm:justify-start gap-4 flex-wrap text-xs text-white/70">
             <button
               onClick={() => navigate("/privacidade")}

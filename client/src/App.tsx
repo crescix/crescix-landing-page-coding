@@ -40,7 +40,7 @@ function AppRouter() {
  *   1. Links já compartilhados no WhatsApp continuarem funcionando
  *   2. O Google não indexar dois endereços para a mesma página
  *
- * O hash "#produtos" (âncora de seção na home) NÃO é rota — começa sem barra,
+ * O hash "#produtos" (âncora de seção na home) NÃO é rota: começa sem barra,
  * então é preservado pelo teste `startsWith("#/")`.
  */
 function LegacyHashRedirect() {

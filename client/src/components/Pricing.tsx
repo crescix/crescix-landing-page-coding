@@ -3,13 +3,13 @@ import { Check } from "lucide-react";
 import { Link } from "wouter";
 
 /**
- * Seção "Preços" — 2 cards lado-a-lado: Mensal e Anual.
+ * Seção "Preços": 2 cards lado-a-lado, Mensal e Anual.
  *
  * Valores em sincronia com a crescix-api (src/lib/subscription.ts):
  *   - MENSAL: R$ 69,90 / 30 dias
  *   - ANUAL: R$ 598,80 / 365 dias (= R$ 49,90 equivalente mensal)
  *
- * Se mudar lá, atualizar aqui também — não vale a complexidade de
+ * Se mudar lá, atualizar aqui também. Não vale a complexidade de
  * fetchar a API só pra renderizar landing estática.
  */
 
@@ -117,7 +117,7 @@ export default function Pricing() {
             </Link>
           </motion.div>
 
-          {/* ANUAL — destacado */}
+          {/* ANUAL: destacado */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

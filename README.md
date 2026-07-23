@@ -1,24 +1,24 @@
 # crescix-landing-page-coding
 
-Site público (landing page) do **CrescIX** — apresenta a proposta, captura
+Site público (landing page) do **CrescIX**: apresenta a proposta, captura
 leads pro teste grátis e recebe feedback. Stack escolhida pra ser leve e
 rápida (Vite + React, sem framework de SSR).
 
 Faz parte do ecossistema:
-- [crescix-api](https://github.com/crescix/crescix-api) — backend
-- [crescix-web](https://github.com/crescix/crescix-web) — app autenticado
-- [crescix-automations](https://github.com/crescix/crescix-automations) — bot Telegram
+- [crescix-api](https://github.com/crescix/crescix-api): backend
+- [crescix-web](https://github.com/crescix/crescix-web): app autenticado
+- [crescix-automations](https://github.com/crescix/crescix-automations): bot Telegram
 
 ---
 
 ## Stack
 
-- **Vite 5** + **React 18** — SPA buildada estaticamente
+- **Vite 5** + **React 18**: SPA buildada estaticamente
 - **TypeScript**
-- **Tailwind CSS 4** + **shadcn/ui** + **Radix** — design system
-- **Wouter** — router minimalista (hash-based)
-- **Framer Motion** — animações
-- **GitHub Pages** ou **Vercel** — deploy
+- **Tailwind CSS 4** + **shadcn/ui** + **Radix**: design system
+- **Wouter**: router minimalista (hash-based)
+- **Framer Motion**: animações
+- **GitHub Pages** ou **Vercel**: deploy
 
 ---
 
@@ -112,4 +112,4 @@ npm run build
 
 A pasta `dist/public/` é o output servido. Configurado em `vite.config.ts` e `package.json`.
 
-Pra Vercel ou outro provider, basta apontar pro mesmo output e configurar SPA fallback (`/* → /index.html`) — Wouter cuida do roteamento client-side.
+Pra Vercel ou outro provider, basta apontar pro mesmo output e configurar SPA fallback (`/* → /index.html`). Wouter cuida do roteamento client-side.

@@ -3,7 +3,7 @@ import { useLocation } from "wouter";
 import { useSEO } from "@/hooks/useSEO";
 
 /**
- * Termos de Uso da CrescIX — versão landing-page. Espelha o conteúdo
+ * Termos de Uso da CrescIX: versão landing-page. Espelha o conteúdo
  * do crescix-web. Linguagem clara, sem latim. Cobre o essencial:
  * conta, propriedade dos dados, responsabilidade, foro.
  */

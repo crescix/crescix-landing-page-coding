@@ -462,7 +462,7 @@ export default function Atendimento() {
               ))}
             </div>
 
-            {/* Feito sob medida — o argumento central */}
+            {/* Feito sob medida: o argumento central */}
             <div className="mt-6 bg-gradient-to-br from-[#172A3A] to-[#1F3447] border border-green-500/20 rounded-2xl p-8 sm:p-10 flex flex-col md:flex-row md:items-center gap-6">
               <div className="flex-1">
                 <span className="inline-flex items-center gap-2 text-xs font-mono font-semibold tracking-[0.16em] uppercase text-green-400">

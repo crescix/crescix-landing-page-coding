@@ -3,10 +3,10 @@ import { useEffect } from "react";
 /**
  * Hook minimalista pra atualizar title + meta description por rota
  * num SPA (Vite + Wouter, sem SSR). Não substitui SSR pra robôs antigos,
- * mas Google/Bing executam JS — então o snippet correto aparece no
+ * mas Google/Bing executam JS, então o snippet correto aparece no
  * resultado, e o título da aba reflete a página em que o usuário está.
  *
- * Restaura o título original quando o componente desmonta — assim a
+ * Restaura o título original quando o componente desmonta, assim a
  * navegação SPA não deixa rastro de título antigo se o usuário voltar
  * pro home antes do próximo render.
  *

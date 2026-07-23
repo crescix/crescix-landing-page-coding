@@ -6,7 +6,7 @@ import { useLocation } from "wouter";
  * Banner LGPD que aparece na primeira visita ao site.
  *
  * A landing CrescIX hoje não usa cookies de rastreamento nem analytics
- * — só armazenamento local essencial (preferências da própria página).
+ * Só armazenamento local essencial (preferências da própria página).
  * Por isso o banner é discreto, com 1 único botão "Entendi". Quando
  * entrarem analytics ou cookies de terceiros, este componente precisa
  * ganhar opção de "Personalizar".
@@ -86,7 +86,7 @@ export default function CookieBanner() {
         </button>
       </div>
 
-      {/* Animação de entrada inline — evita poluir o CSS global por
+      {/* Animação de entrada inline: evita poluir o CSS global por
           um único componente. */}
       <style>{`
         @keyframes auth-slide-up {

@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/accordion";
 
 /**
- * Seção "Perguntas Frequentes" — accordion com 8 dúvidas comuns
+ * Seção "Perguntas Frequentes": accordion com 8 dúvidas comuns
  * de quem chega na landing. Foco em remover objeções de compra
  * (preço, dados, instalação, cancelamento).
  */

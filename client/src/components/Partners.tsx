@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
 
 /**
- * Seção "Parceiros" — destaca o vínculo institucional do CrescIX
+ * Seção "Parceiros": destaca o vínculo institucional do CrescIX
  * com o programa de incubação INATEL Startups.
  *
  * Logo PNG mora em /client/public/parceiros/. Por enquanto, só
- * Inatel — UNIFEI entra depois (planejado, sem logo ainda).
+ * Inatel; UNIFEI entra depois (planejado, sem logo ainda).
  */
 export default function Partners() {
   return (

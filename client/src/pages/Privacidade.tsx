@@ -3,7 +3,7 @@ import { useLocation } from "wouter";
 import { useSEO } from "@/hooks/useSEO";
 
 /**
- * Política de Privacidade da CrescIX — versão landing-page.
+ * Política de Privacidade da CrescIX: versão landing-page.
  *
  * Espelha o conteúdo da página equivalente no crescix-web pra que o
  * visitante público veja o mesmo compromisso de antes mesmo de criar
