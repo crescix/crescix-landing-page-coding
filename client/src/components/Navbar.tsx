@@ -12,7 +12,6 @@ const navLinks: { label: string; href?: string; route?: string }[] = [
   { label: "Início", href: "#inicio" },
   { label: "Produtos", href: "#produtos" },
   { label: "Como Funciona", href: "#como-funciona" },
-  { label: "Atendimento", route: "/atendimento" },
   { label: "Preços", href: "#precos" },
   { label: "Nossa História", href: "#nossa-historia" },
   { label: "FAQ", href: "#faq" },

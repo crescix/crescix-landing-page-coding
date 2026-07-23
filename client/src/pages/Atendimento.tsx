@@ -138,7 +138,7 @@ const PARA_QUEM = [
 
 export default function Atendimento() {
   useSEO({
-    title: "Atendimento automático no WhatsApp — CrescIX",
+    title: "Atendimento automático no WhatsApp | CrescIX",
     description:
       "Assistente que atende, direciona e agenda sozinho no WhatsApp do seu negócio. Feito sob medida pra qualquer estabelecimento. Responde em segundos, 24 horas por dia.",
   });

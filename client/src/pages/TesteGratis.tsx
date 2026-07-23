@@ -53,9 +53,9 @@ const initialForm: FormState = {
 
 export default function TesteGratis() {
   useSEO({
-    title: "Teste grátis — CrescIX",
+    title: "Teste grátis | CrescIX",
     description:
-      "Solicite seu acesso ao CrescIX e teste de graça por 30 dias. Sem cartão, sem compromisso — só preencher e começar a usar.",
+      "Solicite seu acesso ao CrescIX e teste de graça por 30 dias. Sem cartão, sem compromisso. Só preencher e começar a usar.",
   });
 
   const [, navigate] = useLocation();

@@ -97,7 +97,7 @@ const FLUXO = [
 
 export default function Erp() {
   useSEO({
-    title: "ERP para mercados — CrescIX",
+    title: "ERP para mercados | CrescIX",
     description:
       "Sistema completo para mercados e varejo: PDV por teclado, emissão de NFC-e, controle de estoque, produtos pesáveis, crediário e financeiro. Tudo conectado.",
   });

@@ -180,7 +180,7 @@ export default function Pricing() {
 
         <p className="text-center text-xs text-white/60 mt-8 max-w-2xl mx-auto">
           Sem auto-renovação. Sem cartão de crédito no teste. Cancele a
-          qualquer momento — o tempo já pago segue valendo até o fim.
+          qualquer momento. O tempo já pago segue valendo até o fim.
         </p>
       </div>
     </section>

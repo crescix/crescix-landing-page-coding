@@ -12,7 +12,7 @@ const UPDATED_AT = "18 de maio de 2026";
 
 export default function Termos() {
   useSEO({
-    title: "Termos de Uso — CrescIX",
+    title: "Termos de Uso | CrescIX",
     description:
       "Termos de uso da CrescIX: o que esperar do serviço, suas responsabilidades, propriedade dos dados e como podemos crescer junto.",
   });
@@ -55,7 +55,7 @@ export default function Termos() {
           <Intro>
             Este documento define as regras de uso da plataforma CrescIX.
             Ao criar uma conta, você concorda com tudo o que está aqui.
-            Tentamos escrever em português claro, sem latim — se algo
+            Tentamos escrever em português claro, sem latim. Se algo
             ficar confuso, fala com a gente.
           </Intro>
 
@@ -160,7 +160,7 @@ export default function Termos() {
           <Section titulo="7. Análises da IA">
             <p>
               O recurso "Análise IA" gera observações e sugestões a
-              partir dos seus números. Os resultados são informativos —
+              partir dos seus números. Os resultados são informativos:
               não substituem aconselhamento contábil, fiscal, jurídico
               ou financeiro profissional. Use o bom senso.
             </p>
@@ -179,7 +179,7 @@ export default function Termos() {
                 plataforma.
               </li>
               <li>
-                Faça backup das informações importantes — mantemos
+                Faça backup das informações importantes. Mantemos
                 cópias, mas falhas raras de infraestrutura podem
                 acontecer.
               </li>
@@ -203,7 +203,7 @@ export default function Termos() {
               </a>
               . Em até 30 dias após a solicitação, seus dados são
               apagados. Podemos encerrar sua conta se você violar estes
-              termos — neste caso, te avisamos por e-mail antes.
+              termos. Neste caso, te avisamos por e-mail antes.
             </p>
           </Section>
 

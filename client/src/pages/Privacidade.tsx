@@ -15,7 +15,7 @@ const UPDATED_AT = "18 de maio de 2026";
 
 export default function Privacidade() {
   useSEO({
-    title: "Política de Privacidade — CrescIX",
+    title: "Política de Privacidade | CrescIX",
     description:
       "Como a CrescIX coleta, usa e protege seus dados, em linguagem clara e de acordo com a LGPD (Lei 13.709/2018).",
   });
@@ -87,8 +87,8 @@ export default function Privacidade() {
               </li>
               <li>
                 <strong>Negócio:</strong> tipo de comércio, fornecedores,
-                clientes, produtos, pedidos, contas a pagar e receber —
-                informações que você mesmo cadastra ou registra via bot
+                clientes, produtos, pedidos, contas a pagar e receber.
+                Informações que você mesmo cadastra ou registra via bot
                 Telegram.
               </li>
               <li>
@@ -99,7 +99,7 @@ export default function Privacidade() {
               <li>
                 <strong>Áudios enviados ao bot:</strong> processados pela
                 OpenAI (Whisper) pra transcrição. O áudio em si não é
-                guardado — só o texto resultante.
+                guardado, só o texto resultante.
               </li>
               <li>
                 <strong>Logs técnicos:</strong> endereço IP e horário de
@@ -131,7 +131,7 @@ export default function Privacidade() {
                 recuperação de senha, avisos relacionados à conta.
               </li>
               <li>
-                Gerar análises e sugestões pelo recurso "Análise IA" —
+                Gerar análises e sugestões pelo recurso "Análise IA":
                 processados pela OpenAI, mas não usados pra treinar
                 modelos.
               </li>
@@ -173,17 +173,17 @@ export default function Privacidade() {
             </p>
             <Ul>
               <li>
-                <strong>OpenAI</strong> — transcrição de áudios e
+                <strong>OpenAI:</strong> transcrição de áudios e
                 geração de análises. Não recebem dados de contato, só
                 o conteúdo necessário pra processar o pedido.
               </li>
               <li>
                 <strong>Provedores de infraestrutura</strong> (banco de
-                dados, servidor) — guardam os dados criptografados, sob
+                dados, servidor): guardam os dados criptografados, sob
                 acordos de proteção.
               </li>
               <li>
-                <strong>Telegram</strong> — quando você opta pelo bot,
+                <strong>Telegram:</strong> quando você opta pelo bot,
                 o Telegram processa as mensagens conforme a política
                 deles.
               </li>
@@ -206,8 +206,8 @@ export default function Privacidade() {
                 edita no app).
               </li>
               <li>
-                <strong>Excluir</strong> sua conta e os dados associados
-                — basta enviar e-mail pro nosso Encarregado.
+                <strong>Excluir</strong> sua conta e os dados associados.
+                Basta enviar e-mail pro nosso Encarregado.
               </li>
               <li>
                 <strong>Exportar</strong> seus dados num formato
@@ -215,7 +215,7 @@ export default function Privacidade() {
               </li>
               <li>
                 <strong>Revogar consentimento</strong> a qualquer
-                momento — isso encerra sua conta.
+                momento. Isso encerra sua conta.
               </li>
               <li>
                 <strong>Reclamar</strong> à Autoridade Nacional de
@@ -236,7 +236,7 @@ export default function Privacidade() {
                 bruta.
               </li>
               <li>
-                Dados isolados por usuário — ninguém vê os dados de
+                Dados isolados por usuário: ninguém vê os dados de
                 ninguém.
               </li>
             </Ul>
@@ -247,7 +247,7 @@ export default function Privacidade() {
               Não usamos cookies de rastreamento, analytics ou
               anúncios. No app (depois do login), guardamos no{" "}
               <em>localStorage</em> apenas o token JWT que mantém você
-              logado e algumas preferências de interface — tudo
+              logado e algumas preferências de interface. Tudo
               essencial pra o serviço funcionar.
             </p>
           </Section>

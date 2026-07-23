@@ -15,7 +15,7 @@ import {
 const faqs = [
   {
     q: "O que é o CrescIX e pra quem serve?",
-    a: "É um sistema de gestão financeira pra pequenos negócios — comércios, restaurantes, mercados, salões, autônomos. Você registra vendas, compras e despesas direto pelo Telegram ou pelo app, e a gente organiza tudo num dashboard com fluxo de caixa, contas a pagar/receber, estoque e insights mensais com IA.",
+    a: "É um sistema de gestão financeira pra pequenos negócios: comércios, restaurantes, mercados, salões, autônomos. Você registra vendas, compras e despesas direto pelo Telegram ou pelo app, e a gente organiza tudo num dashboard com fluxo de caixa, contas a pagar/receber, estoque e insights mensais com IA.",
   },
   {
     q: "Preciso instalar alguma coisa?",
@@ -23,7 +23,7 @@ const faqs = [
   },
   {
     q: "Como funciona o teste grátis de 30 dias?",
-    a: "Você se cadastra com e-mail e senha (sem cartão de crédito) e tem acesso completo a tudo por 30 dias. Depois, se quiser continuar, escolhe um plano e paga via PIX ou cartão. Se não pagar, sua conta vira somente-leitura — você consegue consultar tudo que registrou, mas não cria registros novos.",
+    a: "Você se cadastra com e-mail e senha (sem cartão de crédito) e tem acesso completo a tudo por 30 dias. Depois, se quiser continuar, escolhe um plano e paga via PIX ou cartão. Se não pagar, sua conta vira somente-leitura: você consegue consultar tudo que registrou, mas não cria registros novos.",
   },
   {
     q: "O bot do Telegram é pago à parte?",
@@ -31,7 +31,7 @@ const faqs = [
   },
   {
     q: "Posso cancelar a qualquer momento?",
-    a: "Pode. Sem multa, sem ligar pra ninguém — é só desistir de renovar. O tempo que você já pagou continua valendo até o fim. Quando vencer, sua conta passa pra modo de consulta e você decide se quer voltar.",
+    a: "Pode. Sem multa, sem ligar pra ninguém: é só desistir de renovar. O tempo que você já pagou continua valendo até o fim. Quando vencer, sua conta passa pra modo de consulta e você decide se quer voltar.",
   },
   {
     q: "Funciona pra qualquer tipo de negócio?",
@@ -39,7 +39,7 @@ const faqs = [
   },
   {
     q: "Meus dados ficam seguros?",
-    a: "Sim. Senhas são criptografadas, comunicação por HTTPS, banco hospedado em servidores no Brasil. Cumprimos a LGPD — você é o dono dos seus dados, pode exportá-los ou pedir exclusão a qualquer momento.",
+    a: "Sim. Senhas são criptografadas, comunicação por HTTPS, banco hospedado em servidores no Brasil. Cumprimos a LGPD: você é o dono dos seus dados, pode exportá-los ou pedir exclusão a qualquer momento.",
   },
   {
     q: "E se eu precisar de ajuda?",
