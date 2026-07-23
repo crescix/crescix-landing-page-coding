@@ -56,8 +56,8 @@ export default function ForWhom() {
       {/* Tech grid backdrop */}
       <div className="absolute inset-0 bg-grid-dim mask-radial pointer-events-none" />
 
-      {/* Color glow */}
-      <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] rounded-full bg-green-500/8 blur-[140px] pointer-events-none" />
+      {/* Mesh gradient */}
+      <div className="absolute inset-0 mesh-forwhom pointer-events-none" />
 
       <div className="container relative z-10">
         <motion.div

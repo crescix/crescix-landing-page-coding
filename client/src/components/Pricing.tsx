@@ -56,7 +56,7 @@ export default function Pricing() {
       id="precos"
       className="py-24 lg:py-32 relative overflow-hidden bg-[#0B1622]"
     >
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-green-500/8 blur-[120px] pointer-events-none" />
+      <div className="absolute inset-0 mesh-pricing pointer-events-none" />
 
       <div className="container relative z-10">
         <motion.div
@@ -140,7 +140,10 @@ export default function Pricing() {
             </h3>
             <p className="mt-1 text-sm text-white/60">
               Pague o ano todo de uma vez e economize{" "}
-              {formatBRL(economiaMensal * 12)}.
+              <span className="text-amber-400 font-semibold tabular-nums">
+                {formatBRL(economiaMensal * 12)}
+              </span>
+              .
             </p>
 
             <div className="mt-6 flex items-baseline gap-1">

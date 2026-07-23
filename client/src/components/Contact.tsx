@@ -48,8 +48,7 @@ export default function Contact() {
       id="contato"
       className="py-24 lg:py-32 relative overflow-hidden bg-[#0B1622]"
     >
-      <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-green-500/10 blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-0 left-1/4 w-[300px] h-[300px] rounded-full bg-green-600/10 blur-[80px] pointer-events-none" />
+      <div className="absolute inset-0 mesh-contact pointer-events-none" />
 
       <div className="container relative z-10">
         <motion.div
@@ -64,7 +63,7 @@ export default function Contact() {
           </span>
           <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white mb-4">
             Pronto pra{" "}
-            <span className="gradient-green">transformar</span> seu negócio?
+            <span className="gradient-green-cyan">transformar</span> seu negócio?
           </h2>
           <p className="text-lg text-white/75 max-w-2xl mx-auto">
             Manda uma mensagem que respondemos em até 8h. Sem robô. Você fala

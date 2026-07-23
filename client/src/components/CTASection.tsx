@@ -16,6 +16,7 @@ export default function CTASection() {
   return (
     <section className="py-24 lg:py-32 relative overflow-hidden bg-[#0B1622]">
       <div className="absolute inset-0 bg-grid mask-radial pointer-events-none" />
+      <div className="absolute inset-0 mesh-cta pointer-events-none" />
 
       <div className="container relative z-10">
         <motion.div

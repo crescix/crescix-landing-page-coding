@@ -62,7 +62,7 @@ export default function Produtos() {
           </span>
           <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl leading-[1.1] tracking-tight mt-4">
             Tecnologia que trabalha pelo{" "}
-            <span className="gradient-green">seu negócio</span>.
+            <span className="gradient-green-cyan">seu negócio</span>.
           </h2>
           <p className="text-lg text-white/75 mt-5 leading-relaxed">
             Três soluções feitas pra quem vive o dia a dia do balcão. Escolha por

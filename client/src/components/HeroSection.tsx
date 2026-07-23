@@ -20,13 +20,11 @@ export default function HeroSection() {
       id="inicio"
       className="relative min-h-dvh flex items-center overflow-hidden pt-24 pb-16 bg-[#0B1622]"
     >
+      {/* Mesh gradient: verde + cyan + toque de amber */}
+      <div className="absolute inset-0 mesh-hero pointer-events-none" />
+
       {/* Grid pattern de fundo */}
       <div className="absolute inset-0 bg-grid mask-radial pointer-events-none" />
-
-      {/* Glow orbs */}
-      <div className="absolute top-1/3 right-[10%] w-[500px] h-[500px] rounded-full bg-green-500/20 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 left-[5%] w-[400px] h-[400px] rounded-full bg-green-600/15 blur-[100px] pointer-events-none" />
-      <div className="absolute top-1/4 left-1/3 w-[250px] h-[250px] rounded-full bg-cyan-500/10 blur-[80px] pointer-events-none" />
 
       <div className="container relative z-10">
         <div className="grid lg:grid-cols-[55fr_45fr] gap-12 lg:gap-16 items-center">
@@ -121,8 +119,8 @@ export default function HeroSection() {
             className="order-1 lg:order-2 flex justify-center lg:justify-end"
           >
             <div className="relative w-full max-w-md">
-              {/* Halo */}
-              <div className="absolute inset-0 -m-8 rounded-3xl bg-gradient-to-br from-green-500/20 to-green-600/10 blur-3xl" />
+              {/* Halo: verde + cyan pra reforçar "IA" */}
+              <div className="absolute inset-0 -m-8 rounded-3xl bg-gradient-to-br from-green-500/25 via-cyan-500/15 to-green-600/10 blur-3xl" />
 
               {/* Terminal card */}
               <motion.div

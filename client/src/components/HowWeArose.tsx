@@ -1,23 +1,37 @@
 import { motion } from "framer-motion";
 import { GraduationCap, Lightbulb, Code2 } from "lucide-react";
 
-const milestones = [
+const milestones: {
+  icon: typeof GraduationCap;
+  label: string;
+  text: string;
+  accent: "green" | "amber" | "cyan";
+}[] = [
   {
     icon: GraduationCap,
     label: "Origem",
     text: "Estudantes da UNIFEI e FAI",
+    accent: "green",
   },
   {
     icon: Lightbulb,
     label: "Dor identificada",
     text: "Vendas e despesas perdidas em áudios e mensagens espalhadas",
+    accent: "amber",
   },
   {
     icon: Code2,
     label: "Solução",
     text: "IA que entende o jeito de falar do comerciante brasileiro",
+    accent: "cyan",
   },
 ];
+
+const milestoneAccent = {
+  green: { bg: "bg-green-500/10", border: "border-green-500/25", text: "text-green-400", label: "text-green-400/80" },
+  amber: { bg: "bg-amber-500/10", border: "border-amber-500/25", text: "text-amber-400", label: "text-amber-400/80" },
+  cyan: { bg: "bg-cyan-500/10", border: "border-cyan-500/25", text: "text-cyan-400", label: "text-cyan-400/80" },
+} as const;
 
 export default function HowWeArose() {
   return (
@@ -25,7 +39,7 @@ export default function HowWeArose() {
       id="nossa-historia"
       className="py-24 lg:py-32 relative overflow-hidden bg-[#0B1622]"
     >
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full bg-green-500/8 blur-[120px] pointer-events-none" />
+      <div className="absolute inset-0 mesh-story pointer-events-none" />
 
       <div className="container relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-6xl mx-auto">
@@ -80,26 +94,33 @@ export default function HowWeArose() {
             </p>
 
             <div className="space-y-3">
-              {milestones.map((m, i) => (
-                <motion.div
-                  key={m.label}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.3 + i * 0.1 }}
-                  className="flex gap-3 items-center"
-                >
-                  <div className="w-9 h-9 rounded-lg bg-green-500/10 border border-green-500/25 flex items-center justify-center flex-shrink-0">
-                    <m.icon className="w-4 h-4 text-green-400" />
-                  </div>
-                  <div className="text-sm">
-                    <span className="text-green-400/80 uppercase tracking-wider text-[10px] font-bold mr-2">
-                      {m.label}
-                    </span>
-                    <span className="text-white/80">{m.text}</span>
-                  </div>
-                </motion.div>
-              ))}
+              {milestones.map((m, i) => {
+                const a = milestoneAccent[m.accent];
+                return (
+                  <motion.div
+                    key={m.label}
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3 + i * 0.1 }}
+                    className="flex gap-3 items-center"
+                  >
+                    <div
+                      className={`w-9 h-9 rounded-lg ${a.bg} border ${a.border} flex items-center justify-center flex-shrink-0`}
+                    >
+                      <m.icon className={`w-4 h-4 ${a.text}`} />
+                    </div>
+                    <div className="text-sm">
+                      <span
+                        className={`${a.label} uppercase tracking-wider text-[10px] font-bold mr-2`}
+                      >
+                        {m.label}
+                      </span>
+                      <span className="text-white/80">{m.text}</span>
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
           </motion.div>
         </div>
