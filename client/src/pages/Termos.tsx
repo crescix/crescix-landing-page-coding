@@ -12,6 +12,7 @@ const UPDATED_AT = "18 de maio de 2026";
 
 export default function Termos() {
   useSEO({
+    canonicalPath: "/termos",
     title: "Termos de Uso | CrescIX",
     description:
       "Termos de uso da CrescIX: o que esperar do serviço, suas responsabilidades, propriedade dos dados e como podemos crescer junto.",

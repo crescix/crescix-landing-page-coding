@@ -41,6 +41,7 @@ const PAGARIA_OPTS = [
 
 export default function Feedback() {
   useSEO({
+    canonicalPath: "/feedback",
     title: "Feedback | CrescIX",
     description:
       "Sua opinião nos ajuda a melhorar o CrescIX. Conta pra gente o que tá funcionando, o que falta e como podemos crescer junto com você.",

@@ -100,6 +100,7 @@ export default function Erp() {
     title: "ERP para mercados | CrescIX",
     description:
       "Sistema completo para mercados e varejo: PDV por teclado, emissão de NFC-e, controle de estoque, produtos pesáveis, crediário e financeiro. Tudo conectado.",
+    canonicalPath: "/erp",
   });
 
   const [, navigate] = useLocation();

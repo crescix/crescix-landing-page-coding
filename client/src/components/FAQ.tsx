@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   Accordion,
@@ -47,7 +48,37 @@ const faqs = [
   },
 ];
 
+/**
+ * Injeta FAQPage schema no <head> pra habilitar rich snippet do Google
+ * (perguntas expandíveis direto no resultado de busca). O crawler renderiza
+ * JS, então funciona mesmo no SPA. Remove ao desmontar pra não vazar entre
+ * rotas.
+ */
+function useFAQSchema(faqs: { q: string; a: string }[]) {
+  useEffect(() => {
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    };
+    const el = document.createElement("script");
+    el.type = "application/ld+json";
+    el.id = "faq-schema";
+    el.textContent = JSON.stringify(schema);
+    document.head.appendChild(el);
+    return () => {
+      document.getElementById("faq-schema")?.remove();
+    };
+  }, [faqs]);
+}
+
 export default function FAQ() {
+  useFAQSchema(faqs);
+
   return (
     <section
       id="faq"

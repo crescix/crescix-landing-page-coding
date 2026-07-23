@@ -56,6 +56,7 @@ export default function TesteGratis() {
     title: "Teste grátis | CrescIX",
     description:
       "Solicite seu acesso ao CrescIX e teste de graça por 30 dias. Sem cartão, sem compromisso. Só preencher e começar a usar.",
+    canonicalPath: "/teste-gratis",
   });
 
   const [, navigate] = useLocation();
