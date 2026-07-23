@@ -93,7 +93,7 @@ export default function HowWeArose() {
                     <m.icon className="w-4 h-4 text-green-400" />
                   </div>
                   <div className="text-sm">
-                    <span className="text-white/40 uppercase tracking-wider text-[10px] font-bold mr-2">
+                    <span className="text-green-400/80 uppercase tracking-wider text-[10px] font-bold mr-2">
                       {m.label}
                     </span>
                     <span className="text-white/80">{m.text}</span>

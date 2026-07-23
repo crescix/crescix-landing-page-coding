@@ -97,6 +97,18 @@
   input[type="radio"]:not(:disabled) {
     cursor: pointer;
   }
+
+  /* Focus ring consistente pra teclado, invisível pro mouse */
+  :focus-visible {
+    outline: 2px solid var(--color-brand-green);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  /* Fixed navbar offset pra âncoras internas */
+  :where(section[id]) {
+    scroll-margin-top: 96px;
+  }
 }
 
 @layer components {
@@ -245,3 +257,22 @@
   animation: gradient-x 8s ease infinite;
 }
 .animate-blink { animation: blink 1s step-end infinite; }
+
+/* Respeita usuários que pediram menos movimento (a11y + bateria) */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .animate-ping,
+  .animate-float,
+  .animate-pulse-glow,
+  .animate-shimmer,
+  .animate-gradient-x,
+  .animate-blink,
+  .conic-glow {
+    animation: none !important;
+  }
+}

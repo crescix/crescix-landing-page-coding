@@ -64,7 +64,7 @@ export default function Produtos() {
             Tecnologia que trabalha pelo{" "}
             <span className="gradient-green">seu negócio</span>.
           </h2>
-          <p className="text-lg text-white/55 mt-5 leading-relaxed">
+          <p className="text-lg text-white/75 mt-5 leading-relaxed">
             Três soluções feitas pra quem vive o dia a dia do balcão. Escolha por
             onde a CrescIX pode começar a te ajudar.
           </p>
@@ -92,7 +92,7 @@ export default function Produtos() {
                   className={`text-[10px] font-mono font-semibold tracking-[0.12em] uppercase px-2.5 py-1 rounded-full ${
                     p.destaque
                       ? "bg-green-500 text-[#0B1622]"
-                      : "bg-white/5 text-white/45 border border-white/10"
+                      : "bg-white/5 text-white/70 border border-white/10"
                   }`}
                 >
                   {p.etiqueta}
@@ -102,7 +102,7 @@ export default function Produtos() {
               <h3 className="font-display font-bold text-xl mt-6 leading-tight">
                 {p.nome}
               </h3>
-              <p className="text-white/55 text-sm mt-3 leading-relaxed">
+              <p className="text-white/75 text-sm mt-3 leading-relaxed">
                 {p.descricao}
               </p>
 

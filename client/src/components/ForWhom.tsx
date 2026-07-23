@@ -74,7 +74,7 @@ export default function ForWhom() {
             Pensado pra quem{" "}
             <span className="gradient-green">vive o caixa todo dia.</span>
           </h2>
-          <p className="text-lg text-white/60">
+          <p className="text-lg text-white/75">
             Se você passa o dia atendendo, vendendo e correndo pra anotar tudo
             depois, a CrescIX foi feita pra te tirar dessa.
           </p>
@@ -97,7 +97,7 @@ export default function ForWhom() {
                 <h3 className="font-display font-bold text-lg text-white mb-2">
                   {audience.title}
                 </h3>
-                <p className="text-sm text-white/55 leading-relaxed">
+                <p className="text-sm text-white/75 leading-relaxed">
                   {audience.description}
                 </p>
               </div>

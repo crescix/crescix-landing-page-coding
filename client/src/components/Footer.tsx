@@ -20,7 +20,7 @@ export default function Footer() {
                 className="w-32 h-auto rounded-md"
               />
             </a>
-            <p className="text-white/50 text-sm leading-relaxed max-w-md">
+            <p className="text-white/70 text-sm leading-relaxed max-w-md">
               Gestão financeira no automático pra pequenas empresas. Áudio do
               Telegram entra como lançamento estruturado, sem planilha nem
               digitação manual.
@@ -31,7 +31,7 @@ export default function Footer() {
                 href="https://www.instagram.com/crescix_tecnologia"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 hover:bg-green-500/15 hover:border-green-500/30 text-white/60 hover:text-green-400 transition-all flex items-center justify-center"
+                className="w-11 h-11 rounded-lg bg-white/5 border border-white/10 hover:bg-green-500/15 hover:border-green-500/30 text-white/80 hover:text-green-400 transition-all flex items-center justify-center"
               >
                 <FaInstagram className="w-4 h-4" />
               </a>
@@ -39,7 +39,7 @@ export default function Footer() {
                 href="https://www.linkedin.com/company/crescix/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 hover:bg-green-500/15 hover:border-green-500/30 text-white/60 hover:text-green-400 transition-all flex items-center justify-center"
+                className="w-11 h-11 rounded-lg bg-white/5 border border-white/10 hover:bg-green-500/15 hover:border-green-500/30 text-white/80 hover:text-green-400 transition-all flex items-center justify-center"
               >
                 <FaLinkedin className="w-4 h-4" />
               </a>
@@ -47,7 +47,7 @@ export default function Footer() {
                 href="https://wa.me/5535984219965"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 hover:bg-green-500/15 hover:border-green-500/30 text-white/60 hover:text-green-400 transition-all flex items-center justify-center"
+                className="w-11 h-11 rounded-lg bg-white/5 border border-white/10 hover:bg-green-500/15 hover:border-green-500/30 text-white/80 hover:text-green-400 transition-all flex items-center justify-center"
               >
                 <FaWhatsapp className="w-4 h-4" />
               </a>
@@ -69,7 +69,7 @@ export default function Footer() {
                 <li key={item.label}>
                   <a
                     href={item.href}
-                    className="text-sm text-white/50 hover:text-green-400 transition-colors"
+                    className="text-sm text-white/70 hover:text-green-400 transition-colors"
                   >
                     {item.label}
                   </a>
@@ -87,7 +87,7 @@ export default function Footer() {
               <li>
                 <button
                   onClick={() => navigate("/teste-gratis")}
-                  className="text-sm text-white/50 hover:text-green-400 transition-colors text-left"
+                  className="text-sm text-white/70 hover:text-green-400 transition-colors text-left"
                 >
                   Teste grátis
                 </button>
@@ -95,7 +95,7 @@ export default function Footer() {
               <li>
                 <a
                   href="#contato"
-                  className="text-sm text-white/50 hover:text-green-400 transition-colors"
+                  className="text-sm text-white/70 hover:text-green-400 transition-colors"
                 >
                   Contato
                 </a>
@@ -103,7 +103,7 @@ export default function Footer() {
               <li>
                 <button
                   onClick={() => navigate("/feedback")}
-                  className="text-sm text-white/50 hover:text-green-400 transition-colors text-left"
+                  className="text-sm text-white/70 hover:text-green-400 transition-colors text-left"
                 >
                   Dar feedback
                 </button>
@@ -114,7 +114,7 @@ export default function Footer() {
 
         <div className="pt-8 border-t border-white/5 flex flex-col gap-4">
           {/* Links legais (LGPD) — visíveis sempre, em primeiro plano */}
-          <nav className="flex items-center justify-center sm:justify-start gap-4 flex-wrap text-xs text-white/45">
+          <nav className="flex items-center justify-center sm:justify-start gap-4 flex-wrap text-xs text-white/70">
             <button
               onClick={() => navigate("/privacidade")}
               className="hover:text-green-400 transition-colors"
@@ -138,11 +138,11 @@ export default function Footer() {
           </nav>
 
           <div className="flex flex-col sm:flex-row items-center justify-between gap-2">
-            <p className="text-xs text-white/30">
+            <p className="text-xs text-white/50">
               &copy; {new Date().getFullYear()} CrescIX. Todos os direitos
               reservados.
             </p>
-            <p className="text-xs text-white/30 font-mono">
+            <p className="text-xs text-white/50 font-mono">
               Feito em Santa Rita do Sapucaí, MG 🇧🇷
             </p>
           </div>

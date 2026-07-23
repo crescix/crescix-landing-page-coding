@@ -95,7 +95,7 @@ export default function Features() {
             Tudo que sua PME precisa.{" "}
             <span className="gradient-green">Em um só lugar.</span>
           </h2>
-          <p className="text-lg text-white/60">
+          <p className="text-lg text-white/75">
             Construído pra empresários que querem foco no negócio, não em
             ferramenta. Cada recurso resolve uma dor real.
           </p>
@@ -122,7 +122,7 @@ export default function Features() {
                   <h3 className="font-display font-bold text-base text-white mb-2">
                     {feature.title}
                   </h3>
-                  <p className="text-sm text-white/55 leading-relaxed">
+                  <p className="text-sm text-white/75 leading-relaxed">
                     {feature.description}
                   </p>
                 </div>

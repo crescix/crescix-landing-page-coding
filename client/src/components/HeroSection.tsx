@@ -6,17 +6,19 @@ import {
   CheckCircle2,
   Sparkles,
   TrendingUp,
+  User,
 } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { useLocation } from "wouter";
 
 export default function HeroSection() {
   const [, navigate] = useLocation();
+  const reduceMotion = useReducedMotion();
 
   return (
     <section
       id="inicio"
-      className="relative min-h-screen flex items-center overflow-hidden pt-24 pb-16 bg-[#0B1622]"
+      className="relative min-h-dvh flex items-center overflow-hidden pt-24 pb-16 bg-[#0B1622]"
     >
       {/* Grid pattern de fundo */}
       <div className="absolute inset-0 bg-grid mask-radial pointer-events-none" />
@@ -95,7 +97,7 @@ export default function HeroSection() {
             </div>
 
             {/* Trust badges */}
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/50">
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/70">
               <div className="flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4 text-green-400" />
                 <span>Dados criptografados</span>
@@ -124,7 +126,7 @@ export default function HeroSection() {
 
               {/* Terminal card */}
               <motion.div
-                animate={{ y: [0, -10, 0] }}
+                animate={reduceMotion ? undefined : { y: [0, -10, 0] }}
                 transition={{ duration: 6, ease: "easeInOut", repeat: Infinity }}
                 className="relative terminal p-1 overflow-hidden"
               >
@@ -150,8 +152,8 @@ export default function HeroSection() {
                     transition={{ delay: 0.6 }}
                     className="flex gap-2"
                   >
-                    <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 text-xs">
-                      👤
+                    <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+                      <User className="w-4 h-4 text-white/70" aria-hidden="true" />
                     </div>
                     <div className="bg-white/5 border border-white/10 rounded-2xl rounded-tl-md px-3 py-2 max-w-[80%]">
                       <div className="flex items-center gap-2">
@@ -214,8 +216,8 @@ export default function HeroSection() {
                     transition={{ delay: 1.4 }}
                     className="flex gap-2"
                   >
-                    <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 text-xs">
-                      👤
+                    <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+                      <User className="w-4 h-4 text-white/70" aria-hidden="true" />
                     </div>
                     <div className="bg-white/5 border border-white/10 rounded-2xl rounded-tl-md px-3 py-2">
                       <p className="text-white/80 text-xs">✅ Confirmar</p>

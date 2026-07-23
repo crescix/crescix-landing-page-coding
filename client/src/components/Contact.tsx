@@ -41,7 +41,7 @@ export default function Contact() {
   };
 
   const inputCls =
-    "w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-sm placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-green-500/30 focus:border-green-500/40 transition-all";
+    "w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-sm placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-green-500/50 focus:border-green-500/60 transition-all";
 
   return (
     <section
@@ -66,7 +66,7 @@ export default function Contact() {
             Pronto pra{" "}
             <span className="gradient-green">transformar</span> seu negócio?
           </h2>
-          <p className="text-lg text-white/60 max-w-2xl mx-auto">
+          <p className="text-lg text-white/75 max-w-2xl mx-auto">
             Manda uma mensagem que respondemos em até 8h. Sem robô. Você fala
             direto com a equipe que construiu o produto.
           </p>
@@ -83,7 +83,7 @@ export default function Contact() {
             <h3 className="font-display font-bold text-2xl text-white mb-6">
               Fale conosco
             </h3>
-            <p className="text-white/60 mb-8 leading-relaxed">
+            <p className="text-white/75 mb-8 leading-relaxed">
               Nossa equipe está pronta pra te ajudar a colocar a CrescIX
               rodando no seu negócio. Responde rápido.
             </p>
@@ -102,7 +102,7 @@ export default function Contact() {
                   <p className="font-display font-semibold text-white text-sm">
                     Instagram
                   </p>
-                  <p className="text-white/55 text-sm group-hover:text-green-400 transition-colors">
+                  <p className="text-white/75 text-sm group-hover:text-green-400 transition-colors">
                     @crescix_tecnologia
                   </p>
                 </div>
@@ -121,7 +121,7 @@ export default function Contact() {
                   <p className="font-display font-semibold text-white text-sm">
                     WhatsApp
                   </p>
-                  <p className="text-white/55 text-sm group-hover:text-green-400 transition-colors">
+                  <p className="text-white/75 text-sm group-hover:text-green-400 transition-colors">
                     +55 (35) 98421-9965
                   </p>
                 </div>
@@ -135,7 +135,7 @@ export default function Contact() {
                   <p className="font-display font-semibold text-white text-sm">
                     Localização
                   </p>
-                  <p className="text-white/55 text-sm">
+                  <p className="text-white/75 text-sm">
                     Santa Rita do Sapucaí, MG
                   </p>
                 </div>
@@ -156,7 +156,7 @@ export default function Contact() {
             >
               <div className="grid sm:grid-cols-2 gap-4 mb-4">
                 <div>
-                  <label className="block text-xs font-bold text-white/60 uppercase tracking-wider mb-2">
+                  <label className="block text-xs font-bold text-white/80 uppercase tracking-wider mb-2">
                     Nome
                   </label>
                   <input
@@ -172,7 +172,7 @@ export default function Contact() {
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold text-white/60 uppercase tracking-wider mb-2">
+                  <label className="block text-xs font-bold text-white/80 uppercase tracking-wider mb-2">
                     E-mail
                   </label>
                   <input
@@ -190,7 +190,7 @@ export default function Contact() {
               </div>
 
               <div className="mb-4">
-                <label className="block text-xs font-bold text-white/60 uppercase tracking-wider mb-2">
+                <label className="block text-xs font-bold text-white/80 uppercase tracking-wider mb-2">
                   Empresa
                 </label>
                 <input
@@ -207,7 +207,7 @@ export default function Contact() {
               </div>
 
               <div className="mb-6">
-                <label className="block text-xs font-bold text-white/60 uppercase tracking-wider mb-2">
+                <label className="block text-xs font-bold text-white/80 uppercase tracking-wider mb-2">
                   Mensagem
                 </label>
                 <textarea

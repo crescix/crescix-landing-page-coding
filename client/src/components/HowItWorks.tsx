@@ -56,7 +56,7 @@ export default function HowItWorks() {
             Quatro passos.{" "}
             <span className="gradient-green">Zero fricção.</span>
           </h2>
-          <p className="text-lg text-white/60 max-w-2xl mx-auto">
+          <p className="text-lg text-white/75 max-w-2xl mx-auto">
             Conversa normal no Telegram entra como lançamento estruturado no
             seu painel financeiro.
           </p>
@@ -93,7 +93,7 @@ export default function HowItWorks() {
                 <h3 className="font-display font-bold text-lg text-white mb-2.5">
                   {step.title}
                 </h3>
-                <p className="text-sm text-white/55 leading-relaxed">
+                <p className="text-sm text-white/75 leading-relaxed">
                   {step.description}
                 </p>
               </div>

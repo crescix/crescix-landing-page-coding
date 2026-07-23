@@ -90,7 +90,7 @@ export default function Pricing() {
             <p className="mt-1 text-sm text-white/60">{MENSAL.description}</p>
 
             <div className="mt-6 flex items-baseline gap-1">
-              <span className="text-4xl font-bold text-white">
+              <span className="text-4xl font-bold text-white tabular-nums">
                 {formatBRL(MENSAL.valor)}
               </span>
               <span className="text-sm text-white/60">/mês</span>
@@ -123,11 +123,17 @@ export default function Pricing() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="relative rounded-2xl border border-green-500/40 bg-gradient-to-b from-green-500/10 to-transparent p-8 flex flex-col shadow-[0_0_50px_-15px_rgba(34,197,94,0.4)]"
+            className="relative rounded-2xl border-2 border-green-500/60 bg-gradient-to-b from-green-500/10 to-transparent p-8 flex flex-col shadow-[0_0_50px_-15px_rgba(34,197,94,0.4)] md:scale-[1.02]"
+            aria-label="Plano Anual, recomendado"
           >
-            <span className="absolute -top-3 left-8 rounded-full bg-green-500 px-3 py-1 text-xs font-bold text-[#0B1622]">
-              Economize {economiaPercentual}%
-            </span>
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2 flex items-center gap-2 whitespace-nowrap">
+              <span className="rounded-full bg-green-500 px-3 py-1 text-xs font-bold uppercase tracking-wider text-[#0B1622]">
+                Mais popular
+              </span>
+              <span className="rounded-full bg-[#0B1622] border border-green-500/40 px-3 py-1 text-xs font-bold text-green-400">
+                −{economiaPercentual}%
+              </span>
+            </div>
 
             <h3 className="text-xl font-semibold text-white">
               {ANUAL.label}
@@ -138,7 +144,7 @@ export default function Pricing() {
             </p>
 
             <div className="mt-6 flex items-baseline gap-1">
-              <span className="text-4xl font-bold text-white">
+              <span className="text-4xl font-bold text-white tabular-nums">
                 {formatBRL(mensalEquivalente)}
               </span>
               <span className="text-sm text-white/60">/mês</span>
@@ -169,7 +175,7 @@ export default function Pricing() {
           </motion.div>
         </div>
 
-        <p className="text-center text-xs text-white/40 mt-8 max-w-2xl mx-auto">
+        <p className="text-center text-xs text-white/60 mt-8 max-w-2xl mx-auto">
           Sem auto-renovação. Sem cartão de crédito no teste. Cancele a
           qualquer momento — o tempo já pago segue valendo até o fim.
         </p>
