@@ -166,6 +166,31 @@
   </head>
 
   <body>
+    <!--
+      Fallback estático pra crawlers que não executam JavaScript. O Googlebot
+      renderiza JS e enxerga o conteúdo real do React, mas alguns crawlers de
+      busca menores (Bing Site Scan, Yandex) inspecionam só o HTML cru e
+      marcavam "H1 missing". Este bloco garante um H1 e descrição sempre
+      presentes no HTML original.
+    -->
+    <noscript>
+      <header style="max-width: 720px; margin: 3rem auto; padding: 0 1rem; font-family: sans-serif; color: #fff;">
+        <h1>CrescIX: gestão financeira no automático pra pequenos negócios</h1>
+        <p>
+          A CrescIX transforma áudios e mensagens do Telegram em controle financeiro real.
+          Registre vendas, despesas e compras conversando, sem planilha e sem complicação.
+        </p>
+        <p>
+          Somos uma startup brasileira que constrói também um <strong>ERP pra mercados e varejo</strong>
+          (PDV, NFC-e, estoque, crediário) e um <strong>assistente de IA que atende WhatsApp</strong>
+          de clínicas, academias e empresas de serviço 24 horas por dia.
+        </p>
+        <p>
+          Este site precisa de JavaScript habilitado pra funcionar plenamente.
+          <a href="https://blog.crescix.com.br">Visite o nosso blog</a> pra ler os bastidores da CrescIX.
+        </p>
+      </header>
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
