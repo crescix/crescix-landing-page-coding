@@ -229,7 +229,7 @@ export default function Atendimento() {
               <div className="flex flex-wrap gap-x-6 gap-y-2 mt-8 text-sm text-white/45">
                 <span className="inline-flex items-center gap-1.5">
                   <Check className="w-4 h-4 text-green-500" />
-                  90 dias grátis
+                  14 dias grátis
                 </span>
                 <span className="inline-flex items-center gap-1.5">
                   <Check className="w-4 h-4 text-green-500" />
@@ -504,26 +504,27 @@ export default function Atendimento() {
               <div className="relative z-10 max-w-2xl">
                 <span className="inline-flex items-center gap-2 text-xs font-mono font-semibold tracking-[0.16em] uppercase text-green-400 bg-green-500/10 border border-green-500/25 px-3.5 py-1.5 rounded-full">
                   <Building2 className="w-3.5 h-3.5" />
-                  Vagas limitadas
+                  Comece hoje
                 </span>
 
                 <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl leading-[1.1] tracking-tight mt-6">
-                  Estamos escolhendo{" "}
-                  <span className="gradient-green">5 estabelecimentos</span> pra
-                  usar de graça.
+                  Coloque o assistente pra{" "}
+                  <span className="gradient-green">atender pra você</span> em 14
+                  dias grátis.
                 </h2>
 
                 <p className="text-lg text-white/60 mt-6 leading-relaxed">
-                  São 90 dias sem custo nenhum, em troca de uma coisa só: que
-                  você nos diga com honestidade o que funcionou e o que precisa
-                  melhorar. A instalação e a configuração são por nossa conta.
+                  A gente instala, configura tudo com a cara do seu negócio e
+                  liga o assistente no seu WhatsApp. Se depois de duas semanas
+                  não quiser continuar, é só desligar. Sem multa, sem fidelidade,
+                  sem cobrança.
                 </p>
 
                 <ul className="grid sm:grid-cols-2 gap-3 mt-8">
                   {[
-                    "90 dias gratuitos, sem cartão",
+                    "14 dias grátis, sem cartão",
                     "Configuramos tudo pra você",
-                    "Usa o seu número atual",
+                    "Usa o WhatsApp que você já tem",
                     "Sem fidelidade e sem multa",
                   ].map((item) => (
                     <li key={item} className="flex items-center gap-2.5 text-white/75">
@@ -538,12 +539,11 @@ export default function Atendimento() {
                 <div className="mt-10">
                   <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
                     <Button className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white font-display font-semibold px-8 py-6 text-base rounded-xl shadow-lg shadow-green-500/25 hover:shadow-xl hover:shadow-green-500/40 transition-all duration-300 hover:-translate-y-0.5">
-                      Quero uma das vagas
+                      Começar teste grátis
                     </Button>
                   </a>
-                  <p className="text-white/35 text-sm mt-4">
-                    Depois do período de teste: R$ 147 por mês. Quem entra agora
-                    fica com R$ 97 fixo, pra sempre.
+                  <p className="text-white/45 text-sm mt-4">
+                    Depois do período de teste: R$ 147 por mês.
                   </p>
                 </div>
               </div>
