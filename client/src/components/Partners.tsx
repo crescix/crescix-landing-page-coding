@@ -26,19 +26,28 @@ export default function Partners() {
           </p>
 
           <div className="flex items-center justify-center mb-8">
+            <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 md:gap-x-14">
             <img
               src={`${import.meta.env.BASE_URL}parceiros/inatel-startups.png`}
               alt="Inatel Startups"
               className="h-12 md:h-16 w-auto"
               loading="lazy"
             />
+            <img
+              src={`${import.meta.env.BASE_URL}parceiros/incit.png`}
+              alt="INCIT — Incubadora de Empresas de Base Tecnológica de Itajubá"
+              className="h-12 md:h-16 w-auto max-w-[14rem] object-contain"
+              loading="lazy"
+            />
+            </div>
           </div>
 
           <p className="text-white/70 text-base md:text-lg leading-relaxed">
             Fazemos parte do{" "}
-            <strong className="text-white">INATEL Startups</strong>, programa
-            de incubação do Instituto Nacional de Telecomunicações
-            (INATEL), referência em inovação e tecnologia no Brasil.
+            <strong className="text-white">INATEL Startups</strong> e do{" "}
+            <strong className="text-white">Programa de Incubação da INCIT</strong>,
+            iniciativas que fortalecem nossa jornada no ecossistema de inovação
+            do Sul de Minas.
           </p>
         </motion.div>
       </div>
