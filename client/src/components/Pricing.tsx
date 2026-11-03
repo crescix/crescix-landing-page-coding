@@ -6,11 +6,15 @@ import { Link } from "wouter";
  * Seção "Preços": 2 cards lado-a-lado, Mensal e Anual.
  *
  * Valores em sincronia com a crescix-api (src/lib/subscription.ts):
- *   - MENSAL: R$ 69,90 / 30 dias
- *   - ANUAL: R$ 598,80 / 365 dias (= R$ 49,90 equivalente mensal)
+ *   - MENSAL: R$ 79,90 / 30 dias
+ *   - ANUAL: R$ 718,80 / 365 dias (= R$ 59,90 equivalente mensal)
  *
- * Se mudar lá, atualizar aqui também. Não vale a complexidade de
- * fetchar a API só pra renderizar landing estática.
+ * Se mudar lá, atualizar aqui, nos Termos de Uso (`pages/Termos.tsx`,
+ * seção 6) e na Política de Reembolso (`pages/Reembolso.tsx`, seção 1).
+ * O CDC trata preço anunciado como oferta vinculante (art. 30), então
+ * divergência entre essas telas não é só inconsistência de texto.
+ * Não vale a complexidade de fetchar a API só pra renderizar landing
+ * estática.
  */
 
 const MENSAL = {
@@ -124,11 +128,14 @@ export default function Pricing() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
             className="relative rounded-2xl border-2 border-green-500/60 bg-gradient-to-b from-green-500/10 to-transparent p-8 flex flex-col shadow-[0_0_50px_-15px_rgba(34,197,94,0.4)] md:scale-[1.02]"
-            aria-label="Plano Anual, recomendado"
+            aria-label="Plano Anual"
           >
             <div className="absolute -top-3 left-1/2 -translate-x-1/2 flex items-center gap-2 whitespace-nowrap">
+              {/* "Mais popular" afirmava um comportamento de compra que a
+                  gente não mede nem publica. "Melhor preço" é aritmética
+                  verificável nos dois cards ao lado. */}
               <span className="rounded-full bg-green-500 px-3 py-1 text-xs font-bold uppercase tracking-wider text-[#0B1622]">
-                Mais popular
+                Melhor preço
               </span>
               <span className="rounded-full bg-[#0B1622] border border-green-500/40 px-3 py-1 text-xs font-bold text-green-400">
                 −{economiaPercentual}%
@@ -178,10 +185,29 @@ export default function Pricing() {
           </motion.div>
         </div>
 
-        <p className="text-center text-xs text-white/60 mt-8 max-w-2xl mx-auto">
-          Sem auto-renovação. Sem cartão de crédito no teste. Cancele a
-          qualquer momento. O tempo já pago segue valendo até o fim.
-        </p>
+        {/* Antes dizia "Sem auto-renovação", o que só é verdade no PIX: no
+            cartão o Mercado Pago renova sozinho até o cliente cancelar,
+            como dizem os Termos de Uso. Informação de cobrança recorrente
+            é exatamente o que o CDC manda deixar claro antes da compra. */}
+        <div className="text-center text-xs text-white/60 mt-8 max-w-2xl mx-auto space-y-1.5">
+          <p>
+            Sem cartão de crédito no teste de 30 dias. Cancele a qualquer
+            momento, sem multa: o tempo já pago segue valendo até o fim.
+          </p>
+          <p>
+            Pagando por <strong className="text-white/80">PIX</strong>, não
+            há renovação automática. Pagando por{" "}
+            <strong className="text-white/80">cartão</strong>, a assinatura
+            renova sozinha a cada período até você cancelar no app. Você tem{" "}
+            <Link
+              href="/reembolso"
+              className="text-green-400 hover:text-green-300 underline underline-offset-2"
+            >
+              7 dias pra desistir
+            </Link>{" "}
+            e receber tudo de volta.
+          </p>
+        </div>
       </div>
     </section>
   );

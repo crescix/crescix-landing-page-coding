@@ -184,7 +184,7 @@ export default function Erp() {
                 </a>
               </div>
 
-              <div className="flex flex-wrap gap-x-6 gap-y-2 mt-8 text-sm text-white/45">
+              <div className="flex flex-wrap gap-x-6 gap-y-2 mt-8 text-sm text-white/60">
                 <span className="inline-flex items-center gap-1.5">
                   <Check className="w-4 h-4 text-green-500" />
                   PDV por teclado
@@ -221,7 +221,7 @@ export default function Erp() {
                 </div>
 
                 <div className="p-4 font-mono text-sm bg-[#0F2230]">
-                  <div className="grid grid-cols-[1fr_auto] gap-1 text-[11px] uppercase text-white/30 border-b border-white/5 pb-2 mb-2">
+                  <div className="grid grid-cols-[1fr_auto] gap-1 text-[11px] uppercase text-white/60 border-b border-white/5 pb-2 mb-2">
                     <span>Item</span>
                     <span className="text-right">R$</span>
                   </div>
@@ -237,7 +237,7 @@ export default function Erp() {
                         <span className="block text-white/90 truncate font-sans">
                           {c.nome}
                         </span>
-                        <span className="text-white/40 text-xs">
+                        <span className="text-white/60 text-xs">
                           {c.qtd} · {c.cod}
                         </span>
                       </span>
@@ -247,7 +247,7 @@ export default function Erp() {
                     </motion.div>
                   ))}
                   <div className="border-t-2 border-white/10 mt-2 pt-3 flex items-end justify-between">
-                    <span className="text-xs uppercase text-white/40">Total</span>
+                    <span className="text-xs uppercase text-white/60">Total</span>
                     <span className="font-display font-extrabold text-2xl text-green-400">
                       R$ 63,25
                     </span>
@@ -256,7 +256,7 @@ export default function Erp() {
               </div>
 
               <div className="absolute -bottom-5 -left-2 sm:left-4 bg-[#172A3A] border border-green-500/25 rounded-xl px-4 py-3 shadow-xl">
-                <p className="text-[10px] font-mono uppercase tracking-widest text-white/40">
+                <p className="text-[10px] font-mono uppercase tracking-widest text-white/60">
                   NFC-e
                 </p>
                 <p className="font-display font-bold text-sm text-green-400 leading-tight">
@@ -331,7 +331,7 @@ export default function Erp() {
                       <p.icone className="w-5 h-5 text-green-400" />
                     </span>
                     <div>
-                      <span className="font-mono text-[11px] text-white/30">
+                      <span className="font-mono text-[11px] text-white/60">
                         0{i + 1}
                       </span>
                       <h3 className="font-display font-bold text-xl leading-tight mt-0.5">

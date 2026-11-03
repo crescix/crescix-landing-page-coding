@@ -60,7 +60,7 @@ const COMO_FUNCIONA = [
     icone: CalendarCheck,
     titulo: "Agenda sozinho",
     texto:
-      "Mostra os horários realmente livres, marca direto na agenda do Google e nunca coloca dois clientes no mesmo horário.",
+      "Mostra os horários livres na agenda, marca direto no Google Agenda e confere o horário no instante da confirmação pra não marcar dois clientes no mesmo lugar.",
   },
   {
     icone: Bell,
@@ -77,7 +77,7 @@ const RECURSOS = [
       "Não é menu engessado. Quem escreve “queria marcar um horário” cai direto no agendamento, e quem escreve “preciso falar com alguém” vai pro atendimento humano.",
   },
   {
-    titulo: "Nunca marca dois no mesmo horário",
+    titulo: "Confere a agenda antes de confirmar",
     texto:
       "O horário é conferido na agenda no instante da confirmação. Se alguém reservou no meio do caminho, o cliente recebe as opções que sobraram.",
   },
@@ -226,7 +226,7 @@ export default function Atendimento() {
                 </a>
               </div>
 
-              <div className="flex flex-wrap gap-x-6 gap-y-2 mt-8 text-sm text-white/45">
+              <div className="flex flex-wrap gap-x-6 gap-y-2 mt-8 text-sm text-white/60">
                 <span className="inline-flex items-center gap-1.5">
                   <Check className="w-4 h-4 text-green-500" />
                   14 dias grátis
@@ -258,7 +258,11 @@ export default function Atendimento() {
                     <p className="text-sm font-semibold text-white leading-tight">
                       Academia Corpo em Movimento
                     </p>
-                    <p className="text-[11px] text-green-400 font-mono">online</p>
+                    {/* Negócio fictício: o rótulo evita que a conversa de
+                        demonstração seja lida como cliente real. */}
+                    <p className="text-[11px] text-green-400 font-mono">
+                      exemplo de conversa
+                    </p>
                   </div>
                 </div>
 
@@ -282,7 +286,7 @@ export default function Atendimento() {
               </div>
 
               <div className="absolute -bottom-5 -right-2 sm:right-6 bg-[#172A3A] border border-green-500/25 rounded-xl px-4 py-3 shadow-xl">
-                <p className="text-[10px] font-mono uppercase tracking-widest text-white/40">
+                <p className="text-[10px] font-mono uppercase tracking-widest text-white/60">
                   Tempo de resposta
                 </p>
                 <p className="font-display font-extrabold text-2xl text-green-400 leading-tight">
@@ -380,7 +384,7 @@ export default function Atendimento() {
                       <p.icone className="w-5 h-5 text-green-400" />
                     </span>
                     <div>
-                      <span className="font-mono text-[11px] text-white/30">
+                      <span className="font-mono text-[11px] text-white/60">
                         0{i + 1}
                       </span>
                       <h3 className="font-display font-bold text-xl leading-tight mt-0.5">
@@ -456,7 +460,7 @@ export default function Atendimento() {
                   <h3 className="font-display font-bold text-lg mt-5 leading-snug">
                     {s.titulo}
                   </h3>
-                  <p className="text-white/50 text-sm mt-2 leading-relaxed">
+                  <p className="text-white/60 text-sm mt-2 leading-relaxed">
                     {s.texto}
                   </p>
                 </div>
@@ -542,7 +546,7 @@ export default function Atendimento() {
                       Começar teste grátis
                     </Button>
                   </a>
-                  <p className="text-white/45 text-sm mt-4">
+                  <p className="text-white/60 text-sm mt-4">
                     Depois do período de teste: R$ 147 por mês.
                   </p>
                 </div>

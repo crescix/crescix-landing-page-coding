@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { toast } from "sonner";
 import { FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { ConsentimentoLGPD } from "@/components/legal/ConsentimentoLGPD";
+import { EMPRESA } from "@/lib/empresa";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -12,10 +14,12 @@ export default function Contact() {
     company: "",
     message: "",
   });
+  const [consentiu, setConsentiu] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!consentiu) return;
     setSubmitting(true);
 
     const data = new FormData(e.currentTarget);
@@ -29,9 +33,10 @@ export default function Contact() {
 
       if (response.ok) {
         toast.success(
-          "Mensagem enviada! Entraremos em contato em até 8h.",
+          "Mensagem enviada! Respondemos em até 1 dia útil.",
         );
         setFormData({ name: "", email: "", company: "", message: "" });
+        setConsentiu(false);
       } else {
         toast.error("Erro ao enviar mensagem. Tente novamente.");
       }
@@ -41,7 +46,7 @@ export default function Contact() {
   };
 
   const inputCls =
-    "w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-sm placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-green-500/50 focus:border-green-500/60 transition-all";
+    "w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-sm placeholder:text-white/60 focus:outline-none focus:ring-2 focus:ring-green-500/50 focus:border-green-500/60 transition-all";
 
   return (
     <section
@@ -66,8 +71,8 @@ export default function Contact() {
             <span className="gradient-green-cyan">transformar</span> seu negócio?
           </h2>
           <p className="text-lg text-white/75 max-w-2xl mx-auto">
-            Manda uma mensagem que respondemos em até 8h. Sem robô. Você fala
-            direto com a equipe que construiu o produto.
+            Manda uma mensagem que respondemos em até 1 dia útil. Sem robô.
+            Você fala direto com a equipe que construiu o produto.
           </p>
         </motion.div>
 
@@ -84,7 +89,7 @@ export default function Contact() {
             </h3>
             <p className="text-white/75 mb-8 leading-relaxed">
               Nossa equipe está pronta pra te ajudar a colocar a CrescIX
-              rodando no seu negócio. Responde rápido.
+              rodando no seu negócio.
             </p>
 
             <div className="space-y-5">
@@ -108,7 +113,7 @@ export default function Contact() {
               </a>
 
               <a
-                href="https://wa.me/5535984219965"
+                href={EMPRESA.whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-start gap-4 group"
@@ -121,7 +126,7 @@ export default function Contact() {
                     WhatsApp
                   </p>
                   <p className="text-white/75 text-sm group-hover:text-green-400 transition-colors">
-                    +55 (35) 98421-9965
+                    {EMPRESA.telefone}
                   </p>
                 </div>
               </a>
@@ -155,10 +160,14 @@ export default function Contact() {
             >
               <div className="grid sm:grid-cols-2 gap-4 mb-4">
                 <div>
-                  <label className="block text-xs font-bold text-white/80 uppercase tracking-wider mb-2">
+                  <label
+                    htmlFor="contato-nome"
+                    className="block text-xs font-bold text-white/80 uppercase tracking-wider mb-2"
+                  >
                     Nome
                   </label>
                   <input
+                    id="contato-nome"
                     name="name"
                     type="text"
                     value={formData.name}
@@ -171,10 +180,14 @@ export default function Contact() {
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold text-white/80 uppercase tracking-wider mb-2">
+                  <label
+                    htmlFor="contato-email"
+                    className="block text-xs font-bold text-white/80 uppercase tracking-wider mb-2"
+                  >
                     E-mail
                   </label>
                   <input
+                    id="contato-email"
                     name="email"
                     type="email"
                     value={formData.email}
@@ -188,11 +201,18 @@ export default function Contact() {
                 </div>
               </div>
 
+              {/* Opcional de propósito: pra responder uma mensagem a gente
+                  não precisa saber o nome da empresa (LGPD art. 6º, III —
+                  só o necessário pra finalidade). */}
               <div className="mb-4">
-                <label className="block text-xs font-bold text-white/80 uppercase tracking-wider mb-2">
-                  Empresa
+                <label
+                  htmlFor="contato-empresa"
+                  className="block text-xs font-bold text-white/80 uppercase tracking-wider mb-2"
+                >
+                  Empresa <span className="text-white/60">(opcional)</span>
                 </label>
                 <input
+                  id="contato-empresa"
                   name="company"
                   type="text"
                   value={formData.company}
@@ -201,15 +221,18 @@ export default function Contact() {
                   }
                   className={inputCls}
                   placeholder="Nome da empresa"
-                  required
                 />
               </div>
 
               <div className="mb-6">
-                <label className="block text-xs font-bold text-white/80 uppercase tracking-wider mb-2">
+                <label
+                  htmlFor="contato-mensagem"
+                  className="block text-xs font-bold text-white/80 uppercase tracking-wider mb-2"
+                >
                   Mensagem
                 </label>
                 <textarea
+                  id="contato-mensagem"
                   name="message"
                   value={formData.message}
                   onChange={(e) =>
@@ -222,9 +245,19 @@ export default function Contact() {
                 />
               </div>
 
+              <div className="mb-6">
+                <ConsentimentoLGPD
+                  id="contato-consentimento"
+                  name="consentimento_lgpd"
+                  checked={consentiu}
+                  onChange={setConsentiu}
+                  finalidade="pra responder esta mensagem"
+                />
+              </div>
+
               <Button
                 type="submit"
-                disabled={submitting}
+                disabled={submitting || !consentiu}
                 className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white font-display font-semibold rounded-xl py-5 shadow-lg shadow-green-500/25 hover:shadow-xl transition-all duration-300 group disabled:opacity-60"
               >
                 {submitting ? "Enviando..." : "Enviar Mensagem"}

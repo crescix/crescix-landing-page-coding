@@ -135,7 +135,7 @@ export default function HeroSection() {
                     <span className="w-3 h-3 rounded-full bg-yellow-500/70" />
                     <span className="w-3 h-3 rounded-full bg-green-500/70" />
                   </div>
-                  <span className="text-xs text-white/40 font-mono">
+                  <span className="text-xs text-white/60 font-mono">
                     crescix-bot · telegram
                   </span>
                   <div className="w-12" />
@@ -165,7 +165,7 @@ export default function HeroSection() {
                             />
                           ))}
                         </div>
-                        <span className="text-[10px] text-white/40">0:14</span>
+                        <span className="text-[10px] text-white/60">0:14</span>
                       </div>
                     </div>
                   </motion.div>
@@ -183,19 +183,19 @@ export default function HeroSection() {
                       </p>
                       <div className="space-y-0.5 text-[11px] text-white/70">
                         <p>
-                          <span className="text-white/40">Tipo:</span>{" "}
+                          <span className="text-white/60">Tipo:</span>{" "}
                           <span className="text-green-300">Venda</span>
                         </p>
                         <p>
-                          <span className="text-white/40">Item:</span>{" "}
+                          <span className="text-white/60">Item:</span>{" "}
                           <span className="text-white">4 águas</span>
                         </p>
                         <p>
-                          <span className="text-white/40">Unitário:</span>{" "}
+                          <span className="text-white/60">Unitário:</span>{" "}
                           <span className="text-white">R$ 3,00</span>
                         </p>
                         <p className="pt-1 border-t border-green-500/20 mt-1">
-                          <span className="text-white/40">Total:</span>{" "}
+                          <span className="text-white/60">Total:</span>{" "}
                           <span className="text-green-400 font-bold">
                             R$ 12,00
                           </span>
@@ -242,7 +242,7 @@ export default function HeroSection() {
 
                   {/* Typing indicator */}
                   <div className="flex gap-2 pt-1">
-                    <span className="text-white/30 text-xs">
+                    <span className="text-white/60 text-xs">
                       digitando<span className="animate-blink">_</span>
                     </span>
                   </div>
@@ -256,13 +256,18 @@ export default function HeroSection() {
                 transition={{ delay: 2.2 }}
                 className="absolute -bottom-6 -left-6 glass-card-strong rounded-2xl p-4 shadow-2xl shadow-green-500/10"
               >
-                <p className="text-[10px] text-white/40 uppercase tracking-wider mb-1">
-                  Receita do mês
+                {/* Números ilustrativos de uma tela do produto. O rótulo
+                    "exemplo" fica visível de propósito: sem ele, o card lê
+                    como resultado que a CrescIX entrega, e crescimento de
+                    receita é coisa que a gente não pode prometer. */}
+                <p className="text-[10px] text-white/60 uppercase tracking-wider mb-1">
+                  Receita do mês{" "}
+                  <span className="text-amber-400/90">· exemplo</span>
                 </p>
                 <p className="text-2xl font-black text-green-400 font-display tabular-nums">
                   R$ 18.430
                 </p>
-                <p className="text-[10px] text-green-400/60 mt-0.5 flex items-center gap-1">
+                <p className="text-[10px] text-green-400/80 mt-0.5 flex items-center gap-1">
                   <TrendingUp className="w-3 h-3" />
                   +12,4% vs último mês
                 </p>

@@ -32,15 +32,27 @@ const faqs = [
   },
   {
     q: "Posso cancelar a qualquer momento?",
-    a: "Pode. Sem multa, sem ligar pra ninguém: é só desistir de renovar. O tempo que você já pagou continua valendo até o fim. Quando vencer, sua conta passa pra modo de consulta e você decide se quer voltar.",
+    a: "Pode, sem multa. No PIX não existe renovação automática: é só não pagar de novo. No cartão, a assinatura renova sozinha a cada período, e você cancela na tela \"Assinatura\" do app — a renovação para na hora. Nos dois casos, o tempo que você já pagou continua valendo até o fim; depois a conta passa pra modo de consulta.",
+  },
+  {
+    q: "E se eu me arrepender depois de pagar?",
+    a: "Você tem 7 dias corridos a partir do primeiro pagamento pra desistir e receber 100% do valor de volta, sem precisar justificar — é o direito de arrependimento do art. 49 do Código de Defesa do Consumidor. Basta um e-mail pro suporte. Os prazos de estorno estão na Política de Troca e Reembolso.",
   },
   {
     q: "Funciona pra qualquer tipo de negócio?",
     a: "Funciona pra varejo, atacado, alimentação (restaurantes, bares, padarias, mercados), serviços (beleza, saúde, automotivo), moda, farmácias, e mais. Quando você se cadastra, escolhe seu tipo de comércio e os bots se adaptam ao vocabulário do seu ramo.",
   },
   {
+    /*
+      A resposta anterior afirmava "banco hospedado em servidores no
+      Brasil". A infraestrutura está em transição (VPS própria e serviços
+      gerenciados em paralelo, veja o DEPLOY.md da crescix-api) e parte do
+      processamento é feita fora do país pela OpenAI — então a frase não
+      era comprovável como estava. Se e quando a localização do banco for
+      verificada e estável, ela pode voltar com nome do provedor e região.
+    */
     q: "Meus dados ficam seguros?",
-    a: "Sim. Senhas são criptografadas, comunicação por HTTPS, banco hospedado em servidores no Brasil. Cumprimos a LGPD: você é o dono dos seus dados, pode exportá-los ou pedir exclusão a qualquer momento.",
+    a: "Senhas são guardadas com hash bcrypt, a comunicação é toda por HTTPS e os dados ficam isolados por conta: nenhum usuário vê os dados de outro. Parte do processamento passa por fornecedores de fora do Brasil, como a OpenAI nas transcrições e análises — a lista completa de quem recebe o quê está na Política de Privacidade. Você é o dono dos seus dados e pode exportar ou pedir exclusão a qualquer momento.",
   },
   {
     q: "E se eu precisar de ajuda?",

@@ -127,7 +127,12 @@ export default function HowItWorks() {
                     >
                       <step.icon className={`w-6 h-6 ${a.text}`} />
                     </div>
+                    {/* Marca d'água: o número do passo já aparece na ordem
+                        dos cards, então aqui é decoração. aria-hidden pra
+                        não ser lido duas vezes e pra não cair na regra de
+                        contraste de texto. */}
                     <span
+                      aria-hidden="true"
                       className={`text-3xl font-mono font-black text-white/10 ${a.numHover} transition-colors`}
                     >
                       {step.number}

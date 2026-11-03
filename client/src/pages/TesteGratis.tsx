@@ -16,6 +16,8 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useSEO } from "@/hooks/useSEO";
+import { ConsentimentoLGPD } from "@/components/legal/ConsentimentoLGPD";
+import Footer from "@/components/Footer";
 
 type Step = 1 | 2 | 3 | "success";
 
@@ -62,6 +64,7 @@ export default function TesteGratis() {
   const [, navigate] = useLocation();
   const [step, setStep] = useState<Step>(1);
   const [form, setForm] = useState<FormState>(initialForm);
+  const [consentiu, setConsentiu] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -71,7 +74,7 @@ export default function TesteGratis() {
   const canAdvance = (() => {
     if (step === 1) return form.name.trim().length >= 2 && /\S+@\S+\.\S+/.test(form.email);
     if (step === 2) return form.empresa.trim().length >= 2 && !!form.tipoComercio;
-    if (step === 3) return !!form.funcionarios;
+    if (step === 3) return !!form.funcionarios && consentiu;
     return false;
   })();
 
@@ -91,6 +94,9 @@ export default function TesteGratis() {
       data.append("tipoComercio", form.tipoComercio);
       data.append("funcionarios", form.funcionarios);
       data.append("desafio", form.desafio);
+      // Prova do aceite: LGPD art. 8º, § 2º põe o ônus em quem coletou.
+      data.append("consentimento_lgpd", "sim");
+      data.append("consentimento_em", new Date().toISOString());
       data.append("_subject", "[CrescIX] Pedido de teste grátis");
 
       const res = await fetch("https://formspree.io/f/xyknelaq", {
@@ -154,8 +160,8 @@ export default function TesteGratis() {
                     <span className="gradient-green">teste grátis</span>
                   </h1>
                   <p className="text-white/60">
-                    Só 3 passos. Sem cartão. Em até 24h a gente libera o
-                    acesso e te explica o setup.
+                    Só 3 passos. Sem cartão. Em até 1 dia útil a gente libera
+                    o acesso e te explica o setup.
                   </p>
                 </div>
 
@@ -188,8 +194,13 @@ export default function TesteGratis() {
                         Pra gente te chamar pelo nome certo.
                       </p>
 
-                      <Field label="Nome completo" icon={<User className="w-3.5 h-3.5" />}>
+                      <Field
+                        label="Nome completo"
+                        htmlFor="teste-nome"
+                        icon={<User className="w-3.5 h-3.5" />}
+                      >
                         <input
+                          id="teste-nome"
                           type="text"
                           value={form.name}
                           onChange={(e) => update("name", e.target.value)}
@@ -199,8 +210,13 @@ export default function TesteGratis() {
                         />
                       </Field>
 
-                      <Field label="E-mail" icon={<Mail className="w-3.5 h-3.5" />}>
+                      <Field
+                        label="E-mail"
+                        htmlFor="teste-email"
+                        icon={<Mail className="w-3.5 h-3.5" />}
+                      >
                         <input
+                          id="teste-email"
                           type="email"
                           value={form.email}
                           onChange={(e) => update("email", e.target.value)}
@@ -209,8 +225,13 @@ export default function TesteGratis() {
                         />
                       </Field>
 
-                      <Field label="WhatsApp (opcional)" icon={<Phone className="w-3.5 h-3.5" />}>
+                      <Field
+                        label="WhatsApp (opcional)"
+                        htmlFor="teste-whatsapp"
+                        icon={<Phone className="w-3.5 h-3.5" />}
+                      >
                         <input
+                          id="teste-whatsapp"
                           type="tel"
                           value={form.phone}
                           onChange={(e) => update("phone", e.target.value)}
@@ -230,8 +251,13 @@ export default function TesteGratis() {
                         Pra gente preparar o ambiente certo pra você.
                       </p>
 
-                      <Field label="Nome da empresa" icon={<Building2 className="w-3.5 h-3.5" />}>
+                      <Field
+                        label="Nome da empresa"
+                        htmlFor="teste-empresa"
+                        icon={<Building2 className="w-3.5 h-3.5" />}
+                      >
                         <input
+                          id="teste-empresa"
                           type="text"
                           value={form.empresa}
                           onChange={(e) => update("empresa", e.target.value)}
@@ -242,16 +268,28 @@ export default function TesteGratis() {
                       </Field>
 
                       <div>
-                        <label className="text-xs font-bold text-white/70 uppercase tracking-wider block mb-2">
+                        {/* Grupo de botões, não um campo: `label` solto aqui
+                            não nomearia nada pro leitor de tela, então vira
+                            um grupo com nome e cada botão informa se está
+                            escolhido. */}
+                        <p
+                          id="teste-tipo-label"
+                          className="text-xs font-bold text-white/70 uppercase tracking-wider block mb-2"
+                        >
                           Tipo de negócio
-                        </label>
-                        <div className="grid sm:grid-cols-2 gap-2">
+                        </p>
+                        <div
+                          role="group"
+                          aria-labelledby="teste-tipo-label"
+                          className="grid sm:grid-cols-2 gap-2"
+                        >
                           {TIPOS_COMERCIO.map((t) => {
                             const selected = form.tipoComercio === t;
                             return (
                               <button
                                 key={t}
                                 type="button"
+                                aria-pressed={selected}
                                 onClick={() => update("tipoComercio", t)}
                                 className={`text-left px-3.5 py-2.5 rounded-lg text-sm transition-all border ${
                                   selected
@@ -281,16 +319,24 @@ export default function TesteGratis() {
                       </p>
 
                       <div>
-                        <label className="text-xs font-bold text-white/70 uppercase tracking-wider block mb-2">
+                        <p
+                          id="teste-equipe-label"
+                          className="text-xs font-bold text-white/70 uppercase tracking-wider block mb-2"
+                        >
                           Tamanho da equipe
-                        </label>
-                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                        </p>
+                        <div
+                          role="group"
+                          aria-labelledby="teste-equipe-label"
+                          className="grid grid-cols-2 sm:grid-cols-4 gap-2"
+                        >
                           {FUNCIONARIOS_OPTS.map((f) => {
                             const selected = form.funcionarios === f;
                             return (
                               <button
                                 key={f}
                                 type="button"
+                                aria-pressed={selected}
                                 onClick={() => update("funcionarios", f)}
                                 className={`px-3 py-3 rounded-lg text-sm transition-all border ${
                                   selected
@@ -307,9 +353,11 @@ export default function TesteGratis() {
 
                       <Field
                         label="Qual seu maior desafio hoje? (opcional)"
+                        htmlFor="teste-desafio"
                         icon={<MessageSquare className="w-3.5 h-3.5" />}
                       >
                         <textarea
+                          id="teste-desafio"
                           value={form.desafio}
                           onChange={(e) => update("desafio", e.target.value)}
                           rows={4}
@@ -317,6 +365,17 @@ export default function TesteGratis() {
                           className={`${inputCls} resize-none`}
                         />
                       </Field>
+                    </div>
+                  )}
+
+                  {step === 3 && (
+                    <div className="mt-6 pt-6 border-t border-white/5">
+                      <ConsentimentoLGPD
+                        id="teste-consentimento"
+                        checked={consentiu}
+                        onChange={setConsentiu}
+                        finalidade="pra liberar o meu teste e dar suporte"
+                      />
                     </div>
                   )}
 
@@ -370,9 +429,17 @@ export default function TesteGratis() {
                   </div>
                 </div>
 
-                <p className="text-center text-xs text-white/40 mt-6">
-                  Seus dados ficam protegidos. Sem spam. A gente usa só pra
-                  liberar seu acesso e dar suporte.
+                <p className="text-center text-xs text-white/60 mt-6">
+                  Sem spam. A gente usa seus dados só pra liberar o acesso e
+                  dar suporte, como está na{" "}
+                  <button
+                    type="button"
+                    onClick={() => navigate("/privacidade")}
+                    className="text-green-400 hover:text-green-300 underline underline-offset-2"
+                  >
+                    Política de Privacidade
+                  </button>
+                  .
                 </p>
               </motion.div>
             ) : (
@@ -391,7 +458,7 @@ export default function TesteGratis() {
                 </h2>
                 <p className="text-lg text-white/70 max-w-md mx-auto mb-8">
                   Nossa equipe vai te chamar no WhatsApp em até{" "}
-                  <span className="text-white font-semibold">24 horas</span>{" "}
+                  <span className="text-white font-semibold">1 dia útil</span>{" "}
                   pra liberar o acesso e fazer o setup junto com você.
                 </p>
 
@@ -402,11 +469,11 @@ export default function TesteGratis() {
                   <ul className="space-y-2.5 text-sm text-white/80">
                     <li className="flex gap-2.5">
                       <span className="text-green-400 font-mono">01</span>
-                      <span>A gente te chama no WhatsApp em até 24h</span>
+                      <span>A gente te chama no WhatsApp em até 1 dia útil</span>
                     </li>
                     <li className="flex gap-2.5">
                       <span className="text-green-400 font-mono">02</span>
-                      <span>Setup do seu ambiente (cerca de 15 minutos)</span>
+                      <span>Setup do seu ambiente, junto com você</span>
                     </li>
                     <li className="flex gap-2.5">
                       <span className="text-green-400 font-mono">03</span>
@@ -427,25 +494,43 @@ export default function TesteGratis() {
           </AnimatePresence>
         </div>
       </div>
+
+      {/* Rodapé completo: esta página coleta dados, então os links legais
+          e a identificação do fornecedor precisam estar alcançáveis aqui
+          sem voltar pra home. */}
+      <div className="relative z-10">
+        <Footer />
+      </div>
     </div>
   );
 }
 
 const inputCls =
-  "w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-sm placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-green-500/30 focus:border-green-500/40 transition-all";
+  "w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-sm placeholder:text-white/55 focus:outline-none focus:ring-2 focus:ring-green-500/30 focus:border-green-500/40 transition-all";
 
+/**
+ * Rótulo + campo. O `htmlFor` é obrigatório: sem ele o leitor de tela
+ * anuncia "caixa de edição" sem dizer o quê, e clicar no rótulo não
+ * move o foco pro campo. Quem usa `Field` passa o mesmo valor no `id`
+ * do input que está dentro.
+ */
 function Field({
   label,
+  htmlFor,
   icon,
   children,
 }: {
   label: string;
+  htmlFor: string;
   icon?: React.ReactNode;
   children: React.ReactNode;
 }) {
   return (
     <div>
-      <label className="text-xs font-bold text-white/70 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+      <label
+        htmlFor={htmlFor}
+        className="text-xs font-bold text-white/70 uppercase tracking-wider mb-2 flex items-center gap-1.5"
+      >
         {icon}
         {label}
       </label>

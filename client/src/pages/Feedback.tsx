@@ -14,6 +14,8 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useSEO } from "@/hooks/useSEO";
+import { ConsentimentoLGPD } from "@/components/legal/ConsentimentoLGPD";
+import Footer from "@/components/Footer";
 
 interface FeedbackForm {
   nps: number | null;
@@ -55,11 +57,21 @@ export default function Feedback() {
     email: "",
     pagaria: "",
   });
+  const [consentiu, setConsentiu] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const canSubmit = form.nps !== null && form.o_que_mudar.trim().length >= 5;
+  /**
+   * O e-mail é opcional: sem ele o feedback não tem dado pessoal e não
+   * há o que consentir. Preenchido, passa a ter — e aí o aceite é
+   * obrigatório antes de enviar.
+   */
+  const identificado = form.email.trim().length > 0;
+  const canSubmit =
+    form.nps !== null &&
+    form.o_que_mudar.trim().length >= 5 &&
+    (!identificado || consentiu);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -73,6 +85,11 @@ export default function Feedback() {
       data.append("o_que_mudar", form.o_que_mudar);
       data.append("email", form.email || "(anônimo)");
       data.append("pagaria", form.pagaria || "(não respondido)");
+      if (identificado) {
+        // Prova do aceite: LGPD art. 8º, § 2º põe o ônus em quem coletou.
+        data.append("consentimento_lgpd", "sim");
+        data.append("consentimento_em", new Date().toISOString());
+      }
       data.append("_subject", `[CrescIX] Feedback NPS ${form.nps}`);
 
       const res = await fetch("https://formspree.io/f/xyknelaq", {
@@ -141,13 +158,23 @@ export default function Feedback() {
               >
                 {/* NPS 0-10 */}
                 <div>
-                  <label className="block text-white font-display font-bold text-base mb-2">
+                  {/* Escala de botões, não um campo: um `label` solto não
+                      nomearia nada pro leitor de tela, então vira um grupo
+                      com nome e cada botão informa se está escolhido. */}
+                  <p
+                    id="fb-nps-label"
+                    className="block text-white font-display font-bold text-base mb-2"
+                  >
                     Você indicaria a CrescIX pra um amigo dono de negócio?
-                  </label>
-                  <p className="text-white/50 text-sm mb-5">
+                  </p>
+                  <p className="text-white/60 text-sm mb-5">
                     0 = jamais · 10 = com certeza
                   </p>
-                  <div className="grid grid-cols-11 gap-1.5">
+                  <div
+                    role="group"
+                    aria-labelledby="fb-nps-label"
+                    className="grid grid-cols-11 gap-1.5"
+                  >
                     {Array.from({ length: 11 }).map((_, n) => {
                       const selected = form.nps === n;
                       const color =
@@ -166,6 +193,8 @@ export default function Feedback() {
                         <button
                           key={n}
                           type="button"
+                          aria-label={`Nota ${n}`}
+                          aria-pressed={selected}
                           onClick={() => setForm((p) => ({ ...p, nps: n }))}
                           className={`h-12 rounded-lg border text-sm font-bold transition-all ${
                             selected
@@ -182,19 +211,27 @@ export default function Feedback() {
 
                 {/* Recurso top */}
                 <div>
-                  <label className="block text-white font-display font-bold text-base mb-2">
+                  <p
+                    id="fb-recurso-label"
+                    className="block text-white font-display font-bold text-base mb-2"
+                  >
                     Qual recurso mais te ajudou?
-                  </label>
-                  <p className="text-white/50 text-sm mb-4">
+                  </p>
+                  <p className="text-white/60 text-sm mb-4">
                     Escolha o que mais salvou seu tempo durante o teste.
                   </p>
-                  <div className="grid sm:grid-cols-2 gap-2">
+                  <div
+                    role="group"
+                    aria-labelledby="fb-recurso-label"
+                    className="grid sm:grid-cols-2 gap-2"
+                  >
                     {RECURSOS.map((r) => {
                       const selected = form.recurso_top === r;
                       return (
                         <button
                           key={r}
                           type="button"
+                          aria-pressed={selected}
                           onClick={() =>
                             setForm((p) => ({ ...p, recurso_top: r }))
                           }
@@ -216,41 +253,54 @@ export default function Feedback() {
 
                 {/* O que mudar */}
                 <div>
-                  <label className="text-white font-display font-bold text-base mb-2 flex items-center gap-2">
+                  <label
+                    htmlFor="fb-mudar"
+                    className="text-white font-display font-bold text-base mb-2 flex items-center gap-2"
+                  >
                     <MessageSquare className="w-4 h-4 text-green-400" />O que
-                    você mudaria? <span className="text-red-400">*</span>
+                    você mudaria?{" "}
+                    <span className="text-red-300">(obrigatório)</span>
                   </label>
-                  <p className="text-white/50 text-sm mb-3">
+                  <p className="text-white/60 text-sm mb-3">
                     Pode ser bug, dificuldade no setup, recurso que faltou,
                     UX confusa. Tudo conta.
                   </p>
                   <textarea
+                    id="fb-mudar"
                     value={form.o_que_mudar}
                     onChange={(e) =>
                       setForm((p) => ({ ...p, o_que_mudar: e.target.value }))
                     }
                     rows={5}
                     placeholder="Solta o verbo aí... a gente quer saber."
-                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-sm placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-green-500/30 focus:border-green-500/40 transition-all resize-none"
+                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-sm placeholder:text-white/55 focus:outline-none focus:ring-2 focus:ring-green-500/30 focus:border-green-500/40 transition-all resize-none"
                     required
                   />
                 </div>
 
                 {/* Pagaria */}
                 <div>
-                  <label className="block text-white font-display font-bold text-base mb-2">
+                  <p
+                    id="fb-pagaria-label"
+                    className="block text-white font-display font-bold text-base mb-2"
+                  >
                     Pagaria pra continuar usando?
-                  </label>
-                  <p className="text-white/50 text-sm mb-4">
+                  </p>
+                  <p className="text-white/60 text-sm mb-4">
                     Sem compromisso. É só pra entender o quanto somos úteis.
                   </p>
-                  <div className="grid sm:grid-cols-2 gap-2">
+                  <div
+                    role="group"
+                    aria-labelledby="fb-pagaria-label"
+                    className="grid sm:grid-cols-2 gap-2"
+                  >
                     {PAGARIA_OPTS.map((opt) => {
                       const selected = form.pagaria === opt;
                       return (
                         <button
                           key={opt}
                           type="button"
+                          aria-pressed={selected}
                           onClick={() =>
                             setForm((p) => ({ ...p, pagaria: opt }))
                           }
@@ -269,19 +319,32 @@ export default function Feedback() {
 
                 {/* Email opcional */}
                 <div>
-                  <label className="block text-xs font-bold text-white/70 uppercase tracking-wider mb-2">
+                  <label
+                    htmlFor="fb-email"
+                    className="block text-xs font-bold text-white/70 uppercase tracking-wider mb-2"
+                  >
                     Seu e-mail (opcional)
                   </label>
                   <input
+                    id="fb-email"
                     type="email"
                     value={form.email}
                     onChange={(e) =>
                       setForm((p) => ({ ...p, email: e.target.value }))
                     }
                     placeholder="seu@email.com (pra gente poder responder)"
-                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-sm placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-green-500/30 focus:border-green-500/40 transition-all"
+                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-sm placeholder:text-white/55 focus:outline-none focus:ring-2 focus:ring-green-500/30 focus:border-green-500/40 transition-all"
                   />
                 </div>
+
+                {identificado && (
+                  <ConsentimentoLGPD
+                    id="fb-consentimento"
+                    checked={consentiu}
+                    onChange={setConsentiu}
+                    finalidade="pra responder este feedback e melhorar o produto"
+                  />
+                )}
 
                 {error && (
                   <p className="text-sm text-red-400 text-center">{error}</p>
@@ -301,7 +364,7 @@ export default function Feedback() {
                 </Button>
 
                 {!canSubmit && (
-                  <p className="text-xs text-white/40 text-center -mt-4">
+                  <p className="text-xs text-white/60 text-center -mt-4">
                     Preencha o NPS e &ldquo;o que mudaria&rdquo; pra enviar.
                   </p>
                 )}
@@ -326,7 +389,7 @@ export default function Feedback() {
               </p>
 
               {form.email && (
-                <p className="text-sm text-white/50 mb-8">
+                <p className="text-sm text-white/60 mb-8">
                   Se fizer sentido a gente responder, te chamamos em{" "}
                   <span className="text-white font-medium">{form.email}</span>.
                 </p>
@@ -354,6 +417,12 @@ export default function Feedback() {
             </motion.div>
           )}
         </div>
+      </div>
+
+      {/* Rodapé completo: a página coleta dados, então os links legais e a
+          identificação do fornecedor precisam estar alcançáveis daqui. */}
+      <div className="relative z-10">
+        <Footer />
       </div>
     </div>
   );
