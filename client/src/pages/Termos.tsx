@@ -61,8 +61,8 @@ export default function Termos() {
       <Section titulo="1. Com quem você está contratando">
         <IdentificacaoBox>
           <p className="text-white font-semibold">{EMPRESA.nomeFantasia}</p>
-          <p>{identificacaoFornecedor()}</p>
-          <p>{EMPRESA.endereco}</p>
+          {identificacaoFornecedor() && <p>{identificacaoFornecedor()}</p>}
+          <p>{EMPRESA.endereco ?? EMPRESA.cidade}</p>
           <p>
             E-mail:{" "}
             <a

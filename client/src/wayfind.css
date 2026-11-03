@@ -263,7 +263,6 @@
 .rodape__id b { color: var(--color-on-ink); font-weight: 800; }
 .rodape__id a { color: inherit; }
 .rodape__id a:hover { color: var(--color-accent-2); }
-.rodape__pendente { color: var(--color-accent-2); }
 .rodape__credito { color: var(--color-on-ink-muted); }
 .rodape__credito a:hover { color: var(--color-accent-2); }
 .rodape__fim { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-xs); color: var(--color-on-ink-muted); }

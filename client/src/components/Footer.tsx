@@ -1,6 +1,6 @@
 import { FaInstagram, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 import { useLocation } from "wouter";
-import { EMPRESA, identificacaoFornecedor, pendente } from "@/lib/empresa";
+import { EMPRESA, identificacaoFornecedor } from "@/lib/empresa";
 
 /**
  * Os documentos legais do site. Vivem numa lista porque o rodapé precisa
@@ -161,10 +161,10 @@ export default function Footer() {
             <p>
               <span className="text-white/80 font-semibold">
                 {EMPRESA.nomeFantasia}
-              </span>{" "}
-              · {identificacaoFornecedor()}
+              </span>
+              {identificacaoFornecedor() && ` · ${identificacaoFornecedor()}`}
             </p>
-            <p>{EMPRESA.endereco}</p>
+            <p>{EMPRESA.endereco ?? EMPRESA.cidade}</p>
             <p>
               <a
                 href={`mailto:${EMPRESA.emailContato}`}
@@ -174,15 +174,6 @@ export default function Footer() {
               </a>{" "}
               · {EMPRESA.telefone}
             </p>
-            {(pendente(EMPRESA.responsavel) ||
-              pendente(EMPRESA.cpf) ||
-              pendente(EMPRESA.endereco)) && (
-              <p className="text-amber-400/80">
-                Identificação pendente de preenchimento em{" "}
-                <code>client/src/lib/empresa.ts</code> antes do próximo
-                deploy.
-              </p>
-            )}
           </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-between gap-2">

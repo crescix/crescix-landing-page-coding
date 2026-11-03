@@ -1,7 +1,7 @@
 import { FaInstagram, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 import { useLocation } from "wouter";
 import { DOCS_LEGAIS } from "@/components/Footer";
-import { EMPRESA, identificacaoFornecedor, pendente } from "@/lib/empresa";
+import { EMPRESA, identificacaoFornecedor } from "@/lib/empresa";
 import type { Foto } from "@/lib/fotos";
 
 /**
@@ -114,22 +114,14 @@ export default function SiteFooter({ fotos }: { fotos: Foto[] }) {
           {/* Identificação do fornecedor: Decreto 7.962/2013, art. 2º, I */}
           <div className="rodape__id">
             <b>{EMPRESA.nomeFantasia}</b>
-            <p>{identificacaoFornecedor()}</p>
-            <p>{EMPRESA.endereco}</p>
+            {identificacaoFornecedor() && <p>{identificacaoFornecedor()}</p>}
+            <p>{EMPRESA.endereco ?? EMPRESA.cidade}</p>
             <p>
               <a href={`mailto:${EMPRESA.emailContato}`}>
                 {EMPRESA.emailContato}
               </a>
             </p>
             <p>{EMPRESA.telefone}</p>
-            {(pendente(EMPRESA.responsavel) ||
-              pendente(EMPRESA.cpf) ||
-              pendente(EMPRESA.endereco)) && (
-              <p className="rodape__pendente">
-                Identificação pendente de preenchimento em{" "}
-                <code>client/src/lib/empresa.ts</code> antes do próximo deploy.
-              </p>
-            )}
           </div>
 
           {/* CC BY e CC BY-SA: autor, licença e link de cada foto da página */}
