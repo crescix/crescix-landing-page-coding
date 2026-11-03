@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "./wayfind.css";
 @source "./**/*.{ts,tsx}";
 @custom-variant dark (&:is(.dark *));
 
@@ -41,9 +42,13 @@
   --color-brand-amber: #F59E0B;
   --color-brand-amber-light: #FBBF24;
 
-  --font-display: "Plus Jakarta Sans", system-ui, sans-serif;
-  --font-body: "DM Sans", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
+  /* As famílias "... Variable" vêm dos @fontsource-variable importados no
+     main.tsx, servidos pelo nosso domínio. O nome sem "Variable" fica
+     como fallback pra quem já tenha a fonte instalada no sistema. */
+  --font-display: "Plus Jakarta Sans Variable", "Plus Jakarta Sans",
+    system-ui, sans-serif;
+  --font-body: "DM Sans Variable", "DM Sans", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", "JetBrains Mono", monospace;
 }
 
 :root {
@@ -360,4 +365,14 @@
   .conic-glow {
     animation: none !important;
   }
+}
+
+/* Fallback do index.html pra quem não roda JavaScript: nesse caso o tema
+   Wayfind não liga, então ele usa os tokens escuros padrão. */
+.noscript-fallback {
+  max-width: 720px;
+  margin: 3rem auto;
+  padding: 0 1rem;
+  color: var(--foreground);
+  font-family: var(--font-body);
 }

@@ -6,15 +6,18 @@ import Features from "@/components/Features";
 import HowWeArose from "@/components/HowWeArose";
 import ForWhom from "@/components/ForWhom";
 import Pricing from "@/components/Pricing";
-import Partners from "@/components/Partners";
 import FAQ from "@/components/FAQ";
 import CTASection from "@/components/CTASection";
 import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
+import SiteFooter from "@/components/wayfind/SiteFooter";
+import { useWayfind } from "@/hooks/useWayfind";
+import { FOTOS } from "@/lib/fotos";
 
 export default function Home() {
+  useWayfind();
+
   return (
-    <div className="min-h-screen flex flex-col">
+    <>
       <Navbar />
       <main>
         <HeroSection />
@@ -24,12 +27,11 @@ export default function Home() {
         <HowWeArose />
         <ForWhom />
         <Pricing />
-        <Partners />
         <FAQ />
         <CTASection />
         <Contact />
       </main>
-      <Footer />
-    </div>
+      <SiteFooter fotos={[FOTOS.feiraSaude, FOTOS.feiraRua]} />
+    </>
   );
 }

@@ -13,6 +13,8 @@ import TesteGratis from "./pages/TesteGratis";
 import Feedback from "./pages/Feedback";
 import Privacidade from "./pages/Privacidade";
 import Termos from "./pages/Termos";
+import Cookies from "./pages/Cookies";
+import Reembolso from "./pages/Reembolso";
 
 function AppRouter() {
   return (
@@ -24,6 +26,8 @@ function AppRouter() {
       <Route path="/feedback" component={Feedback} />
       <Route path="/privacidade" component={Privacidade} />
       <Route path="/termos" component={Termos} />
+      <Route path="/cookies" component={Cookies} />
+      <Route path="/reembolso" component={Reembolso} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>

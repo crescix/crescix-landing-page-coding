@@ -39,11 +39,18 @@
     <!-- ── Robots ──────────────────────────────────────────────────────── -->
     <meta name="robots" content="index, follow, max-image-preview:large" />
 
-    <!-- ── Fontes e favicon ────────────────────────────────────────────── -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-    <link rel="shortcut icon" href="public/images/faviconGrafico.png" type="image/x-icon">
+    <!-- ── Fontes e favicon ──────────────────────────────────────────────
+         As fontes NÃO vêm mais do CDN do Google: são servidas por este
+         mesmo domínio, importadas em `src/main.tsx` via
+         @fontsource-variable. O `<link>` pra fonts.googleapis.com que
+         ficava aqui entregava ao Google o IP de todo visitante, numa
+         transferência internacional de dado pessoal sem necessidade
+         técnica. Não recoloque — nem o `<link>`, nem os `preconnect`,
+         que já abrem conexão com o Google antes de qualquer CSS. -->
+    <!-- Caminho absoluto: a pasta `public/` não existe no build (o Vite
+         serve o conteúdo dela na raiz), então o antigo
+         "public/images/..." era relativo e quebrava em /erp, /termos etc. -->
+    <link rel="icon" href="/images/faviconGrafico.png" type="image/png" />
 
     <!-- ── Sitemap ─────────────────────────────────────────────────────── -->
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
@@ -100,7 +107,13 @@
     }
     </script>
 
-    <!-- ── Structured data: SoftwareApplication (Bot financeiro) ───────── -->
+    <!-- ── Structured data: SoftwareApplication (Bot financeiro) ─────────
+         Sem `aggregateRating`: até 03/11/2026 este bloco declarava nota 5
+         de 5 com `ratingCount: 1`, uma média montada sobre um único voto
+         interno que o Google publica como estrela no resultado de busca e
+         o visitante lê como reputação de mercado. Nota agregada só volta
+         quando houver avaliações reais de clientes, publicadas e
+         verificáveis no site. -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -127,14 +140,7 @@
           "availability": "https://schema.org/InStock",
           "priceValidUntil": "2027-07-23"
         }
-      ],
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "5",
-        "bestRating": "5",
-        "worstRating": "1",
-        "ratingCount": "1"
-      }
+      ]
     }
     </script>
 
@@ -176,7 +182,7 @@
       presentes no HTML original.
     -->
     <noscript>
-      <header style="max-width: 720px; margin: 3rem auto; padding: 0 1rem; font-family: sans-serif; color: #fff;">
+      <header class="noscript-fallback">
         <h1>CrescIX: gestão financeira no automático pra pequenos negócios</h1>
         <p>
           A CrescIX transforma áudios e mensagens do Telegram em controle financeiro real.
