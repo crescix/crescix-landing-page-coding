@@ -1,4 +1,3 @@
-import { FileText } from "lucide-react";
 import { useSEO } from "@/hooks/useSEO";
 import {
   LegalShell,
@@ -34,16 +33,14 @@ export default function Termos() {
 
   return (
     <LegalShell
-      eyebrow="Termos"
       titulo="Termos de Uso"
       atualizadoEm={UPDATED_AT}
-      icone={<FileText className="h-5 w-5 text-green-400" />}
       rodape={
         <>
           Dúvidas sobre os termos? Manda um e-mail pra{" "}
           <a
             href={`mailto:${EMPRESA.emailContato}`}
-            className="text-green-400 hover:text-green-300"
+            className="link"
           >
             {EMPRESA.emailContato}
           </a>
@@ -60,19 +57,19 @@ export default function Termos() {
 
       <Section titulo="1. Com quem você está contratando">
         <IdentificacaoBox>
-          <p className="text-white font-semibold">{EMPRESA.nomeFantasia}</p>
+          <b>{EMPRESA.nomeFantasia}</b>
           {identificacaoFornecedor() && <p>{identificacaoFornecedor()}</p>}
           <p>{EMPRESA.endereco ?? EMPRESA.cidade}</p>
           <p>
             E-mail:{" "}
             <a
               href={`mailto:${EMPRESA.emailContato}`}
-              className="text-green-400 hover:text-green-300"
+              className="link"
             >
               {EMPRESA.emailContato}
-            </a>{" "}
-            · Telefone: {EMPRESA.telefone}
+            </a>
           </p>
+          <p>Telefone: {EMPRESA.telefone}</p>
         </IdentificacaoBox>
       </Section>
 
@@ -111,7 +108,7 @@ export default function Termos() {
       </Section>
 
       <Section titulo="4. Uso permitido">
-        <p className="mb-3">
+        <p>
           Você pode usar a CrescIX pra registrar e analisar as finanças do
           seu negócio. Não pode usar pra:
         </p>
@@ -130,7 +127,7 @@ export default function Termos() {
             por escrito.
           </li>
         </Ul>
-        <p className="mt-3">
+        <p>
           Violar essas regras nos dá o direito de suspender ou encerrar sua
           conta. Nesse caso devolvemos a parte proporcional do que você já
           tinha pago e ainda não usou.
@@ -145,7 +142,7 @@ export default function Termos() {
           apagados (veja a{" "}
           <a
             href="/privacidade"
-            className="text-green-400 hover:text-green-300 underline underline-offset-2"
+            className="link"
           >
             Política de Privacidade
           </a>
@@ -154,12 +151,12 @@ export default function Termos() {
       </Section>
 
       <Section titulo="6. Teste grátis, planos e pagamento">
-        <p className="mb-3">
+        <p>
           Você começa com{" "}
-          <strong className="text-white">30 dias de teste gratuito</strong>,
+          <strong>30 dias de teste gratuito</strong>,
           sem cartão e sem compromisso. Depois disso, pra continuar criando
           registros novos é necessário assinar um plano. Toda cobrança é
-          processada pelo <strong className="text-white">Mercado Pago</strong>
+          processada pelo <strong>Mercado Pago</strong>
           , por PIX ou cartão de crédito.
         </p>
         <Ul>
@@ -170,13 +167,13 @@ export default function Termos() {
             <strong>Anual:</strong> R$ 718,80 por 365 dias.
           </li>
         </Ul>
-        <p className="mt-3">
+        <p>
           Os valores vigentes aparecem sempre na tela
           &quot;Assinatura&quot; do app antes de você confirmar a
           contratação, e é o valor de lá que vale.
         </p>
 
-        <h3 className="text-white font-semibold text-base mt-5 mb-2">
+        <h3>
           6.1. PIX (pagamento único)
         </h3>
         <p>
@@ -186,10 +183,10 @@ export default function Termos() {
           expira.
         </p>
 
-        <h3 className="text-white font-semibold text-base mt-5 mb-2">
+        <h3>
           6.2. Cartão de crédito (renovação automática)
         </h3>
-        <p className="mb-3">
+        <p>
           A primeira cobrança acontece na contratação. A partir daí o
           Mercado Pago cobra o mesmo cartão automaticamente a cada mês ou a
           cada ano, conforme o plano, até você cancelar. Os dados do cartão
@@ -202,7 +199,7 @@ export default function Termos() {
           já pago continua valendo até o fim do período.
         </p>
 
-        <h3 className="text-white font-semibold text-base mt-5 mb-2">
+        <h3>
           6.3. Depois do vencimento
         </h3>
         <p>
@@ -211,7 +208,7 @@ export default function Termos() {
           de pagamento.
         </p>
 
-        <h3 className="text-white font-semibold text-base mt-5 mb-2">
+        <h3>
           6.4. Reajuste
         </h3>
         <p>
@@ -225,14 +222,14 @@ export default function Termos() {
       <Section titulo="7. Arrependimento e reembolso">
         <p>
           Como a contratação é feita pela internet, você pode desistir em
-          até <strong className="text-white">7 dias</strong> contados do
+          até <strong>7 dias</strong> contados do
           primeiro pagamento e receber tudo de volta, sem precisar
           justificar — é o art. 49 do Código de Defesa do Consumidor. As
           regras completas, os prazos de estorno e os casos de devolução
           fora desses 7 dias estão na{" "}
           <a
             href="/reembolso"
-            className="text-green-400 hover:text-green-300 underline underline-offset-2"
+            className="link"
           >
             Política de Troca e Reembolso
           </a>
@@ -280,7 +277,7 @@ export default function Termos() {
             você pagou pelo serviço nos 12 meses anteriores ao incidente.
           </li>
         </Ul>
-        <p className="mt-3 text-white/60">
+        <p className="muted">
           Este limite não afasta os direitos que o Código de Defesa do
           Consumidor te garante: nada aqui pretende excluir a nossa
           responsabilidade por vício ou defeito do serviço.
@@ -293,7 +290,7 @@ export default function Termos() {
           pra{" "}
           <a
             href={`mailto:${EMPRESA.emailDpo}`}
-            className="text-green-400 hover:text-green-300"
+            className="link"
           >
             {EMPRESA.emailDpo}
           </a>

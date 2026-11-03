@@ -1,0 +1,33 @@
+/* Hallmark · shape: Long Document · genre: modern-minimal · theme: Wayfind (locked, design.md) · redesign: full · copy: verbatim · job: read
+ * hero: Banner · nav: slab · footer: colophon · imagery: none · signature: the document set as signage, numbered sections and square rules · wayfind: platform, brand ink, green and amber
+ * axes: light/mono/cool · posture: committed · contrast: pass · fold: pass · v2.0.0 */
+/* Hallmark · pre-emit critique: P3 H4 E4 S3 R5 V3 · weakest: S, a legal text has no signature of its own; the board's rules and one reading column carry it, and no word of it changed */
+/* Hallmark · waive 39b · inline link inside the cookie notice sentence · a 44px box would break the line of the cookie notice */
+/* Hallmark · waive 79 · the document starts right under the title rule · a medida conta só o título, mas o texto legal já começa na primeira tela, ao lado do índice de documentos */
+
+/* Documentos legais. O texto é mantido palavra por palavra: daí o `copy: verbatim`. */
+.legal { padding-block: var(--space-2xl) var(--section-gap-s); }
+.legal__head { display: flex; flex-direction: column; gap: var(--space-sm); padding-bottom: var(--space-xl); margin-bottom: var(--space-2xl); border-bottom: var(--rule-bar) solid var(--color-ink); }
+.legal__grid { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: var(--gap-columns); align-items: start; }
+.legal__nav { position: sticky; top: calc(var(--nav-height) + var(--space-lg)); display: flex; flex-direction: column; align-items: flex-start; }
+.legal__nav button { display: flex; align-items: center; min-height: 44px; background: none; border: 0; padding: 0; color: var(--color-ink); font-size: var(--text-sm); font-weight: 500; text-align: left; text-decoration: underline; cursor: pointer; }
+.legal__nav button:hover { color: var(--color-accent-text); }
+.legal__nav button:active { color: var(--color-muted); }
+.legal__nav button:disabled { opacity: 0.55; cursor: not-allowed; }
+.legal__nav button:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; }
+.legal__texto { display: flex; flex-direction: column; gap: var(--space-xl); min-width: 0; max-width: 72ch; line-height: 1.6; }
+.legal__intro { padding-bottom: var(--space-lg); border-bottom: var(--rule-hair) solid var(--color-rule); max-width: none; }
+.legal__secao { display: flex; flex-direction: column; gap: var(--space-sm); }
+.legal__secao h2 { max-width: none; font-size: var(--text-xl); line-height: 1.2; }
+.legal__secao h3 { max-width: none; margin-top: var(--space-sm); font-size: var(--text-lg); }
+.legal__secao p { max-width: none; }
+.legal__lista { display: flex; flex-direction: column; gap: var(--space-xs); margin: 0; padding-left: var(--space-lg); list-style: square; }
+.legal__caixa { display: flex; flex-direction: column; gap: var(--space-2xs); padding: var(--space-lg); background: var(--color-paper-3); border: var(--rule-bar) solid var(--color-ink); overflow-wrap: anywhere; }
+.legal__destaque { font-weight: 800; color: var(--color-accent-text); overflow-wrap: anywhere; }
+.legal__fim { padding-top: var(--space-lg); border-top: var(--rule-bar) solid var(--color-ink); font-size: var(--text-sm); }
+.legal__texto a { overflow-wrap: anywhere; }
+
+@media (max-width: 60rem) {
+  .legal__grid { grid-template-columns: minmax(0, 1fr); }
+  .legal__nav { position: static; order: 2; padding-top: var(--space-md); border-top: var(--rule-bar) solid var(--color-ink); }
+}

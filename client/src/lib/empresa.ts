@@ -47,6 +47,17 @@ export const EMPRESA = {
   whatsappLink: "https://wa.me/5535984219965",
 } as const;
 
+/**
+ * Os documentos legais do site. Vivem numa lista porque o rodapé precisa
+ * mostrar todos em todas as páginas.
+ */
+export const DOCS_LEGAIS = [
+  { path: "/privacidade", label: "Política de Privacidade" },
+  { path: "/termos", label: "Termos de uso" },
+  { path: "/cookies", label: "Política de Cookies" },
+  { path: "/reembolso", label: "Troca e reembolso" },
+];
+
 /** Linha com razão social e CNPJ, ou `null` enquanto não existirem. */
 export function identificacaoFornecedor(): string | null {
   if (EMPRESA.cnpj && EMPRESA.razaoSocial) {

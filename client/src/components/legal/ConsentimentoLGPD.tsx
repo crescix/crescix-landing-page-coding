@@ -43,8 +43,8 @@ export function ConsentimentoLGPD({
   name,
 }: ConsentimentoLGPDProps) {
   return (
-    <div className="space-y-2">
-      <div className="flex items-start gap-3">
+    <div className="consent">
+      <div className="consent__linha">
         <input
           id={id}
           name={name}
@@ -52,19 +52,18 @@ export function ConsentimentoLGPD({
           checked={checked}
           onChange={(e) => onChange(e.target.checked)}
           required
-          className="mt-0.5 h-4 w-4 flex-shrink-0 rounded border-white/30 bg-white/5 accent-green-500"
         />
-        <label htmlFor={id} className="text-xs text-white/70 leading-relaxed">
+        <label htmlFor={id}>
           Autorizo a CrescIX a usar os dados que eu enviar {finalidade}. Posso
           pedir a exclusão a qualquer momento.
         </label>
       </div>
-      <p className="text-xs text-white/60 pl-7">
+      <p className="consent__politica">
         <Link
           href="/privacidade"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-green-400 hover:text-green-300 underline underline-offset-2"
+          className="link"
         >
           Ler a Política de Privacidade
         </Link>{" "}

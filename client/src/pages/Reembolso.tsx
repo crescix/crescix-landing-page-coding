@@ -1,4 +1,3 @@
-import { RotateCcw } from "lucide-react";
 import { useSEO } from "@/hooks/useSEO";
 import { LegalShell, Intro, Section, Ul } from "@/components/legal/LegalShell";
 import { EMPRESA } from "@/lib/empresa";
@@ -29,16 +28,14 @@ export default function Reembolso() {
 
   return (
     <LegalShell
-      eyebrow="Reembolso"
       titulo="Política de Troca e Reembolso"
       atualizadoEm={UPDATED_AT}
-      icone={<RotateCcw className="h-5 w-5 text-green-400" />}
       rodape={
         <>
           Pra pedir cancelamento ou reembolso, escreva pra{" "}
           <a
             href={`mailto:${EMPRESA.emailSuporte}`}
-            className="text-green-400 hover:text-green-300"
+            className="link"
           >
             {EMPRESA.emailSuporte}
           </a>
@@ -55,7 +52,7 @@ export default function Reembolso() {
       </Intro>
 
       <Section titulo="1. O que você está contratando">
-        <p className="mb-3">
+        <p>
           Um serviço digital por assinatura. Não há produto físico, então
           não existe troca nem devolução de mercadoria: o que existe é
           cancelamento da assinatura e, nos casos abaixo, devolução do
@@ -74,7 +71,7 @@ export default function Reembolso() {
             <strong>Plano anual:</strong> R$ 718,80 por 365 dias.
           </li>
         </Ul>
-        <p className="mt-4">
+        <p>
           Os valores vigentes aparecem sempre na tela &quot;Assinatura&quot;
           do app antes de você confirmar. A cobrança é processada pelo
           Mercado Pago, por PIX ou cartão de crédito.
@@ -82,10 +79,10 @@ export default function Reembolso() {
       </Section>
 
       <Section titulo="2. Direito de arrependimento: 7 dias, reembolso integral">
-        <p className="mb-3">
+        <p>
           Você pode desistir da assinatura em até{" "}
-          <strong className="text-white">7 dias corridos</strong> e receber
-          de volta <strong className="text-white">100% do que pagou</strong>,
+          <strong>7 dias corridos</strong> e receber
+          de volta <strong>100% do que pagou</strong>,
           sem multa e sem precisar explicar o motivo.
         </p>
         <Ul>
@@ -98,7 +95,7 @@ export default function Reembolso() {
             <strong>Como pedir:</strong> um e-mail pra{" "}
             <a
               href={`mailto:${EMPRESA.emailSuporte}`}
-              className="text-green-400 hover:text-green-300 underline underline-offset-2"
+              className="link"
             >
               {EMPRESA.emailSuporte}
             </a>{" "}
@@ -133,7 +130,7 @@ export default function Reembolso() {
             processamento do seu reembolso.
           </li>
         </Ul>
-        <p className="mt-4">
+        <p>
           Se o prazo estourar sem explicação, cobre da gente: o atraso é
           nossa responsabilidade perante você, mesmo quando a execução
           depende do Mercado Pago.
@@ -161,7 +158,7 @@ export default function Reembolso() {
       </Section>
 
       <Section titulo="5. Quando devolvemos o dinheiro mesmo fora dos 7 dias">
-        <p className="mb-3">
+        <p>
           O prazo de arrependimento é um direito seu, não um limite pro
           nosso. Devolvemos o valor proporcional, ou integral quando fizer
           sentido, nestes casos:
@@ -202,7 +199,7 @@ export default function Reembolso() {
           disponível pra você. Pedidos de documento fiscal passam pelo{" "}
           <a
             href={`mailto:${EMPRESA.emailContato}`}
-            className="text-green-400 hover:text-green-300 underline underline-offset-2"
+            className="link"
           >
             {EMPRESA.emailContato}
           </a>
@@ -218,7 +215,7 @@ export default function Reembolso() {
             href="https://www.consumidor.gov.br"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-green-400 hover:text-green-300 underline underline-offset-2"
+            className="link"
           >
             consumidor.gov.br
           </a>
