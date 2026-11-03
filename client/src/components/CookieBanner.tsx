@@ -53,16 +53,16 @@ export default function CookieBanner() {
             <p className="text-sm font-semibold text-white">
               Usamos só o essencial
             </p>
-            <p className="text-xs text-white/55 mt-1 leading-relaxed">
-              Não usamos cookies de rastreamento, analytics nem
+            <p className="text-xs text-white/60 mt-1 leading-relaxed">
+              Este site não grava cookies e não usa analytics nem
               anúncios. Apenas armazenamento essencial pro site
-              funcionar.{" "}
+              funcionar. Leia a{" "}
               <button
                 type="button"
-                onClick={() => navigate("/privacidade")}
+                onClick={() => navigate("/cookies")}
                 className="text-green-400 hover:text-green-300 underline underline-offset-2"
               >
-                Mais detalhes
+                Política de Cookies
               </button>
               .
             </p>

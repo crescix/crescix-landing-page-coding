@@ -1,5 +1,19 @@
 import { FaInstagram, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 import { useLocation } from "wouter";
+import { EMPRESA, identificacaoFornecedor, pendente } from "@/lib/empresa";
+
+/**
+ * Os documentos legais do site. Vivem numa lista porque o rodapé precisa
+ * mostrar todos e o Decreto 7.962/2013 pede que a identificação e as
+ * condições da contratação fiquem em local de destaque — e rodapé de
+ * todas as páginas é o lugar onde isso é esperado.
+ */
+const DOCS_LEGAIS = [
+  { path: "/privacidade", label: "Política de Privacidade" },
+  { path: "/termos", label: "Termos de uso" },
+  { path: "/cookies", label: "Política de Cookies" },
+  { path: "/reembolso", label: "Troca e reembolso" },
+];
 
 export default function Footer() {
   const [, navigate] = useLocation();
@@ -114,35 +128,69 @@ export default function Footer() {
 
         <div className="pt-8 border-t border-white/5 flex flex-col gap-4">
           {/* Links legais (LGPD): visíveis sempre, em primeiro plano */}
-          <nav className="flex items-center justify-center sm:justify-start gap-4 flex-wrap text-xs text-white/70">
-            <button
-              onClick={() => navigate("/privacidade")}
-              className="hover:text-green-400 transition-colors"
-            >
-              Política de Privacidade
-            </button>
-            <span aria-hidden="true" className="text-white/15">·</span>
-            <button
-              onClick={() => navigate("/termos")}
-              className="hover:text-green-400 transition-colors"
-            >
-              Termos de uso
-            </button>
-            <span aria-hidden="true" className="text-white/15">·</span>
+          <nav
+            aria-label="Documentos legais"
+            className="flex items-center justify-center sm:justify-start gap-4 flex-wrap text-xs text-white/70"
+          >
+            {DOCS_LEGAIS.map((doc, i) => (
+              <span key={doc.path} className="inline-flex items-center gap-4">
+                {i > 0 && (
+                  <span aria-hidden="true" className="text-white/25">
+                    ·
+                  </span>
+                )}
+                <button
+                  onClick={() => navigate(doc.path)}
+                  className="hover:text-green-400 transition-colors"
+                >
+                  {doc.label}
+                </button>
+              </span>
+            ))}
+            <span aria-hidden="true" className="text-white/25">·</span>
             <a
-              href="mailto:privacidade@crescix.com.br"
+              href={`mailto:${EMPRESA.emailDpo}`}
               className="hover:text-green-400 transition-colors"
             >
-              DPO
+              Encarregado de dados (DPO)
             </a>
           </nav>
 
+          {/* Identificação do fornecedor: Decreto 7.962/2013, art. 2º, I */}
+          <div className="text-xs text-white/60 leading-relaxed space-y-1">
+            <p>
+              <span className="text-white/80 font-semibold">
+                {EMPRESA.nomeFantasia}
+              </span>{" "}
+              · {identificacaoFornecedor()}
+            </p>
+            <p>{EMPRESA.endereco}</p>
+            <p>
+              <a
+                href={`mailto:${EMPRESA.emailContato}`}
+                className="hover:text-green-400 transition-colors"
+              >
+                {EMPRESA.emailContato}
+              </a>{" "}
+              · {EMPRESA.telefone}
+            </p>
+            {(pendente(EMPRESA.responsavel) ||
+              pendente(EMPRESA.cpf) ||
+              pendente(EMPRESA.endereco)) && (
+              <p className="text-amber-400/80">
+                Identificação pendente de preenchimento em{" "}
+                <code>client/src/lib/empresa.ts</code> antes do próximo
+                deploy.
+              </p>
+            )}
+          </div>
+
           <div className="flex flex-col sm:flex-row items-center justify-between gap-2">
-            <p className="text-xs text-white/50">
+            <p className="text-xs text-white/60">
               &copy; {new Date().getFullYear()} CrescIX. Todos os direitos
               reservados.
             </p>
-            <p className="text-xs text-white/50 font-mono">
+            <p className="text-xs text-white/60 font-mono">
               Feito em Santa Rita do Sapucaí, MG 🇧🇷
             </p>
           </div>
