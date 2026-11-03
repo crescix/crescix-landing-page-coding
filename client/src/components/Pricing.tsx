@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 import { Link } from "wouter";
 
@@ -56,153 +55,92 @@ export default function Pricing() {
   const economiaMensal = MENSAL.valor - mensalEquivalente;
 
   return (
-    <section
-      id="precos"
-      className="py-24 lg:py-32 relative overflow-hidden bg-[#0B1622]"
-    >
-      <div className="absolute inset-0 mesh-pricing pointer-events-none" />
-
-      <div className="container relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center max-w-3xl mx-auto mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-            Preços simples e transparentes
-          </h2>
-          <p className="text-white/70 text-base md:text-lg leading-relaxed">
+    <section id="precos" className="section">
+      <div className="container">
+        <div className="head head--split">
+          <h2>Preços simples e transparentes</h2>
+          <p className="lead">
             Comece com 30 dias grátis. Depois, escolha o plano que faz mais
             sentido pra você. Sem letras miúdas.
           </p>
-        </motion.div>
+        </div>
 
-        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          {/* MENSAL */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="relative rounded-2xl border border-white/10 bg-white/5 p-8 flex flex-col"
-          >
-            <h3 className="text-xl font-semibold text-white">
-              {MENSAL.label}
-            </h3>
-            <p className="mt-1 text-sm text-white/60">{MENSAL.description}</p>
+        <div className="planos">
+          <div className="plano">
+            <div className="plano__selos" aria-hidden="true" />
+            <h3>{MENSAL.label}</h3>
+            <p className="small">{MENSAL.description}</p>
+            <p className="plano__preco">
+              <b>{formatBRL(MENSAL.valor)}</b>
+              <span>/mês</span>
+            </p>
+            <p className="small muted">{MENSAL.subtitle}</p>
 
-            <div className="mt-6 flex items-baseline gap-1">
-              <span className="text-4xl font-bold text-white tabular-nums">
-                {formatBRL(MENSAL.valor)}
-              </span>
-              <span className="text-sm text-white/60">/mês</span>
-            </div>
-            <p className="mt-1 text-xs text-white/50">{MENSAL.subtitle}</p>
-
-            <ul className="mt-6 flex-1 space-y-3">
+            <ul className="plano__lista">
               {benefitsBase.map((b) => (
-                <li
-                  key={b}
-                  className="flex items-start gap-2 text-sm text-white/80"
-                >
-                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-green-500" />
+                <li key={b}>
+                  <Check size={16} aria-hidden="true" />
                   <span>{b}</span>
                 </li>
               ))}
             </ul>
 
-            <Link
-              href="/teste-gratis"
-              className="mt-8 inline-flex items-center justify-center h-11 w-full rounded-xl bg-white/10 hover:bg-white/15 text-white font-semibold text-sm transition-colors"
-            >
+            <Link href="/teste-gratis" className="btn btn--full">
               Começar teste grátis de 30 dias
             </Link>
-          </motion.div>
+          </div>
 
-          {/* ANUAL: destacado */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="relative rounded-2xl border-2 border-green-500/60 bg-gradient-to-b from-green-500/10 to-transparent p-8 flex flex-col shadow-[0_0_50px_-15px_rgba(34,197,94,0.4)] md:scale-[1.02]"
-            aria-label="Plano Anual"
-          >
-            <div className="absolute -top-3 left-1/2 -translate-x-1/2 flex items-center gap-2 whitespace-nowrap">
-              {/* "Mais popular" afirmava um comportamento de compra que a
-                  gente não mede nem publica. "Melhor preço" é aritmética
-                  verificável nos dois cards ao lado. */}
-              <span className="rounded-full bg-green-500 px-3 py-1 text-xs font-bold uppercase tracking-wider text-[#0B1622]">
-                Melhor preço
-              </span>
-              <span className="rounded-full bg-[#0B1622] border border-green-500/40 px-3 py-1 text-xs font-bold text-green-400">
-                −{economiaPercentual}%
-              </span>
+          <div className="plano on-ink" role="group" aria-label="Plano Anual">
+            {/* "Mais popular" afirmava um comportamento de compra que a
+                gente não mede nem publica. "Melhor preço" é aritmética
+                verificável nos dois cards ao lado. */}
+            <div className="plano__selos">
+              <span>Melhor preço</span>
+              <span>-{economiaPercentual}%</span>
             </div>
-
-            <h3 className="text-xl font-semibold text-white">
-              {ANUAL.label}
-            </h3>
-            <p className="mt-1 text-sm text-white/60">
+            <h3>{ANUAL.label}</h3>
+            <p className="small">
               Pague o ano todo de uma vez e economize{" "}
-              <span className="text-amber-400 font-semibold tabular-nums">
-                {formatBRL(economiaMensal * 12)}
-              </span>
-              .
+              <strong>{formatBRL(economiaMensal * 12)}</strong>.
+            </p>
+            <p className="plano__preco">
+              <b>{formatBRL(mensalEquivalente)}</b>
+              <span>/mês</span>
+            </p>
+            <p className="small muted">
+              12× {formatBRL(mensalEquivalente)}, ou {formatBRL(ANUAL.valor)} à
+              vista. {ANUAL.subtitle}.
             </p>
 
-            <div className="mt-6 flex items-baseline gap-1">
-              <span className="text-4xl font-bold text-white tabular-nums">
-                {formatBRL(mensalEquivalente)}
-              </span>
-              <span className="text-sm text-white/60">/mês</span>
-            </div>
-            <p className="mt-1 text-xs text-white/50">
-              12× {formatBRL(mensalEquivalente)} · {formatBRL(ANUAL.valor)} à
-              vista
-            </p>
-
-            <ul className="mt-6 flex-1 space-y-3">
+            <ul className="plano__lista">
               {benefitsAnual.map((b) => (
-                <li
-                  key={b}
-                  className="flex items-start gap-2 text-sm text-white/80"
-                >
-                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-green-500" />
+                <li key={b}>
+                  <Check size={16} aria-hidden="true" />
                   <span>{b}</span>
                 </li>
               ))}
             </ul>
 
-            <Link
-              href="/teste-gratis"
-              className="mt-8 inline-flex items-center justify-center h-11 w-full rounded-xl bg-green-500 hover:bg-green-400 text-[#0B1622] font-semibold text-sm transition-colors"
-            >
+            <Link href="/teste-gratis" className="btn btn--primary btn--full">
               Começar teste grátis de 30 dias
             </Link>
-          </motion.div>
+          </div>
         </div>
 
         {/* Antes dizia "Sem auto-renovação", o que só é verdade no PIX: no
             cartão o Mercado Pago renova sozinho até o cliente cancelar,
             como dizem os Termos de Uso. Informação de cobrança recorrente
             é exatamente o que o CDC manda deixar claro antes da compra. */}
-        <div className="text-center text-xs text-white/60 mt-8 max-w-2xl mx-auto space-y-1.5">
+        <div className="condicoes">
           <p>
             Sem cartão de crédito no teste de 30 dias. Cancele a qualquer
             momento, sem multa: o tempo já pago segue valendo até o fim.
           </p>
           <p>
-            Pagando por <strong className="text-white/80">PIX</strong>, não
-            há renovação automática. Pagando por{" "}
-            <strong className="text-white/80">cartão</strong>, a assinatura
-            renova sozinha a cada período até você cancelar no app. Você tem{" "}
-            <Link
-              href="/reembolso"
-              className="text-green-400 hover:text-green-300 underline underline-offset-2"
-            >
+            Pagando por <strong>PIX</strong>, não há renovação automática.
+            Pagando por <strong>cartão</strong>, a assinatura renova sozinha a
+            cada período até você cancelar no app. Você tem{" "}
+            <Link href="/reembolso" className="link">
               7 dias pra desistir
             </Link>{" "}
             e receber tudo de volta.

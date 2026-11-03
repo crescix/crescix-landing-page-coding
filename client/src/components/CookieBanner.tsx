@@ -44,23 +44,23 @@ export default function CookieBanner() {
       className="fixed inset-x-3 bottom-3 md:inset-x-auto md:right-4 md:left-auto md:bottom-4 md:max-w-md z-50"
       style={{ animation: "auth-slide-up 0.3s ease-out forwards" }}
     >
-      <div className="bg-[#1F3447]/95 backdrop-blur-md border border-white/10 rounded-2xl p-4 md:p-5 shadow-2xl shadow-black/40">
+      <div className="cookie-card bg-[#1F3447]/95 backdrop-blur-md border border-white/10 rounded-2xl p-4 md:p-5 shadow-2xl shadow-black/40">
         <div className="flex items-start gap-3">
-          <div className="h-9 w-9 rounded-xl bg-green-500/15 flex items-center justify-center flex-shrink-0">
+          <div className="cookie-card__icon h-9 w-9 rounded-xl bg-green-500/15 flex items-center justify-center flex-shrink-0">
             <Cookie className="h-4 w-4 text-green-400" />
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-semibold text-white">
+            <p className="cookie-card__title text-sm font-semibold text-white">
               Usamos só o essencial
             </p>
-            <p className="text-xs text-white/60 mt-1 leading-relaxed">
+            <p className="cookie-card__text text-xs text-white/60 mt-1 leading-relaxed">
               Este site não grava cookies e não usa analytics nem
               anúncios. Apenas armazenamento essencial pro site
               funcionar. Leia a{" "}
               <button
                 type="button"
                 onClick={() => navigate("/cookies")}
-                className="text-green-400 hover:text-green-300 underline underline-offset-2"
+                className="cookie-card__link text-green-400 hover:text-green-300 underline underline-offset-2"
               >
                 Política de Cookies
               </button>
@@ -71,7 +71,7 @@ export default function CookieBanner() {
             type="button"
             onClick={aceitar}
             aria-label="Fechar aviso"
-            className="h-7 w-7 inline-flex items-center justify-center rounded-lg text-white/40 hover:text-white/80 hover:bg-white/5 transition-colors flex-shrink-0"
+            className="cookie-card__close h-7 w-7 inline-flex items-center justify-center rounded-lg text-white/40 hover:text-white/80 hover:bg-white/5 transition-colors flex-shrink-0"
           >
             <X className="h-4 w-4" />
           </button>
@@ -80,7 +80,7 @@ export default function CookieBanner() {
         <button
           type="button"
           onClick={aceitar}
-          className="mt-4 w-full h-9 px-4 bg-green-500 hover:bg-green-400 text-white text-sm font-semibold rounded-lg transition-colors"
+          className="cookie-card__ok mt-4 w-full h-9 px-4 bg-green-500 hover:bg-green-400 text-white text-sm font-semibold rounded-lg transition-colors"
         >
           Entendi
         </button>

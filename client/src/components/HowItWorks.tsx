@@ -1,154 +1,131 @@
-import { MessageSquare, Brain, Database, ShieldCheck } from "lucide-react";
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { Check, Mic } from "lucide-react";
 
-type StepAccent = "green" | "cyan" | "amber";
-
-const accentClasses: Record<
-  StepAccent,
-  { bg: string; border: string; text: string; hoverBg: string; numHover: string }
-> = {
-  green: {
-    bg: "bg-green-500/10",
-    border: "border-green-500/25",
-    text: "text-green-400",
-    hoverBg: "group-hover:bg-green-500/15",
-    numHover: "group-hover:text-green-500/40",
-  },
-  cyan: {
-    bg: "bg-cyan-500/10",
-    border: "border-cyan-500/25",
-    text: "text-cyan-400",
-    hoverBg: "group-hover:bg-cyan-500/15",
-    numHover: "group-hover:text-cyan-500/40",
-  },
-  amber: {
-    bg: "bg-amber-500/10",
-    border: "border-amber-500/25",
-    text: "text-amber-400",
-    hoverBg: "group-hover:bg-amber-500/15",
-    numHover: "group-hover:text-amber-500/40",
-  },
-};
-
-const steps: {
-  icon: typeof MessageSquare;
-  number: string;
-  title: string;
-  description: string;
-  accent: StepAccent;
-}[] = [
+const steps = [
   {
-    icon: MessageSquare,
-    number: "01",
     title: "Você manda no Telegram",
     description:
       'Áudio ou texto curto: "Vendi 4 águas a 3 reais", "Paguei 150 de aluguel". Sem app extra, sem formulário.',
-    accent: "green",
   },
   {
-    icon: Brain,
-    number: "02",
     title: "A IA entende",
     description:
       "Whisper transcreve o áudio e a IA estrutura: tipo da operação, item, valor unitário, quantidade. Tudo em segundos.",
-    accent: "cyan",
   },
   {
-    icon: Database,
-    number: "03",
     title: "Você confirma",
     description:
-      "O bot mostra um resumo do que entendeu. Você clica em ✅ e o lançamento entra direto no caixa do CrescIX.",
-    accent: "amber",
+      "O bot mostra um resumo do que entendeu. Você clica em confirmar e o lançamento entra direto no caixa do CrescIX.",
   },
   {
-    icon: ShieldCheck,
-    number: "04",
     title: "Tudo guardado",
     description:
       "Dados criptografados, multi-tenancy, relatórios em planilha quando quiser. Sem perda, sem retrabalho.",
-    accent: "green",
   },
 ];
 
-export default function HowItWorks() {
-  return (
-    <section
-      id="como-funciona"
-      className="py-24 lg:py-32 relative overflow-hidden bg-[#0B1622]"
-    >
-      <div className="absolute inset-0 bg-grid-dim mask-radial pointer-events-none" />
-      <div className="absolute inset-0 mesh-howitworks pointer-events-none" />
+/* Alturas fixas da onda do áudio de exemplo */
+const ONDA = [8, 14, 7, 18, 10, 16, 6, 12, 19, 9, 15, 7, 13, 17, 8, 11, 16, 6];
 
-      <div className="container relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16 lg:mb-20"
-        >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-green-500/10 border border-green-500/25 text-green-400 text-xs font-bold uppercase tracking-wider mb-4">
-            Como Funciona
-          </span>
-          <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white mb-4">
-            Quatro passos.{" "}
-            <span className="gradient-green-cyan">Zero fricção.</span>
-          </h2>
-          <p className="text-lg text-white/75 max-w-2xl mx-auto">
+export default function HowItWorks() {
+  const [ativo, setAtivo] = useState(0);
+  const passos = useRef<(HTMLLIElement | null)[]>([]);
+
+  // A linha acesa no quadro acompanha o passo que está no meio da tela.
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entradas) => {
+        entradas.forEach((e) => {
+          if (e.isIntersecting) {
+            setAtivo(passos.current.indexOf(e.target as HTMLLIElement));
+          }
+        });
+      },
+      { rootMargin: "-45% 0px -45% 0px" },
+    );
+    passos.current.forEach((el) => el && observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section id="como-funciona" className="section">
+      <div className="container">
+        <div className="head">
+          <h2>Quatro passos. Zero fricção.</h2>
+          <p className="lead">
             Conversa normal no Telegram entra como lançamento estruturado no
             seu painel financeiro.
           </p>
-        </motion.div>
+        </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-5">
-          {steps.map((step, index) => {
-            const a = accentClasses[step.accent];
-            return (
-              <motion.div
-                key={step.number}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: index * 0.12 }}
-                className="relative group"
+        <div className="pinned">
+          <div
+            className="pinned__visual plate"
+            role="group"
+            aria-label="Exemplo de conversa com o bot"
+          >
+            <div className="plate__bar">
+              <b>crescix-bot</b>
+              <span>Telegram</span>
+            </div>
+
+            <div className="board-row" data-on={ativo === 0}>
+              <div className="audio">
+                <Mic size={20} aria-hidden="true" />
+                <span className="audio__wave" aria-hidden="true">
+                  {ONDA.map((altura, i) => (
+                    <i key={i} style={{ height: altura }} />
+                  ))}
+                </span>
+                <span>0:14</span>
+              </div>
+            </div>
+
+            <div className="board-row" data-on={ativo === 1}>
+              <p className="plate__head">
+                <Check size={16} aria-hidden="true" />
+                Entendi
+              </p>
+              <dl className="ledger">
+                <dt>Tipo:</dt>
+                <dd>Venda</dd>
+                <dt>Item:</dt>
+                <dd>4 águas</dd>
+                <dt>Unitário:</dt>
+                <dd>R$ 3,00</dd>
+                <dt className="total">Total:</dt>
+                <dd className="total">R$ 12,00</dd>
+              </dl>
+            </div>
+
+            <div className="board-row" data-on={ativo === 2}>
+              <p className="board-row__line">
+                <Check size={16} aria-hidden="true" />
+                Confirmar
+              </p>
+            </div>
+
+            <div className="board-row" data-on={ativo === 3}>
+              <p className="board-row__line">
+                <Check size={16} aria-hidden="true" />
+                Salvo no caixa
+              </p>
+            </div>
+          </div>
+
+          <ol className="pinned__steps">
+            {steps.map((step, i) => (
+              <li
+                key={step.title}
+                ref={(el) => {
+                  passos.current[i] = el;
+                }}
               >
-                {/* Connector: gradient verde -> cyan pra sugerir progressão */}
-                {index < steps.length - 1 && (
-                  <div className="hidden lg:block absolute top-16 left-full w-full z-0">
-                    <div className="h-px w-[80%] mx-auto bg-gradient-to-r from-green-500/40 via-cyan-500/30 to-transparent" />
-                  </div>
-                )}
-
-                <div className="relative glass-card rounded-2xl p-6 lg:p-7 hover:border-white/20 transition-all duration-300 group-hover:-translate-y-1">
-                  <div className="flex items-center justify-between mb-5">
-                    <div
-                      className={`w-14 h-14 rounded-xl ${a.bg} border ${a.border} flex items-center justify-center ${a.hoverBg} group-hover:scale-110 transition-all duration-300`}
-                    >
-                      <step.icon className={`w-6 h-6 ${a.text}`} />
-                    </div>
-                    {/* Marca d'água: o número do passo já aparece na ordem
-                        dos cards, então aqui é decoração. aria-hidden pra
-                        não ser lido duas vezes e pra não cair na regra de
-                        contraste de texto. */}
-                    <span
-                      aria-hidden="true"
-                      className={`text-3xl font-mono font-black text-white/10 ${a.numHover} transition-colors`}
-                    >
-                      {step.number}
-                    </span>
-                  </div>
-
-                  <h3 className="font-display font-bold text-lg text-white mb-2.5">
-                    {step.title}
-                  </h3>
-                  <p className="text-sm text-white/75 leading-relaxed">
-                    {step.description}
-                  </p>
-                </div>
-              </motion.div>
-            );
-          })}
+                <h3>{step.title}</h3>
+                <p>{step.description}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </div>
     </section>

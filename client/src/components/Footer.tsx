@@ -8,7 +8,7 @@ import { EMPRESA, identificacaoFornecedor, pendente } from "@/lib/empresa";
  * condições da contratação fiquem em local de destaque — e rodapé de
  * todas as páginas é o lugar onde isso é esperado.
  */
-const DOCS_LEGAIS = [
+export const DOCS_LEGAIS = [
   { path: "/privacidade", label: "Política de Privacidade" },
   { path: "/termos", label: "Termos de uso" },
   { path: "/cookies", label: "Política de Cookies" },

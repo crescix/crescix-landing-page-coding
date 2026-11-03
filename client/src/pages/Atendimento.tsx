@@ -1,23 +1,10 @@
-import { motion } from "framer-motion";
 import { useLocation } from "wouter";
-import {
-  ArrowLeft,
-  MessageCircle,
-  CalendarCheck,
-  Bell,
-  Users,
-  Clock,
-  MoonStar,
-  Building2,
-  Dumbbell,
-  Stethoscope,
-  FlaskConical,
-  Scissors,
-  Check,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
-import Footer from "@/components/Footer";
+import { Check, MessageCircle } from "lucide-react";
+import Palco from "@/components/wayfind/Palco";
+import SiteFooter from "@/components/wayfind/SiteFooter";
 import { useSEO } from "@/hooks/useSEO";
+import { useWayfind } from "@/hooks/useWayfind";
+import { FOTOS } from "@/lib/fotos";
 
 const WHATSAPP_URL =
   "https://wa.me/5535984219965?text=Ol%C3%A1!%20Vi%20a%20p%C3%A1gina%20de%20atendimento%20autom%C3%A1tico%20e%20queria%20saber%20mais.";
@@ -28,42 +15,54 @@ const CONVERSA = [
   {
     de: "bot",
     texto:
-      "Olá, Ana! 👋 Sou o assistente de atendimento da Academia Corpo em Movimento 🤖",
+      "Olá, Ana! Sou o assistente de atendimento da Academia Corpo em Movimento",
   },
   {
     de: "bot",
     texto:
-      "Como posso te ajudar hoje?\n\n1  📅 Agendar um horário\n2  🔄 Remarcar ou cancelar\n3  💬 Matrículas e planos\n4  💰 Financeiro",
+      "Como posso te ajudar hoje?\n\n1  Agendar um horário\n2  Remarcar ou cancelar\n3  Matrículas e planos\n4  Financeiro",
   },
   { de: "cliente", texto: "3" },
   {
     de: "bot",
     texto:
-      "Já avisei o setor de Matrículas e planos 💬\nVocê será respondido por aqui em instantes.",
+      "Já avisei o setor de Matrículas e planos\nVocê será respondido por aqui em instantes.",
+  },
+];
+
+const DORES = [
+  {
+    titulo: "Fora do horário",
+    texto: "Boa parte das mensagens chega quando não tem ninguém na recepção.",
+  },
+  {
+    titulo: "Recepção ocupada",
+    texto:
+      "Quem está no balcão atende quem está na frente, e o WhatsApp acumula.",
+  },
+  {
+    titulo: "Falta sem aviso",
+    texto: "Horário marcado e ninguém aparece, porque nada lembrou o cliente.",
   },
 ];
 
 const COMO_FUNCIONA = [
   {
-    icone: MessageCircle,
     titulo: "Atende na hora",
     texto:
       "O cliente manda mensagem a qualquer hora e recebe resposta em segundos, inclusive de madrugada, no fim de semana e no feriado.",
   },
   {
-    icone: Users,
     titulo: "Direciona pro setor certo",
     texto:
       "Financeiro, matrículas, recepção. Quem precisa de gente é encaminhado pro WhatsApp do setor responsável, com nome e contato.",
   },
   {
-    icone: CalendarCheck,
     titulo: "Agenda sozinho",
     texto:
       "Mostra os horários livres na agenda, marca direto no Google Agenda e confere o horário no instante da confirmação pra não marcar dois clientes no mesmo lugar.",
   },
   {
-    icone: Bell,
     titulo: "Lembra e confirma",
     texto:
       "Envia lembrete 24h antes e pede confirmação. Quem não puder ir remarca ali mesmo, e o horário volta a ficar livre.",
@@ -105,38 +104,33 @@ const RECURSOS = [
 
 const PARA_QUEM = [
   {
-    icone: Dumbbell,
     titulo: "Academias e estúdios",
     texto: "Aula experimental, avaliação física e dúvida de plano fora do horário.",
   },
   {
-    icone: Stethoscope,
     titulo: "Clínicas e consultórios",
     texto: "Psicologia, odontologia, dermatologia, nutrição e fisioterapia.",
   },
   {
-    icone: FlaskConical,
     titulo: "Laboratórios",
     texto: "Agendamento de coleta e orientação de preparo antes do exame.",
   },
   {
-    icone: Scissors,
     titulo: "Salões e estética",
     texto: "Agenda cheia, muitas remarcações e cliente que some sem avisar.",
   },
   {
-    icone: Building2,
     titulo: "Oficinas e assistências",
     texto: "Orçamento, status do serviço e agendamento de entrega ou retirada.",
   },
   {
-    icone: MessageCircle,
     titulo: "Comércio e serviços",
     texto: "Loja, escritório, prestador. Se o cliente chama no WhatsApp, encaixa.",
   },
 ];
 
 export default function Atendimento() {
+  useWayfind();
   useSEO({
     title: "Atendimento automático no WhatsApp | CrescIX",
     description:
@@ -147,34 +141,39 @@ export default function Atendimento() {
   const [, navigate] = useLocation();
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#0B1622]">
+    <>
       {/* ── Barra superior enxuta ─────────────────────────────────────────── */}
-      <nav className="sticky top-0 z-50 bg-[#0B1622]/85 backdrop-blur-xl border-b border-white/5">
-        <div className="container flex items-center justify-between h-18 lg:h-20">
+      <nav className="slab on-ink" aria-label="Principal">
+        <div className="container slab__bar">
           <button
+            type="button"
             onClick={() => navigate("/")}
-            className="flex items-center gap-2 group"
+            className="slab__logo"
             aria-label="Voltar para a página inicial"
           >
             <img
               src={`${import.meta.env.BASE_URL}images/logo.png`}
               alt="CrescIX"
-              className="w-32 h-auto rounded-md"
+              width={703}
+              height={260}
             />
           </button>
 
-          <div className="flex items-center gap-2">
+          <div className="slab__right">
             <button
+              type="button"
               onClick={() => navigate("/")}
-              className="hidden sm:inline-flex items-center gap-1.5 text-sm font-medium text-white/60 hover:text-white px-3 py-2 rounded-lg transition-colors"
+              className="slab__quiet"
             >
-              <ArrowLeft className="w-3.5 h-3.5" />
               Conhecer a CrescIX
             </button>
-            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
-              <Button className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white font-display font-semibold px-5 py-2.5 rounded-xl shadow-lg shadow-green-500/25 transition-all duration-300 hover:-translate-y-0.5">
-                Quero testar
-              </Button>
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn--primary"
+            >
+              Quero testar
             </a>
           </div>
         </div>
@@ -182,132 +181,86 @@ export default function Atendimento() {
 
       <main>
         {/* ── Hero ───────────────────────────────────────────────────────── */}
-        <section className="relative overflow-hidden pt-16 pb-20 lg:pt-24 lg:pb-28">
-          <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute -top-40 left-1/4 w-[36rem] h-[36rem] bg-green-500/10 rounded-full blur-[120px]" />
-            <div className="absolute top-20 right-0 w-[28rem] h-[28rem] bg-green-400/5 rounded-full blur-[100px]" />
-          </div>
-
-          <div className="container relative z-10 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <span className="inline-flex items-center gap-2 text-xs font-mono font-semibold tracking-[0.16em] uppercase text-green-400 bg-green-500/10 border border-green-500/25 px-3.5 py-1.5 rounded-full">
-                <MoonStar className="w-3.5 h-3.5" />
-                Atendimento 24 horas
-              </span>
-
-              <h1 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-[3.4rem] leading-[1.08] tracking-tight mt-6">
-                Seu WhatsApp responde{" "}
-                <span className="gradient-green">enquanto você atende</span>.
+        <section className="hero">
+          <div className="container hero__grid">
+            <div className="hero__text">
+              <h1 className="display-s">
+                Seu WhatsApp responde enquanto você atende.
               </h1>
 
-              <p className="text-lg text-white/60 mt-6 max-w-xl leading-relaxed">
+              <p className="lead">
                 Um assistente que conversa com quem chega, tira dúvida,
                 direciona pro setor certo e ainda agenda na sua agenda. Sem
                 deixar ninguém esperando, a qualquer hora do dia.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-3 mt-9">
-                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
-                  <Button className="w-full sm:w-auto bg-gradient-to-r from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white font-display font-semibold px-7 py-6 text-base rounded-xl shadow-lg shadow-green-500/25 hover:shadow-xl hover:shadow-green-500/40 transition-all duration-300 hover:-translate-y-0.5">
-                    Quero testar de graça
-                  </Button>
+              <div className="actions">
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn--primary"
+                >
+                  Quero testar de graça
                 </a>
-                <a href="#como-funciona">
-                  <Button
-                    variant="outline"
-                    className="w-full sm:w-auto border-white/15 bg-white/5 hover:bg-white/10 text-white font-display font-semibold px-7 py-6 text-base rounded-xl"
-                  >
-                    Ver como funciona
-                  </Button>
+                <a href="#como-funciona" className="btn">
+                  Ver como funciona
                 </a>
               </div>
 
-              <div className="flex flex-wrap gap-x-6 gap-y-2 mt-8 text-sm text-white/60">
-                <span className="inline-flex items-center gap-1.5">
-                  <Check className="w-4 h-4 text-green-500" />
-                  14 dias grátis
-                </span>
-                <span className="inline-flex items-center gap-1.5">
-                  <Check className="w-4 h-4 text-green-500" />
-                  Instalação por nossa conta
-                </span>
-                <span className="inline-flex items-center gap-1.5">
-                  <Check className="w-4 h-4 text-green-500" />
-                  Usa o WhatsApp que você já tem
-                </span>
-              </div>
-            </motion.div>
+              <ul className="facts">
+                <li>Atendimento 24 horas</li>
+                <li>14 dias grátis</li>
+                <li>Instalação por nossa conta</li>
+                <li>Usa o WhatsApp que você já tem</li>
+              </ul>
+            </div>
 
             {/* Conversa ilustrativa */}
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.15 }}
-              className="relative"
+            <Palco
+              foto={FOTOS.haltere}
+              slot="hero"
+              descricao="A recepção de um negócio que usa o atendimento, ou a conversa real capturada do WhatsApp"
+              posicao="30% 55%"
             >
-              <div className="bg-[#172A3A] border border-white/10 rounded-2xl shadow-2xl overflow-hidden max-w-md mx-auto">
-                <div className="flex items-center gap-3 px-5 py-3.5 border-b border-white/5 bg-white/[0.03]">
-                  <div className="w-9 h-9 rounded-full bg-green-500/15 border border-green-500/25 flex items-center justify-center">
-                    <MessageCircle className="w-4 h-4 text-green-400" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-white leading-tight">
-                      Academia Corpo em Movimento
-                    </p>
-                    {/* Negócio fictício: o rótulo evita que a conversa de
-                        demonstração seja lida como cliente real. */}
-                    <p className="text-[11px] text-green-400 font-mono">
-                      exemplo de conversa
-                    </p>
-                  </div>
-                </div>
+              <div className="sign stage__sign stage__sign--low" data-keep>
+                <span>Tempo de resposta</span>
+                <b>2 segundos</b>
+              </div>
 
-                <div className="p-4 flex flex-col gap-2.5 bg-[#0F2230]">
+              <div className="plate stage__plate stage__plate--tall" data-keep>
+                {/* Negócio fictício: o rótulo evita que a conversa de
+                    demonstração seja lida como cliente real. */}
+                <div className="plate__bar">
+                  <span className="audio">
+                    <MessageCircle size={16} aria-hidden="true" />
+                    <b>Academia Corpo em Movimento</b>
+                  </span>
+                  <span>exemplo de conversa</span>
+                </div>
+                <div className="plate__body">
                   {CONVERSA.map((m, i) => (
-                    <motion.div
+                    <p
                       key={i}
-                      initial={{ opacity: 0, y: 8 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.35, delay: 0.4 + i * 0.25 }}
-                      className={`max-w-[85%] px-3.5 py-2.5 rounded-2xl text-sm whitespace-pre-line leading-relaxed ${
-                        m.de === "cliente"
-                          ? "self-end bg-green-600/90 text-white rounded-br-sm"
-                          : "self-start bg-[#1F3447] text-white/90 rounded-bl-sm"
-                      }`}
+                      className={
+                        m.de === "cliente" ? "bubble bubble--me" : "bubble"
+                      }
                     >
                       {m.texto}
-                    </motion.div>
+                    </p>
                   ))}
                 </div>
               </div>
-
-              <div className="absolute -bottom-5 -right-2 sm:right-6 bg-[#172A3A] border border-green-500/25 rounded-xl px-4 py-3 shadow-xl">
-                <p className="text-[10px] font-mono uppercase tracking-widest text-white/60">
-                  Tempo de resposta
-                </p>
-                <p className="font-display font-extrabold text-2xl text-green-400 leading-tight">
-                  2 segundos
-                </p>
-              </div>
-            </motion.div>
+            </Palco>
           </div>
         </section>
 
         {/* ── A dor ──────────────────────────────────────────────────────── */}
-        <section className="py-20 border-y border-white/5 bg-[#0E1B29]">
+        <section className="section band">
           <div className="container">
-            <div className="max-w-3xl">
-              <span className="text-xs font-mono font-semibold tracking-[0.16em] uppercase text-green-400">
-                O problema
-              </span>
-              <h2 className="font-display font-bold text-3xl sm:text-4xl leading-tight tracking-tight mt-4">
-                A pessoa decide às 22h de um sábado.
-              </h2>
-              <p className="text-lg text-white/60 mt-5 leading-relaxed">
+            <div className="head head--split">
+              <h2>A pessoa decide às 22h de um sábado.</h2>
+              <p className="lead">
                 Ela manda mensagem perguntando o valor, ninguém responde na
                 hora, e na segunda-feira já fechou com quem respondeu primeiro.
                 O anúncio que trouxe esse contato você pagou. A venda, quem
@@ -315,117 +268,52 @@ export default function Atendimento() {
               </p>
             </div>
 
-            <div className="grid sm:grid-cols-3 gap-4 mt-12">
-              {[
-                {
-                  icone: Clock,
-                  titulo: "Fora do horário",
-                  texto:
-                    "Boa parte das mensagens chega quando não tem ninguém na recepção.",
-                },
-                {
-                  icone: Users,
-                  titulo: "Recepção ocupada",
-                  texto:
-                    "Quem está no balcão atende quem está na frente, e o WhatsApp acumula.",
-                },
-                {
-                  icone: CalendarCheck,
-                  titulo: "Falta sem aviso",
-                  texto:
-                    "Horário marcado e ninguém aparece, porque nada lembrou o cliente.",
-                },
-              ].map((d) => (
-                <div
-                  key={d.titulo}
-                  className="bg-[#172A3A] border border-white/10 rounded-2xl p-6"
-                >
-                  <d.icone className="w-5 h-5 text-green-400" />
-                  <h3 className="font-display font-bold text-lg mt-4">
-                    {d.titulo}
-                  </h3>
-                  <p className="text-white/55 text-sm mt-2 leading-relaxed">
-                    {d.texto}
-                  </p>
-                </div>
+            <ul className="rows">
+              {DORES.map((d) => (
+                <li key={d.titulo}>
+                  <h3>{d.titulo}</h3>
+                  <p>{d.texto}</p>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </section>
 
         {/* ── Como funciona ──────────────────────────────────────────────── */}
-        <section id="como-funciona" className="py-20 lg:py-28">
+        <section id="como-funciona" className="section--l">
           <div className="container">
-            <div className="max-w-2xl">
-              <span className="text-xs font-mono font-semibold tracking-[0.16em] uppercase text-green-400">
-                Como funciona
-              </span>
-              <h2 className="font-display font-bold text-3xl sm:text-4xl leading-tight tracking-tight mt-4">
-                Quatro coisas que ele faz sozinho.
-              </h2>
-              <p className="text-lg text-white/55 mt-5 leading-relaxed">
+            <div className="head">
+              <h2>Quatro coisas que ele faz sozinho.</h2>
+              <p className="lead">
                 Sem instalar nada, sem treinar equipe e sem trocar o número que
                 seus clientes já conhecem.
               </p>
             </div>
 
-            <div className="grid sm:grid-cols-2 gap-5 mt-14">
-              {COMO_FUNCIONA.map((p, i) => (
-                <motion.div
-                  key={p.titulo}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-80px" }}
-                  transition={{ duration: 0.45, delay: i * 0.08 }}
-                  className="bg-[#172A3A] border border-white/10 rounded-2xl p-7 hover:border-green-500/30 transition-colors"
-                >
-                  <div className="flex items-start gap-4">
-                    <span className="shrink-0 w-11 h-11 rounded-xl bg-green-500/12 border border-green-500/25 flex items-center justify-center">
-                      <p.icone className="w-5 h-5 text-green-400" />
-                    </span>
-                    <div>
-                      <span className="font-mono text-[11px] text-white/60">
-                        0{i + 1}
-                      </span>
-                      <h3 className="font-display font-bold text-xl leading-tight mt-0.5">
-                        {p.titulo}
-                      </h3>
-                      <p className="text-white/55 mt-2.5 leading-relaxed">
-                        {p.texto}
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
+            <ol className="route">
+              {COMO_FUNCIONA.map((p) => (
+                <li key={p.titulo}>
+                  <h3>{p.titulo}</h3>
+                  <p>{p.texto}</p>
+                </li>
               ))}
-            </div>
+            </ol>
           </div>
         </section>
 
         {/* ── Recursos ───────────────────────────────────────────────────── */}
-        <section className="py-20 lg:py-24 bg-[#0E1B29] border-y border-white/5">
+        <section className="section band">
           <div className="container">
-            <div className="max-w-2xl">
-              <span className="text-xs font-mono font-semibold tracking-[0.16em] uppercase text-green-400">
-                Detalhes que importam
-              </span>
-              <h2 className="font-display font-bold text-3xl sm:text-4xl leading-tight tracking-tight mt-4">
-                Pensado pra rotina de quem atende.
-              </h2>
+            <div className="head">
+              <h2>Pensado pra rotina de quem atende.</h2>
+              <p className="lead">Detalhes que importam.</p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-14">
+            <div className="cells">
               {RECURSOS.map((r) => (
-                <div
-                  key={r.titulo}
-                  className="bg-[#172A3A] border border-white/10 rounded-2xl p-6 hover:border-green-500/30 transition-colors"
-                >
-                  <Check className="w-5 h-5 text-green-400" />
-                  <h3 className="font-display font-bold text-lg mt-4 leading-snug">
-                    {r.titulo}
-                  </h3>
-                  <p className="text-white/55 text-sm mt-2.5 leading-relaxed">
-                    {r.texto}
-                  </p>
+                <div key={r.titulo}>
+                  <h3>{r.titulo}</h3>
+                  <p>{r.texto}</p>
                 </div>
               ))}
             </div>
@@ -433,130 +321,100 @@ export default function Atendimento() {
         </section>
 
         {/* ── Para quem ──────────────────────────────────────────────────── */}
-        <section className="py-20 lg:py-24">
+        <section className="section on-ink">
           <div className="container">
-            <div className="max-w-2xl">
-              <span className="text-xs font-mono font-semibold tracking-[0.16em] uppercase text-green-400">
-                Para quem
-              </span>
-              <h2 className="font-display font-bold text-3xl sm:text-4xl leading-tight tracking-tight mt-4">
-                Serve pra qualquer negócio que atende cliente.
-              </h2>
-              <p className="text-lg text-white/55 mt-5 leading-relaxed">
+            <div className="head head--split">
+              <h2>Serve pra qualquer negócio que atende cliente.</h2>
+              <p className="lead">
                 Se as pessoas falam com você pelo WhatsApp, o assistente se
                 encaixa. Estes são só alguns exemplos de quem já faz sentido:
               </p>
             </div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-12">
+            <ul className="board">
               {PARA_QUEM.map((s) => (
-                <div
-                  key={s.titulo}
-                  className="bg-[#172A3A] border border-white/10 rounded-2xl p-6 hover:border-green-500/30 hover:-translate-y-1 transition-all duration-300"
-                >
-                  <span className="w-11 h-11 rounded-xl bg-green-500/12 border border-green-500/25 flex items-center justify-center">
-                    <s.icone className="w-5 h-5 text-green-400" />
-                  </span>
-                  <h3 className="font-display font-bold text-lg mt-5 leading-snug">
-                    {s.titulo}
-                  </h3>
-                  <p className="text-white/60 text-sm mt-2 leading-relaxed">
-                    {s.texto}
-                  </p>
-                </div>
+                <li key={s.titulo}>
+                  <h3>{s.titulo}</h3>
+                  <p>{s.texto}</p>
+                </li>
               ))}
-            </div>
+            </ul>
 
             {/* Feito sob medida: o argumento central */}
-            <div className="mt-6 bg-gradient-to-br from-[#172A3A] to-[#1F3447] border border-green-500/20 rounded-2xl p-8 sm:p-10 flex flex-col md:flex-row md:items-center gap-6">
-              <div className="flex-1">
-                <span className="inline-flex items-center gap-2 text-xs font-mono font-semibold tracking-[0.16em] uppercase text-green-400">
-                  <Check className="w-3.5 h-3.5" />
-                  Feito sob medida
-                </span>
-                <h3 className="font-display font-bold text-2xl sm:text-3xl leading-tight tracking-tight mt-3">
-                  Não achou o seu tipo de negócio? A gente monta do seu jeito.
-                </h3>
-                <p className="text-white/60 mt-4 leading-relaxed max-w-2xl">
-                  Cada negócio atende de um jeito. Por isso o assistente é
-                  configurado pra você: os serviços, os setores, os horários e
-                  as respostas são montados de acordo com o que o seu
-                  estabelecimento precisa. Se tiver uma necessidade específica,
-                  a gente adapta.
-                </p>
-              </div>
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="shrink-0"
-              >
-                <Button className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white font-display font-semibold px-7 py-6 text-base rounded-xl shadow-lg shadow-green-500/25 transition-all duration-300 hover:-translate-y-0.5">
+            <div className="statement sob-medida">
+              <h3>Não achou o seu tipo de negócio? A gente monta do seu jeito.</h3>
+              <p>
+                Feito sob medida. Cada negócio atende de um jeito. Por isso o
+                assistente é configurado pra você: os serviços, os setores, os
+                horários e as respostas são montados de acordo com o que o seu
+                estabelecimento precisa. Se tiver uma necessidade específica, a
+                gente adapta.
+              </p>
+              <div className="actions">
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn--primary"
+                >
                   Contar o que preciso
-                </Button>
-              </a>
+                </a>
+              </div>
             </div>
           </div>
         </section>
 
         {/* ── Oferta ─────────────────────────────────────────────────────── */}
-        <section className="py-20 lg:py-28 bg-[#0E1B29] border-t border-white/5">
-          <div className="container">
-            <div className="relative overflow-hidden bg-gradient-to-br from-[#172A3A] to-[#1F3447] border border-green-500/20 rounded-3xl p-8 sm:p-12 lg:p-16">
-              <div className="absolute -top-24 -right-16 w-80 h-80 bg-green-500/10 rounded-full blur-[100px] pointer-events-none" />
+        <section className="section--l">
+          <div className="container oferta">
+            <div className="oferta__placa plate" aria-hidden="true">
+              <b>14</b>
+              <span>dias grátis</span>
+            </div>
 
-              <div className="relative z-10 max-w-2xl">
-                <span className="inline-flex items-center gap-2 text-xs font-mono font-semibold tracking-[0.16em] uppercase text-green-400 bg-green-500/10 border border-green-500/25 px-3.5 py-1.5 rounded-full">
-                  <Building2 className="w-3.5 h-3.5" />
-                  Comece hoje
-                </span>
+            <div className="oferta__texto">
+              <h2>Coloque o assistente pra atender pra você em 14 dias grátis.</h2>
 
-                <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl leading-[1.1] tracking-tight mt-6">
-                  Coloque o assistente pra{" "}
-                  <span className="gradient-green">atender pra você</span> em 14
-                  dias grátis.
-                </h2>
+              <p className="lead">
+                Comece hoje. A gente instala, configura tudo com a cara do seu
+                negócio e liga o assistente no seu WhatsApp. Se depois de duas
+                semanas não quiser continuar, é só desligar. Sem multa, sem
+                fidelidade, sem cobrança.
+              </p>
 
-                <p className="text-lg text-white/60 mt-6 leading-relaxed">
-                  A gente instala, configura tudo com a cara do seu negócio e
-                  liga o assistente no seu WhatsApp. Se depois de duas semanas
-                  não quiser continuar, é só desligar. Sem multa, sem fidelidade,
-                  sem cobrança.
-                </p>
+              <ul className="facts">
+                {[
+                  "14 dias grátis, sem cartão",
+                  "Configuramos tudo pra você",
+                  "Usa o WhatsApp que você já tem",
+                  "Sem fidelidade e sem multa",
+                ].map((item) => (
+                  <li key={item}>
+                    <Check size={16} aria-hidden="true" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
 
-                <ul className="grid sm:grid-cols-2 gap-3 mt-8">
-                  {[
-                    "14 dias grátis, sem cartão",
-                    "Configuramos tudo pra você",
-                    "Usa o WhatsApp que você já tem",
-                    "Sem fidelidade e sem multa",
-                  ].map((item) => (
-                    <li key={item} className="flex items-center gap-2.5 text-white/75">
-                      <span className="w-5 h-5 rounded-md bg-green-500/15 border border-green-500/30 flex items-center justify-center shrink-0">
-                        <Check className="w-3 h-3 text-green-400" />
-                      </span>
-                      <span className="text-sm">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="mt-10">
-                  <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
-                    <Button className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white font-display font-semibold px-8 py-6 text-base rounded-xl shadow-lg shadow-green-500/25 hover:shadow-xl hover:shadow-green-500/40 transition-all duration-300 hover:-translate-y-0.5">
-                      Começar teste grátis
-                    </Button>
-                  </a>
-                  <p className="text-white/60 text-sm mt-4">
-                    Depois do período de teste: R$ 147 por mês.
-                  </p>
-                </div>
+              <div className="actions">
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn--primary"
+                >
+                  Começar teste grátis
+                </a>
               </div>
+              <p className="small muted">
+                Depois do período de teste: R$ 147 por mês.
+              </p>
             </div>
           </div>
         </section>
       </main>
 
-      <Footer />
-    </div>
+      <SiteFooter fotos={[FOTOS.haltere]} />
+    </>
   );
 }

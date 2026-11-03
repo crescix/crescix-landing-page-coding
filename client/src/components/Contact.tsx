@@ -1,6 +1,4 @@
-import { Button } from "@/components/ui/button";
-import { MapPin, ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
+import { MapPin } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 import { FaInstagram, FaWhatsapp } from "react-icons/fa";
@@ -45,228 +43,144 @@ export default function Contact() {
     }
   };
 
-  const inputCls =
-    "w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-sm placeholder:text-white/60 focus:outline-none focus:ring-2 focus:ring-green-500/50 focus:border-green-500/60 transition-all";
-
   return (
-    <section
-      id="contato"
-      className="py-24 lg:py-32 relative overflow-hidden bg-[#0B1622]"
-    >
-      <div className="absolute inset-0 mesh-contact pointer-events-none" />
-
-      <div className="container relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16 lg:mb-20"
-        >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-green-500/10 border border-green-500/25 text-green-400 text-xs font-bold uppercase tracking-wider mb-4">
-            Contato
-          </span>
-          <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white mb-4">
-            Pronto pra{" "}
-            <span className="gradient-green-cyan">transformar</span> seu negócio?
-          </h2>
-          <p className="text-lg text-white/75 max-w-2xl mx-auto">
+    <section id="contato" className="section">
+      <div className="container">
+        <div className="head">
+          <h2>Pronto pra transformar seu negócio?</h2>
+          <p className="lead">
             Manda uma mensagem que respondemos em até 1 dia útil. Sem robô.
             Você fala direto com a equipe que construiu o produto.
           </p>
-        </motion.div>
+        </div>
 
-        <div className="grid lg:grid-cols-[1fr_1.2fr] gap-10 lg:gap-16 max-w-5xl mx-auto">
-          {/* Contact info */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6 }}
-          >
-            <h3 className="font-display font-bold text-2xl text-white mb-6">
-              Fale conosco
-            </h3>
-            <p className="text-white/75 mb-8 leading-relaxed">
+        <div className="contato">
+          <div>
+            <h3>Fale conosco</h3>
+            <p>
               Nossa equipe está pronta pra te ajudar a colocar a CrescIX
               rodando no seu negócio.
             </p>
 
-            <div className="space-y-5">
-              <a
-                href="https://www.instagram.com/crescix_tecnologia"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-start gap-4 group"
-              >
-                <div className="w-11 h-11 rounded-xl bg-green-500/10 border border-green-500/25 flex items-center justify-center flex-shrink-0 group-hover:bg-green-500/20 transition-colors">
-                  <FaInstagram className="w-5 h-5 text-green-400" />
+            <ul className="canais">
+              <li>
+                <a
+                  href="https://www.instagram.com/crescix_tecnologia"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaInstagram size={20} aria-hidden="true" />
+                  <div>
+                    <b>Instagram</b>
+                    <span>@crescix_tecnologia</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a
+                  href={EMPRESA.whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaWhatsapp size={20} aria-hidden="true" />
+                  <div>
+                    <b>WhatsApp</b>
+                    <span>{EMPRESA.telefone}</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <div className="canais__item">
+                  <MapPin size={20} aria-hidden="true" />
+                  <div>
+                    <b>Localização</b>
+                    <span>Santa Rita do Sapucaí, MG</span>
+                  </div>
                 </div>
-                <div>
-                  <p className="font-display font-semibold text-white text-sm">
-                    Instagram
-                  </p>
-                  <p className="text-white/75 text-sm group-hover:text-green-400 transition-colors">
-                    @crescix_tecnologia
-                  </p>
-                </div>
-              </a>
+              </li>
+            </ul>
+          </div>
 
-              <a
-                href={EMPRESA.whatsappLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-start gap-4 group"
-              >
-                <div className="w-11 h-11 rounded-xl bg-green-500/10 border border-green-500/25 flex items-center justify-center flex-shrink-0 group-hover:bg-green-500/20 transition-colors">
-                  <FaWhatsapp className="w-5 h-5 text-green-400" />
-                </div>
-                <div>
-                  <p className="font-display font-semibold text-white text-sm">
-                    WhatsApp
-                  </p>
-                  <p className="text-white/75 text-sm group-hover:text-green-400 transition-colors">
-                    {EMPRESA.telefone}
-                  </p>
-                </div>
-              </a>
-
-              <div className="flex items-start gap-4">
-                <div className="w-11 h-11 rounded-xl bg-green-500/10 border border-green-500/25 flex items-center justify-center flex-shrink-0">
-                  <MapPin className="w-5 h-5 text-green-400" />
-                </div>
-                <div>
-                  <p className="font-display font-semibold text-white text-sm">
-                    Localização
-                  </p>
-                  <p className="text-white/75 text-sm">
-                    Santa Rita do Sapucaí, MG
-                  </p>
-                </div>
-              </div>
+          <form onSubmit={handleSubmit} className="form">
+            <div className="field">
+              <label htmlFor="contato-nome">Nome</label>
+              <input
+                id="contato-nome"
+                name="name"
+                type="text"
+                value={formData.name}
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
+                placeholder="Seu nome"
+                required
+              />
             </div>
-          </motion.div>
+            <div className="field">
+              <label htmlFor="contato-email">E-mail</label>
+              <input
+                id="contato-email"
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
+                placeholder="seu@email.com"
+                required
+              />
+            </div>
 
-          {/* Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            <form
-              onSubmit={handleSubmit}
-              className="glass-card-strong rounded-2xl p-7 lg:p-8"
+            {/* Opcional de propósito: pra responder uma mensagem a gente
+                não precisa saber o nome da empresa (LGPD art. 6º, III:
+                só o necessário pra finalidade). */}
+            <div className="field form__full">
+              <label htmlFor="contato-empresa">Empresa (opcional)</label>
+              <input
+                id="contato-empresa"
+                name="company"
+                type="text"
+                value={formData.company}
+                onChange={(e) =>
+                  setFormData({ ...formData, company: e.target.value })
+                }
+                placeholder="Nome da empresa"
+              />
+            </div>
+
+            <div className="field form__full">
+              <label htmlFor="contato-mensagem">Mensagem</label>
+              <textarea
+                id="contato-mensagem"
+                name="message"
+                value={formData.message}
+                onChange={(e) =>
+                  setFormData({ ...formData, message: e.target.value })
+                }
+                rows={4}
+                placeholder="Como podemos ajudar?"
+                required
+              />
+            </div>
+
+            <div className="form__full consent">
+              <ConsentimentoLGPD
+                id="contato-consentimento"
+                name="consentimento_lgpd"
+                checked={consentiu}
+                onChange={setConsentiu}
+                finalidade="pra responder esta mensagem"
+              />
+            </div>
+
+            <button
+              type="submit"
+              disabled={submitting || !consentiu}
+              className="btn btn--primary btn--full form__full"
             >
-              <div className="grid sm:grid-cols-2 gap-4 mb-4">
-                <div>
-                  <label
-                    htmlFor="contato-nome"
-                    className="block text-xs font-bold text-white/80 uppercase tracking-wider mb-2"
-                  >
-                    Nome
-                  </label>
-                  <input
-                    id="contato-nome"
-                    name="name"
-                    type="text"
-                    value={formData.name}
-                    onChange={(e) =>
-                      setFormData({ ...formData, name: e.target.value })
-                    }
-                    className={inputCls}
-                    placeholder="Seu nome"
-                    required
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="contato-email"
-                    className="block text-xs font-bold text-white/80 uppercase tracking-wider mb-2"
-                  >
-                    E-mail
-                  </label>
-                  <input
-                    id="contato-email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) =>
-                      setFormData({ ...formData, email: e.target.value })
-                    }
-                    className={inputCls}
-                    placeholder="seu@email.com"
-                    required
-                  />
-                </div>
-              </div>
-
-              {/* Opcional de propósito: pra responder uma mensagem a gente
-                  não precisa saber o nome da empresa (LGPD art. 6º, III —
-                  só o necessário pra finalidade). */}
-              <div className="mb-4">
-                <label
-                  htmlFor="contato-empresa"
-                  className="block text-xs font-bold text-white/80 uppercase tracking-wider mb-2"
-                >
-                  Empresa <span className="text-white/60">(opcional)</span>
-                </label>
-                <input
-                  id="contato-empresa"
-                  name="company"
-                  type="text"
-                  value={formData.company}
-                  onChange={(e) =>
-                    setFormData({ ...formData, company: e.target.value })
-                  }
-                  className={inputCls}
-                  placeholder="Nome da empresa"
-                />
-              </div>
-
-              <div className="mb-6">
-                <label
-                  htmlFor="contato-mensagem"
-                  className="block text-xs font-bold text-white/80 uppercase tracking-wider mb-2"
-                >
-                  Mensagem
-                </label>
-                <textarea
-                  id="contato-mensagem"
-                  name="message"
-                  value={formData.message}
-                  onChange={(e) =>
-                    setFormData({ ...formData, message: e.target.value })
-                  }
-                  rows={4}
-                  className={`${inputCls} resize-none`}
-                  placeholder="Como podemos ajudar?"
-                  required
-                />
-              </div>
-
-              <div className="mb-6">
-                <ConsentimentoLGPD
-                  id="contato-consentimento"
-                  name="consentimento_lgpd"
-                  checked={consentiu}
-                  onChange={setConsentiu}
-                  finalidade="pra responder esta mensagem"
-                />
-              </div>
-
-              <Button
-                type="submit"
-                disabled={submitting || !consentiu}
-                className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white font-display font-semibold rounded-xl py-5 shadow-lg shadow-green-500/25 hover:shadow-xl transition-all duration-300 group disabled:opacity-60"
-              >
-                {submitting ? "Enviando..." : "Enviar Mensagem"}
-                {!submitting && (
-                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                )}
-              </Button>
-            </form>
-          </motion.div>
+              {submitting ? "Enviando..." : "Enviar Mensagem"}
+            </button>
+          </form>
         </div>
       </div>
     </section>

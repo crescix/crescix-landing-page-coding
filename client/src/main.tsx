@@ -24,6 +24,7 @@ import App from "./App";
 import "@fontsource-variable/plus-jakarta-sans";
 import "@fontsource-variable/dm-sans";
 import "@fontsource-variable/jetbrains-mono";
+import "@fontsource-variable/chivo-mono";
 
 import "./index.css";
 

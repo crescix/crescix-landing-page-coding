@@ -1,11 +1,5 @@
 import { useEffect } from "react";
-import { motion } from "framer-motion";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { ChevronDown } from "lucide-react";
 
 /**
  * Seção "Perguntas Frequentes": accordion com 8 dúvidas comuns
@@ -32,11 +26,11 @@ const faqs = [
   },
   {
     q: "Posso cancelar a qualquer momento?",
-    a: "Pode, sem multa. No PIX não existe renovação automática: é só não pagar de novo. No cartão, a assinatura renova sozinha a cada período, e você cancela na tela \"Assinatura\" do app — a renovação para na hora. Nos dois casos, o tempo que você já pagou continua valendo até o fim; depois a conta passa pra modo de consulta.",
+    a: "Pode, sem multa. No PIX não existe renovação automática: é só não pagar de novo. No cartão, a assinatura renova sozinha a cada período, e você cancela na tela \"Assinatura\" do app: a renovação para na hora. Nos dois casos, o tempo que você já pagou continua valendo até o fim; depois a conta passa pra modo de consulta.",
   },
   {
     q: "E se eu me arrepender depois de pagar?",
-    a: "Você tem 7 dias corridos a partir do primeiro pagamento pra desistir e receber 100% do valor de volta, sem precisar justificar — é o direito de arrependimento do art. 49 do Código de Defesa do Consumidor. Basta um e-mail pro suporte. Os prazos de estorno estão na Política de Troca e Reembolso.",
+    a: "Você tem 7 dias corridos a partir do primeiro pagamento pra desistir e receber 100% do valor de volta, sem precisar justificar: é o direito de arrependimento do art. 49 do Código de Defesa do Consumidor. Basta um e-mail pro suporte. Os prazos de estorno estão na Política de Troca e Reembolso.",
   },
   {
     q: "Funciona pra qualquer tipo de negócio?",
@@ -47,12 +41,12 @@ const faqs = [
       A resposta anterior afirmava "banco hospedado em servidores no
       Brasil". A infraestrutura está em transição (VPS própria e serviços
       gerenciados em paralelo, veja o DEPLOY.md da crescix-api) e parte do
-      processamento é feita fora do país pela OpenAI — então a frase não
+      processamento é feita fora do país pela OpenAI, então a frase não
       era comprovável como estava. Se e quando a localização do banco for
       verificada e estável, ela pode voltar com nome do provedor e região.
     */
     q: "Meus dados ficam seguros?",
-    a: "Senhas são guardadas com hash bcrypt, a comunicação é toda por HTTPS e os dados ficam isolados por conta: nenhum usuário vê os dados de outro. Parte do processamento passa por fornecedores de fora do Brasil, como a OpenAI nas transcrições e análises — a lista completa de quem recebe o quê está na Política de Privacidade. Você é o dono dos seus dados e pode exportar ou pedir exclusão a qualquer momento.",
+    a: "Senhas são guardadas com hash bcrypt, a comunicação é toda por HTTPS e os dados ficam isolados por conta: nenhum usuário vê os dados de outro. Parte do processamento passa por fornecedores de fora do Brasil, como a OpenAI nas transcrições e análises: a lista completa de quem recebe o quê está na Política de Privacidade. Você é o dono dos seus dados e pode exportar ou pedir exclusão a qualquer momento.",
   },
   {
     q: "E se eu precisar de ajuda?",
@@ -92,52 +86,28 @@ export default function FAQ() {
   useFAQSchema(faqs);
 
   return (
-    <section
-      id="faq"
-      className="py-24 lg:py-32 relative overflow-hidden bg-[#0B1622]"
-    >
-      <div className="absolute top-1/4 right-0 w-[400px] h-[400px] rounded-full bg-green-500/5 blur-[120px] pointer-events-none" />
-
-      <div className="container relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center max-w-3xl mx-auto mb-12"
-        >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-            Perguntas frequentes
-          </h2>
-          <p className="text-white/70 text-base md:text-lg">
+    <section id="faq" className="section--l">
+      <div className="container faq">
+        <div className="head">
+          <h2>Perguntas frequentes</h2>
+          <p className="lead">
             As dúvidas mais comuns de quem está conhecendo o CrescIX.
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="max-w-3xl mx-auto"
-        >
-          <Accordion type="single" collapsible className="space-y-2">
-            {faqs.map((faq, i) => (
-              <AccordionItem
-                key={i}
-                value={`item-${i}`}
-                className="border border-white/10 rounded-xl bg-white/[0.02] px-5 data-[state=open]:bg-white/[0.04] transition-colors"
-              >
-                <AccordionTrigger className="text-left text-white hover:no-underline font-medium py-5">
-                  {faq.q}
-                </AccordionTrigger>
-                <AccordionContent className="text-white/70 leading-relaxed pb-5">
-                  {faq.a}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </motion.div>
+        {/* `name` igual faz o navegador manter uma resposta aberta por vez,
+            sem JavaScript. */}
+        <div className="faq__lista">
+          {faqs.map((faq) => (
+            <details key={faq.q} name="faq" className="faq__item">
+              <summary className="faq__q">
+                <h3>{faq.q}</h3>
+                <ChevronDown size={20} aria-hidden="true" />
+              </summary>
+              <p className="faq__a">{faq.a}</p>
+            </details>
+          ))}
+        </div>
       </div>
     </section>
   );

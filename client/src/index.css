@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "./wayfind.css";
 @source "./**/*.{ts,tsx}";
 @custom-variant dark (&:is(.dark *));
 
@@ -364,4 +365,14 @@
   .conic-glow {
     animation: none !important;
   }
+}
+
+/* Fallback do index.html pra quem não roda JavaScript: nesse caso o tema
+   Wayfind não liga, então ele usa os tokens escuros padrão. */
+.noscript-fallback {
+  max-width: 720px;
+  margin: 3rem auto;
+  padding: 0 1rem;
+  color: var(--foreground);
+  font-family: var(--font-body);
 }
