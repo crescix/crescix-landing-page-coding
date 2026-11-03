@@ -41,9 +41,13 @@
   --color-brand-amber: #F59E0B;
   --color-brand-amber-light: #FBBF24;
 
-  --font-display: "Plus Jakarta Sans", system-ui, sans-serif;
-  --font-body: "DM Sans", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
+  /* As famílias "... Variable" vêm dos @fontsource-variable importados no
+     main.tsx, servidos pelo nosso domínio. O nome sem "Variable" fica
+     como fallback pra quem já tenha a fonte instalada no sistema. */
+  --font-display: "Plus Jakarta Sans Variable", "Plus Jakarta Sans",
+    system-ui, sans-serif;
+  --font-body: "DM Sans Variable", "DM Sans", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", "JetBrains Mono", monospace;
 }
 
 :root {
