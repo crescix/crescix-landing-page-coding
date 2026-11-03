@@ -1,8 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
-import { Route, Switch, Router } from "wouter";
+import { Route, Switch, Router, useLocation } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import CookieBanner from "./components/CookieBanner";
 import { ThemeProvider } from "./contexts/ThemeContext";
@@ -57,6 +57,19 @@ function LegacyHashRedirect() {
   return null;
 }
 
+/**
+ * Toda troca de rota começa do topo. Sem isso, quem clicava em "Começar teste
+ * grátis" no meio da home caía no rodapé da página seguinte. Link com âncora
+ * fica de fora: quem rola até a seção é o próprio link.
+ */
+function ScrollToTop() {
+  const [location] = useLocation();
+  useLayoutEffect(() => {
+    if (!window.location.hash) window.scrollTo(0, 0);
+  }, [location]);
+  return null;
+}
+
 function App() {
   return (
     <ErrorBoundary>
@@ -65,6 +78,7 @@ function App() {
           <Toaster theme="dark" richColors position="top-right" />
           <LegacyHashRedirect />
           <Router>
+            <ScrollToTop />
             <AppRouter />
             <CookieBanner />
           </Router>

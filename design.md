@@ -7,10 +7,10 @@ O sistema travado. Toda execução do Hallmark lê este arquivo primeiro, e as p
 - Forma da primeira página: Split Studio
 - Tema: Wayfind, com ink, verde e âmbar da marca CrescIX no lugar do cobalto
 - Eixos: light/mono/cool, posture: committed
-- Vale em: `/`, `/erp` e `/atendimento`. As outras rotas ainda estão no tema escuro do `index.css`.
+- Vale em todas as rotas. Só a tela de erro do `ErrorBoundary` ainda usa os tokens escuros do `index.css`.
 
 ## Como ligar numa página
-Chame `useWayfind()` no componente da página e use `SiteFooter`. Os tokens e os estilos de elemento ficam atrás de `:root[data-site="wayfind"]`, então as rotas sem o hook não herdam nada.
+Chame `useWayfind()` no componente da página e use `SiteFooter`. Os tokens e os estilos de elemento ficam atrás de `:root[data-site="wayfind"]`. Documentos legais usam `LegalShell`, que já faz isso, com estilos em `wayfind-legal.css`.
 
 ## Tokens
 `client/src/tokens.css` é a fonte da verdade. Os papéis:
@@ -25,6 +25,7 @@ Chame `useWayfind()` no componente da página e use `SiteFooter`. Os tokens e os
 - Um botão verde preenchido e um transparente com borda de 2px, ambos quadrados, Chivo Mono 800, 44 a 52px.
 - Texto do botão verde sempre em tinta: branco sobre esse verde reprova em contraste.
 - Foco com `outline` de 2px, instantâneo. Sobre tinta, `.on-ink` troca o foco para âmbar.
+- Escolha única: `Escolhas`, rádios de verdade em células quadradas unidas.
 
 ## Superfícies
 - Raio 0, bordas de 2px em tinta, divisórias de 1px.
@@ -35,7 +36,7 @@ Chame `useWayfind()` no componente da página e use `SiteFooter`. Os tokens e os
 Reais, com autor, licença e link no rodapé (`client/src/lib/fotos.ts`), servidas pelo próprio domínio. Tipo só em placa dentro do quadro, nunca direto sobre a foto. Nenhum banco de imagem.
 
 ## Exports
-Rode o verificador com:
+Rode o verificador com os estilos e as páginas do grupo. Os documentos legais rodam à parte, com `wayfind-legal.css` no lugar de `wayfind.css`, porque têm carimbo próprio (`copy: verbatim`).
 
 ```
 node <skill-dir>/scripts/sloplint.mjs client/src/wayfind.css client/src/tokens.css client/src/base.css <páginas> --genre modern-minimal --render --url http://localhost:3000/<rota>

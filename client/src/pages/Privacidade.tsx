@@ -1,4 +1,3 @@
-import { Shield } from "lucide-react";
 import { useSEO } from "@/hooks/useSEO";
 import {
   LegalShell,
@@ -40,16 +39,14 @@ export default function Privacidade() {
 
   return (
     <LegalShell
-      eyebrow="Privacidade"
       titulo="Política de Privacidade"
       atualizadoEm={UPDATED_AT}
-      icone={<Shield className="h-5 w-5 text-green-400" />}
       rodape={
         <>
           Dúvidas? Manda um e-mail pra{" "}
           <a
             href={`mailto:${EMPRESA.emailDpo}`}
-            className="text-green-400 hover:text-green-300"
+            className="link"
           >
             {EMPRESA.emailDpo}
           </a>
@@ -65,28 +62,26 @@ export default function Privacidade() {
       </Intro>
 
       <Section titulo="1. Quem é o controlador dos seus dados">
-        <p className="mb-4">
+        <p>
           Controlador é quem decide o que fazer com os dados pessoais e
           responde por isso. No nosso caso:
         </p>
         <IdentificacaoBox>
-          <p className="text-white font-semibold">
-            {EMPRESA.nomeFantasia}
-          </p>
+          <b>{EMPRESA.nomeFantasia}</b>
           {identificacaoFornecedor() && <p>{identificacaoFornecedor()}</p>}
           <p>{EMPRESA.endereco ?? EMPRESA.cidade}</p>
           <p>
             E-mail:{" "}
             <a
               href={`mailto:${EMPRESA.emailContato}`}
-              className="text-green-400 hover:text-green-300"
+              className="link"
             >
               {EMPRESA.emailContato}
-            </a>{" "}
-            · Telefone: {EMPRESA.telefone}
+            </a>
           </p>
+          <p>Telefone: {EMPRESA.telefone}</p>
         </IdentificacaoBox>
-        <p className="mt-4">
+        <p>
           A CrescIX é uma plataforma de gestão financeira pra pequenos
           negócios brasileiros. Operamos a partir de {EMPRESA.cidade}. Nesta
           política, &quot;nós&quot;, &quot;CrescIX&quot; e &quot;serviço&quot;
@@ -96,11 +91,11 @@ export default function Privacidade() {
       </Section>
 
       <Section titulo="2. Quais dados coletamos">
-        <p className="mb-3">
+        <p>
           Coletamos somente o que é necessário pra o serviço funcionar.
         </p>
 
-        <h3 className="text-white font-semibold text-base mt-5 mb-2">
+        <h3>
           2.1. Quando você preenche um formulário neste site
         </h3>
         <Ul>
@@ -119,15 +114,15 @@ export default function Privacidade() {
             e-mail — ele pode ficar em branco, e aí o feedback é anônimo.
           </li>
         </Ul>
-        <p className="mt-3">
-          Esses envios passam pelo <strong className="text-white">Formspree</strong>,
+        <p>
+          Esses envios passam pelo <strong>Formspree</strong>,
           serviço que recebe o formulário e entrega no nosso e-mail. Ele
           registra também o seu endereço IP, como proteção antispam. Usamos
           esses dados pra responder você e, no caso do teste, pra liberar o
           acesso — nunca pra montar mala direta.
         </p>
 
-        <h3 className="text-white font-semibold text-base mt-5 mb-2">
+        <h3>
           2.2. Quando você cria uma conta no app
         </h3>
         <Ul>
@@ -163,7 +158,7 @@ export default function Privacidade() {
           </li>
         </Ul>
 
-        <h3 className="text-white font-semibold text-base mt-5 mb-2">
+        <h3>
           2.3. Quando você só navega neste site
         </h3>
         <p>
@@ -174,14 +169,14 @@ export default function Privacidade() {
           detalhado na{" "}
           <a
             href="/cookies"
-            className="text-green-400 hover:text-green-300 underline underline-offset-2"
+            className="link"
           >
             Política de Cookies
           </a>
           .
         </p>
-        <p className="mt-4">
-          <strong className="text-white">Não coletamos:</strong> cookies de
+        <p>
+          <strong>Não coletamos:</strong> cookies de
           rastreamento, dados de localização precisa, dados biométricos ou
           qualquer informação sensível desnecessária ao serviço.
         </p>
@@ -214,8 +209,8 @@ export default function Privacidade() {
             pra evitar perda de informação.
           </li>
         </Ul>
-        <p className="mt-4">
-          <strong className="text-white">Não fazemos:</strong> marketing
+        <p>
+          <strong>Não fazemos:</strong> marketing
           direto sem você ter pedido, venda de dados ou compartilhamento com
           terceiros que não sejam essenciais à operação.
         </p>
@@ -245,7 +240,7 @@ export default function Privacidade() {
       </Section>
 
       <Section titulo="5. Com quem compartilhamos">
-        <p className="mb-3">
+        <p>
           Apenas com prestadores essenciais à operação, que atuam como
           operadores por nossa conta:
         </p>
@@ -277,7 +272,7 @@ export default function Privacidade() {
             em que o erro aconteceu.
           </li>
         </Ul>
-        <p className="mt-4">
+        <p>
           Não vendemos, alugamos ou trocamos seus dados com ninguém. Em caso
           de exigência judicial, atendemos apenas dentro dos limites da
           ordem.
@@ -299,7 +294,7 @@ export default function Privacidade() {
       </Section>
 
       <Section titulo="7. Seus direitos (LGPD art. 18)">
-        <p className="mb-3">Você pode, a qualquer momento:</p>
+        <p>Você pode, a qualquer momento:</p>
         <Ul>
           <li>
             <strong>Acessar</strong> os dados que temos sobre você.
@@ -329,7 +324,7 @@ export default function Privacidade() {
             Dados (ANPD).
           </li>
         </Ul>
-        <p className="mt-4">
+        <p>
           Basta escrever pro nosso Encarregado (seção 11). Respondemos em
           até 5 dias úteis.
         </p>
@@ -345,7 +340,7 @@ export default function Privacidade() {
             Dados isolados por usuário: ninguém vê os dados de ninguém.
           </li>
         </Ul>
-        <p className="mt-4">
+        <p>
           Se acontecer um incidente de segurança que possa te colocar em
           risco, comunicamos você e a ANPD, como manda o art. 48 da LGPD.
         </p>
@@ -359,7 +354,7 @@ export default function Privacidade() {
           na{" "}
           <a
             href="/cookies"
-            className="text-green-400 hover:text-green-300 underline underline-offset-2"
+            className="link"
           >
             Política de Cookies
           </a>
@@ -395,7 +390,7 @@ export default function Privacidade() {
           Pra exercer seus direitos ou tirar dúvidas sobre esta política,
           fale com nosso Encarregado pelo Tratamento de Dados Pessoais:
         </p>
-        <p className="mt-3 font-mono text-green-400">{EMPRESA.emailDpo}</p>
+        <p className="legal__destaque">{EMPRESA.emailDpo}</p>
       </Section>
 
       <Section titulo="12. Crianças e adolescentes">

@@ -1,15 +1,13 @@
 import { FaInstagram, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 import { useLocation } from "wouter";
-import { DOCS_LEGAIS } from "@/components/Footer";
-import { EMPRESA, identificacaoFornecedor } from "@/lib/empresa";
+import { DOCS_LEGAIS, EMPRESA, identificacaoFornecedor } from "@/lib/empresa";
 import type { Foto } from "@/lib/fotos";
 
 /**
- * Rodapé das páginas no tema Wayfind. `Footer.tsx` segue atendendo as rotas
- * que ainda têm o visual escuro; os dados legais vêm das mesmas fontes
- * (`EMPRESA` e `DOCS_LEGAIS`), então não há como as duas versões divergirem.
+ * Rodapé do site, no tema Wayfind. Páginas sem foto passam `fotos` vazio e
+ * a linha de créditos não aparece.
  */
-export default function SiteFooter({ fotos }: { fotos: Foto[] }) {
+export default function SiteFooter({ fotos = [] }: { fotos?: Foto[] }) {
   const [, navigate] = useLocation();
 
   return (
@@ -125,19 +123,21 @@ export default function SiteFooter({ fotos }: { fotos: Foto[] }) {
           </div>
 
           {/* CC BY e CC BY-SA: autor, licença e link de cada foto da página */}
-          <p className="rodape__credito" data-credits>
-            Fotos:{" "}
-            {fotos.map((f, i) => (
-              <span key={f.pagina}>
-                {i > 0 && ", "}
-                <a href={f.pagina} target="_blank" rel="noopener noreferrer">
-                  {f.autor}
-                </a>{" "}
-                ({f.licenca}, Wikimedia Commons)
-              </span>
-            ))}
-            .
-          </p>
+          {fotos.length > 0 && (
+            <p className="rodape__credito" data-credits>
+              Fotos:{" "}
+              {fotos.map((f, i) => (
+                <span key={f.pagina}>
+                  {i > 0 && ", "}
+                  <a href={f.pagina} target="_blank" rel="noopener noreferrer">
+                    {f.autor}
+                  </a>{" "}
+                  ({f.licenca}, Wikimedia Commons)
+                </span>
+              ))}
+              .
+            </p>
+          )}
 
           <div className="rodape__fim">
             <p>

@@ -1,5 +1,5 @@
-import { ArrowLeft } from "lucide-react";
 import { useLocation } from "wouter";
+import { useWayfind } from "@/hooks/useWayfind";
 
 /**
  * Casca e primitivas de prosa das páginas legais (privacidade, termos,
@@ -7,81 +7,71 @@ import { useLocation } from "wouter";
  * mesmas `Intro`/`Section`/`Ul`; com quatro documentos isso passou a
  * divergir na primeira edição, então virou um só lugar.
  *
- * Contraste: o corpo usa `text-white/75` e os secundários `text-white/60`.
- * Sobre o navy #0B1622, `white/75` dá ~9:1 e `white/60` ~7:1 — folgado
- * pro mínimo 4,5:1 do WCAG 2.1 AA. Abaixo de `white/50` reprova, então
- * não baixe daqui.
+ * Os estilos estão em `wayfind-legal.css`.
  */
 
 interface LegalShellProps {
-  /** Rótulo pequeno acima do título (ex.: "Privacidade"). */
-  eyebrow: string;
   titulo: string;
   /** Data por extenso: "18 de maio de 2026". */
   atualizadoEm: string;
-  icone: React.ReactNode;
   children: React.ReactNode;
   /** Rodapé do documento (contato, dúvidas). */
   rodape?: React.ReactNode;
 }
 
 export function LegalShell({
-  eyebrow,
   titulo,
   atualizadoEm,
-  icone,
   children,
   rodape,
 }: LegalShellProps) {
+  useWayfind();
   const [, navigate] = useLocation();
 
   return (
-    <div className="w-full min-h-screen bg-[var(--color-brand-navy)] text-white">
-      <div className="max-w-3xl mx-auto px-5 md:px-8 py-10 md:py-16">
-        <header className="mb-10">
+    <>
+      <nav className="slab on-ink" aria-label="Principal">
+        <div className="container slab__bar">
+          <img
+            className="slab__marca"
+            src={`${import.meta.env.BASE_URL}images/logo.png`}
+            alt="CrescIX"
+            width={703}
+            height={260}
+          />
           <button
+            type="button"
             onClick={() => navigate("/")}
-            className="inline-flex items-center gap-1.5 text-xs text-white/60 hover:text-green-400 transition-colors mb-6"
+            className="slab__quiet"
           >
-            <ArrowLeft className="h-3.5 w-3.5" />
             Voltar pra home
           </button>
+        </div>
+      </nav>
 
-          <div className="flex items-start gap-3 mb-3">
-            <div className="h-11 w-11 rounded-2xl bg-green-500/15 border border-green-500/25 flex items-center justify-center flex-shrink-0">
-              {icone}
-            </div>
-            <div>
-              <p className="text-[10px] uppercase tracking-widest text-green-400 font-semibold mb-1">
-                {eyebrow}
-              </p>
-              <h1 className="font-display text-3xl md:text-4xl font-bold tracking-tight">
-                {titulo}
-              </h1>
-              <p className="text-sm text-white/60 mt-1">
-                Última atualização: {atualizadoEm}
-              </p>
-            </div>
+      <main className="legal">
+        <div className="container">
+          <header className="legal__head">
+            <h1>{titulo}</h1>
+            <p className="small muted">Última atualização: {atualizadoEm}</p>
+          </header>
+
+          <div className="legal__grid">
+            <LegalNav />
+
+            <article className="legal__texto">
+              {children}
+
+              {rodape && <footer className="legal__fim">{rodape}</footer>}
+            </article>
           </div>
-        </header>
-
-        <article className="space-y-8 text-[15px] leading-relaxed text-white/75">
-          {children}
-
-          {rodape && (
-            <footer className="pt-8 border-t border-white/10 text-sm text-white/60">
-              {rodape}
-            </footer>
-          )}
-        </article>
-
-        <LegalNav />
-      </div>
-    </div>
+        </div>
+      </main>
+    </>
   );
 }
 
-/** Navegação entre os quatro documentos legais, no pé de cada um. */
+/** Navegação entre os quatro documentos legais. */
 function LegalNav() {
   const [location, navigate] = useLocation();
 
@@ -93,18 +83,11 @@ function LegalNav() {
   ];
 
   return (
-    <nav
-      aria-label="Outros documentos legais"
-      className="mt-12 pt-8 border-t border-white/10 flex flex-wrap gap-x-4 gap-y-2 text-xs"
-    >
+    <nav aria-label="Outros documentos legais" className="legal__nav">
       {docs
         .filter((d) => d.path !== location)
         .map((d) => (
-          <button
-            key={d.path}
-            onClick={() => navigate(d.path)}
-            className="text-white/60 hover:text-green-400 transition-colors underline underline-offset-4 decoration-white/20"
-          >
+          <button key={d.path} type="button" onClick={() => navigate(d.path)}>
             {d.label}
           </button>
         ))}
@@ -115,11 +98,7 @@ function LegalNav() {
 // ─── Primitivas de prosa ──────────────────────────────────────────────────
 
 export function Intro({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="text-base md:text-lg text-white/85 leading-relaxed pb-2 border-b border-white/10">
-      {children}
-    </p>
-  );
+  return <p className="lead legal__intro">{children}</p>;
 }
 
 export function Section({
@@ -130,21 +109,15 @@ export function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section className="space-y-3">
-      <h2 className="font-display text-lg md:text-xl font-bold text-white tracking-tight">
-        {titulo}
-      </h2>
-      <div className="space-y-2">{children}</div>
+    <section className="legal__secao">
+      <h2>{titulo}</h2>
+      {children}
     </section>
   );
 }
 
 export function Ul({ children }: { children: React.ReactNode }) {
-  return (
-    <ul className="space-y-2 list-disc list-outside pl-5 marker:text-green-400">
-      {children}
-    </ul>
-  );
+  return <ul className="legal__lista">{children}</ul>;
 }
 
 /**
@@ -157,9 +130,5 @@ export function IdentificacaoBox({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <div className="rounded-2xl border border-white/10 bg-white/5 p-5 text-sm space-y-1.5">
-      {children}
-    </div>
-  );
+  return <div className="legal__caixa">{children}</div>;
 }

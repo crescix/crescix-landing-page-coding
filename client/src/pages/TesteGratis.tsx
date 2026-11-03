@@ -1,23 +1,10 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { useLocation } from "wouter";
-import {
-  ArrowLeft,
-  ArrowRight,
-  Sparkles,
-  Check,
-  Loader2,
-  CheckCircle2,
-  Mail,
-  Building2,
-  Phone,
-  User,
-  MessageSquare,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { useSEO } from "@/hooks/useSEO";
+import { useWayfind } from "@/hooks/useWayfind";
 import { ConsentimentoLGPD } from "@/components/legal/ConsentimentoLGPD";
-import Footer from "@/components/Footer";
+import Escolhas from "@/components/wayfind/Escolhas";
+import SiteFooter from "@/components/wayfind/SiteFooter";
 
 type Step = 1 | 2 | 3 | "success";
 
@@ -54,6 +41,7 @@ const initialForm: FormState = {
 };
 
 export default function TesteGratis() {
+  useWayfind();
   useSEO({
     title: "Teste grátis | CrescIX",
     description:
@@ -72,8 +60,10 @@ export default function TesteGratis() {
     setForm((p) => ({ ...p, [key]: value }));
 
   const canAdvance = (() => {
-    if (step === 1) return form.name.trim().length >= 2 && /\S+@\S+\.\S+/.test(form.email);
-    if (step === 2) return form.empresa.trim().length >= 2 && !!form.tipoComercio;
+    if (step === 1)
+      return form.name.trim().length >= 2 && /\S+@\S+\.\S+/.test(form.email);
+    if (step === 2)
+      return form.empresa.trim().length >= 2 && !!form.tipoComercio;
     if (step === 3) return !!form.funcionarios && consentiu;
     return false;
   })();
@@ -115,426 +105,267 @@ export default function TesteGratis() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0B1622] relative overflow-hidden">
-      <div className="absolute inset-0 bg-grid-dim mask-radial pointer-events-none" />
-      <div className="absolute top-1/4 right-[5%] w-[500px] h-[500px] rounded-full bg-green-500/15 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 left-[5%] w-[400px] h-[400px] rounded-full bg-green-600/10 blur-[100px] pointer-events-none" />
-
-      <div className="relative z-10 container py-8 lg:py-16">
-        {/* Header */}
-        <div className="flex items-center justify-between mb-10 lg:mb-16">
-          <button
-            onClick={() => navigate("/")}
-            className="inline-flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Voltar
-          </button>
+    <>
+      <nav className="slab on-ink" aria-label="Principal">
+        <div className="container slab__bar">
           <img
+            className="slab__marca"
             src={`${import.meta.env.BASE_URL}images/logo.png`}
             alt="CrescIX"
-            className="w-28 h-auto rounded-md"
+            width={703}
+            height={260}
           />
+          <button
+            type="button"
+            onClick={() => navigate("/")}
+            className="slab__quiet"
+          >
+            Voltar
+          </button>
         </div>
+      </nav>
 
-        <div className="max-w-2xl mx-auto">
-          <AnimatePresence mode="wait">
-            {step !== "success" ? (
-              <motion.div
-                key={step}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.3 }}
-              >
-                {/* Tag + título */}
-                <div className="text-center mb-10">
-                  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-green-500/10 border border-green-500/25 mb-5">
-                    <Sparkles className="w-3.5 h-3.5 text-green-400" />
-                    <span className="text-xs font-bold text-green-400 uppercase tracking-wider">
-                      30 dias grátis
-                    </span>
-                  </div>
-                  <h1 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white leading-[1.1] mb-3">
-                    Vamos liberar seu{" "}
-                    <span className="gradient-green">teste grátis</span>
-                  </h1>
-                  <p className="text-white/60">
-                    Só 3 passos. Sem cartão. Em até 1 dia útil a gente libera
-                    o acesso e te explica o setup.
-                  </p>
+      <main className="balcao">
+        <div className="container">
+          {step !== "success" ? (
+            <div className="balcao__grid">
+              <div className="balcao__texto">
+                <h1 className="display-s">Vamos liberar seu teste grátis</h1>
+                <p className="lead">
+                  Só 3 passos. Sem cartão. Em até 1 dia útil a gente libera o
+                  acesso e te explica o setup.
+                </p>
+                <ul className="facts">
+                  <li>30 dias grátis</li>
+                </ul>
+
+                <div
+                  className="passos"
+                  role="img"
+                  aria-label={`Passo ${step} de 3`}
+                >
+                  {[1, 2, 3].map((n) => (
+                    <span key={n} data-on={Number(step) >= n} />
+                  ))}
+                  <b>{step}/3</b>
                 </div>
 
-                {/* Progress */}
-                <div className="flex items-center gap-2 mb-8 max-w-xs mx-auto">
-                  {[1, 2, 3].map((n) => {
-                    const filled = step >= (n as Step);
-                    return (
-                      <div
-                        key={n}
-                        className={`flex-1 h-1.5 rounded-full transition-all ${
-                          filled ? "bg-green-500" : "bg-white/10"
-                        }`}
-                      />
-                    );
-                  })}
-                  <span className="text-xs text-white/50 font-mono font-bold ml-2">
-                    {step}/3
-                  </span>
-                </div>
-
-                {/* Card form */}
-                <div className="glass-card-strong rounded-2xl p-6 lg:p-8">
-                  {step === 1 && (
-                    <div className="space-y-5">
-                      <h2 className="font-display font-bold text-xl text-white mb-1">
-                        Quem é você?
-                      </h2>
-                      <p className="text-white/55 text-sm mb-6">
-                        Pra gente te chamar pelo nome certo.
-                      </p>
-
-                      <Field
-                        label="Nome completo"
-                        htmlFor="teste-nome"
-                        icon={<User className="w-3.5 h-3.5" />}
-                      >
-                        <input
-                          id="teste-nome"
-                          type="text"
-                          value={form.name}
-                          onChange={(e) => update("name", e.target.value)}
-                          placeholder="João da Silva"
-                          className={inputCls}
-                          autoFocus
-                        />
-                      </Field>
-
-                      <Field
-                        label="E-mail"
-                        htmlFor="teste-email"
-                        icon={<Mail className="w-3.5 h-3.5" />}
-                      >
-                        <input
-                          id="teste-email"
-                          type="email"
-                          value={form.email}
-                          onChange={(e) => update("email", e.target.value)}
-                          placeholder="joao@empresa.com"
-                          className={inputCls}
-                        />
-                      </Field>
-
-                      <Field
-                        label="WhatsApp (opcional)"
-                        htmlFor="teste-whatsapp"
-                        icon={<Phone className="w-3.5 h-3.5" />}
-                      >
-                        <input
-                          id="teste-whatsapp"
-                          type="tel"
-                          value={form.phone}
-                          onChange={(e) => update("phone", e.target.value)}
-                          placeholder="(35) 99999-9999"
-                          className={inputCls}
-                        />
-                      </Field>
-                    </div>
-                  )}
-
-                  {step === 2 && (
-                    <div className="space-y-5">
-                      <h2 className="font-display font-bold text-xl text-white mb-1">
-                        Sobre o seu negócio
-                      </h2>
-                      <p className="text-white/55 text-sm mb-6">
-                        Pra gente preparar o ambiente certo pra você.
-                      </p>
-
-                      <Field
-                        label="Nome da empresa"
-                        htmlFor="teste-empresa"
-                        icon={<Building2 className="w-3.5 h-3.5" />}
-                      >
-                        <input
-                          id="teste-empresa"
-                          type="text"
-                          value={form.empresa}
-                          onChange={(e) => update("empresa", e.target.value)}
-                          placeholder="Mercado do João"
-                          className={inputCls}
-                          autoFocus
-                        />
-                      </Field>
-
-                      <div>
-                        {/* Grupo de botões, não um campo: `label` solto aqui
-                            não nomearia nada pro leitor de tela, então vira
-                            um grupo com nome e cada botão informa se está
-                            escolhido. */}
-                        <p
-                          id="teste-tipo-label"
-                          className="text-xs font-bold text-white/70 uppercase tracking-wider block mb-2"
-                        >
-                          Tipo de negócio
-                        </p>
-                        <div
-                          role="group"
-                          aria-labelledby="teste-tipo-label"
-                          className="grid sm:grid-cols-2 gap-2"
-                        >
-                          {TIPOS_COMERCIO.map((t) => {
-                            const selected = form.tipoComercio === t;
-                            return (
-                              <button
-                                key={t}
-                                type="button"
-                                aria-pressed={selected}
-                                onClick={() => update("tipoComercio", t)}
-                                className={`text-left px-3.5 py-2.5 rounded-lg text-sm transition-all border ${
-                                  selected
-                                    ? "bg-green-500/15 border-green-500/40 text-white"
-                                    : "bg-white/5 border-white/10 text-white/70 hover:bg-white/10 hover:border-white/20"
-                                }`}
-                              >
-                                {selected && (
-                                  <Check className="inline w-3.5 h-3.5 text-green-400 mr-1.5" />
-                                )}
-                                {t}
-                              </button>
-                            );
-                          })}
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
-                  {step === 3 && (
-                    <div className="space-y-5">
-                      <h2 className="font-display font-bold text-xl text-white mb-1">
-                        Última parte
-                      </h2>
-                      <p className="text-white/55 text-sm mb-6">
-                        Pra entender o seu cenário e priorizar o setup.
-                      </p>
-
-                      <div>
-                        <p
-                          id="teste-equipe-label"
-                          className="text-xs font-bold text-white/70 uppercase tracking-wider block mb-2"
-                        >
-                          Tamanho da equipe
-                        </p>
-                        <div
-                          role="group"
-                          aria-labelledby="teste-equipe-label"
-                          className="grid grid-cols-2 sm:grid-cols-4 gap-2"
-                        >
-                          {FUNCIONARIOS_OPTS.map((f) => {
-                            const selected = form.funcionarios === f;
-                            return (
-                              <button
-                                key={f}
-                                type="button"
-                                aria-pressed={selected}
-                                onClick={() => update("funcionarios", f)}
-                                className={`px-3 py-3 rounded-lg text-sm transition-all border ${
-                                  selected
-                                    ? "bg-green-500/15 border-green-500/40 text-white font-semibold"
-                                    : "bg-white/5 border-white/10 text-white/70 hover:bg-white/10"
-                                }`}
-                              >
-                                {f}
-                              </button>
-                            );
-                          })}
-                        </div>
-                      </div>
-
-                      <Field
-                        label="Qual seu maior desafio hoje? (opcional)"
-                        htmlFor="teste-desafio"
-                        icon={<MessageSquare className="w-3.5 h-3.5" />}
-                      >
-                        <textarea
-                          id="teste-desafio"
-                          value={form.desafio}
-                          onChange={(e) => update("desafio", e.target.value)}
-                          rows={4}
-                          placeholder="Ex.: perco vendas porque não anoto, gasto domingo inteiro fazendo planilha..."
-                          className={`${inputCls} resize-none`}
-                        />
-                      </Field>
-                    </div>
-                  )}
-
-                  {step === 3 && (
-                    <div className="mt-6 pt-6 border-t border-white/5">
-                      <ConsentimentoLGPD
-                        id="teste-consentimento"
-                        checked={consentiu}
-                        onChange={setConsentiu}
-                        finalidade="pra liberar o meu teste e dar suporte"
-                      />
-                    </div>
-                  )}
-
-                  {error && (
-                    <p className="mt-4 text-sm text-red-400 text-center">
-                      {error}
-                    </p>
-                  )}
-
-                  {/* Nav buttons */}
-                  <div className="flex items-center justify-between gap-3 mt-8 pt-6 border-t border-white/5">
-                    {step > 1 ? (
-                      <Button
-                        type="button"
-                        onClick={back}
-                        variant="ghost"
-                        className="text-white/70 hover:text-white hover:bg-white/5 px-4"
-                      >
-                        <ArrowLeft className="mr-1.5 w-4 h-4" />
-                        Voltar
-                      </Button>
-                    ) : (
-                      <div />
-                    )}
-
-                    {step < 3 ? (
-                      <Button
-                        type="button"
-                        onClick={next}
-                        disabled={!canAdvance}
-                        className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white font-display font-bold px-6 disabled:opacity-50"
-                      >
-                        Continuar
-                        <ArrowRight className="ml-2 w-4 h-4" />
-                      </Button>
-                    ) : (
-                      <Button
-                        type="button"
-                        onClick={handleSubmit}
-                        disabled={!canAdvance || submitting}
-                        className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white font-display font-bold px-6 glow-brand-hover disabled:opacity-60"
-                      >
-                        {submitting ? (
-                          <Loader2 className="mr-2 w-4 h-4 animate-spin" />
-                        ) : (
-                          <Sparkles className="mr-2 w-4 h-4" />
-                        )}
-                        {submitting ? "Enviando..." : "Quero meu acesso"}
-                      </Button>
-                    )}
-                  </div>
-                </div>
-
-                <p className="text-center text-xs text-white/60 mt-6">
-                  Sem spam. A gente usa seus dados só pra liberar o acesso e
-                  dar suporte, como está na{" "}
+                <p className="small muted">
+                  Sem spam. A gente usa seus dados só pra liberar o acesso e dar
+                  suporte, como está na{" "}
                   <button
                     type="button"
                     onClick={() => navigate("/privacidade")}
-                    className="text-green-400 hover:text-green-300 underline underline-offset-2"
+                    className="link"
                   >
                     Política de Privacidade
                   </button>
                   .
                 </p>
-              </motion.div>
-            ) : (
-              <motion.div
-                key="success"
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="text-center py-12"
-              >
-                <div className="inline-flex w-20 h-20 rounded-full bg-green-500/15 border border-green-500/30 items-center justify-center mb-6 glow-brand">
-                  <CheckCircle2 className="w-10 h-10 text-green-400" />
+              </div>
+
+              <div className="painel">
+                {step === 1 && (
+                  <>
+                    <div className="painel__head">
+                      <h2>Quem é você?</h2>
+                      <p className="small muted">
+                        Pra gente te chamar pelo nome certo.
+                      </p>
+                    </div>
+
+                    <div className="field">
+                      <label htmlFor="teste-nome">Nome completo</label>
+                      <input
+                        id="teste-nome"
+                        type="text"
+                        value={form.name}
+                        onChange={(e) => update("name", e.target.value)}
+                        placeholder="João da Silva"
+                        autoFocus
+                      />
+                    </div>
+
+                    <div className="field">
+                      <label htmlFor="teste-email">E-mail</label>
+                      <input
+                        id="teste-email"
+                        type="email"
+                        value={form.email}
+                        onChange={(e) => update("email", e.target.value)}
+                        placeholder="joao@empresa.com"
+                      />
+                    </div>
+
+                    <div className="field">
+                      <label htmlFor="teste-whatsapp">
+                        WhatsApp (opcional)
+                      </label>
+                      <input
+                        id="teste-whatsapp"
+                        type="tel"
+                        value={form.phone}
+                        onChange={(e) => update("phone", e.target.value)}
+                        placeholder="(35) 99999-9999"
+                      />
+                    </div>
+                  </>
+                )}
+
+                {step === 2 && (
+                  <>
+                    <div className="painel__head">
+                      <h2>Sobre o seu negócio</h2>
+                      <p className="small muted">
+                        Pra gente preparar o ambiente certo pra você.
+                      </p>
+                    </div>
+
+                    <div className="field">
+                      <label htmlFor="teste-empresa">Nome da empresa</label>
+                      <input
+                        id="teste-empresa"
+                        type="text"
+                        value={form.empresa}
+                        onChange={(e) => update("empresa", e.target.value)}
+                        placeholder="Mercado do João"
+                        autoFocus
+                      />
+                    </div>
+
+                    <div className="field">
+                      <p id="teste-tipo-label" className="field__rotulo">
+                        Tipo de negócio
+                      </p>
+                      <Escolhas
+                        nome="tipoComercio"
+                        rotuladoPor="teste-tipo-label"
+                        opcoes={TIPOS_COMERCIO}
+                        valor={form.tipoComercio}
+                        aoEscolher={(t) => update("tipoComercio", t)}
+                      />
+                    </div>
+                  </>
+                )}
+
+                {step === 3 && (
+                  <>
+                    <div className="painel__head">
+                      <h2>Última parte</h2>
+                      <p className="small muted">
+                        Pra entender o seu cenário e priorizar o setup.
+                      </p>
+                    </div>
+
+                    <div className="field">
+                      <p id="teste-equipe-label" className="field__rotulo">
+                        Tamanho da equipe
+                      </p>
+                      <Escolhas
+                        nome="funcionarios"
+                        rotuladoPor="teste-equipe-label"
+                        opcoes={FUNCIONARIOS_OPTS}
+                        valor={form.funcionarios}
+                        aoEscolher={(f) => update("funcionarios", f)}
+                        colunas="quatro"
+                      />
+                    </div>
+
+                    <div className="field">
+                      <label htmlFor="teste-desafio">
+                        Qual seu maior desafio hoje? (opcional)
+                      </label>
+                      <textarea
+                        id="teste-desafio"
+                        value={form.desafio}
+                        onChange={(e) => update("desafio", e.target.value)}
+                        rows={4}
+                        placeholder="Ex.: perco vendas porque não anoto, gasto domingo inteiro fazendo planilha..."
+                      />
+                    </div>
+
+                    <ConsentimentoLGPD
+                      id="teste-consentimento"
+                      checked={consentiu}
+                      onChange={setConsentiu}
+                      finalidade="pra liberar o meu teste e dar suporte"
+                    />
+                  </>
+                )}
+
+                {error && <p className="form__erro">{error}</p>}
+
+                <div className="painel__acoes">
+                  {Number(step) > 1 ? (
+                    <button type="button" onClick={back} className="btn">
+                      Voltar
+                    </button>
+                  ) : (
+                    <span />
+                  )}
+
+                  {Number(step) < 3 ? (
+                    <button
+                      type="button"
+                      onClick={next}
+                      disabled={!canAdvance}
+                      className="btn btn--primary"
+                    >
+                      Continuar
+                    </button>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={handleSubmit}
+                      disabled={!canAdvance || submitting}
+                      className="btn btn--primary"
+                      aria-busy={submitting}
+                    >
+                      {submitting ? "Enviando..." : "Quero meu acesso"}
+                    </button>
+                  )}
                 </div>
-                <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-white mb-3">
-                  Pedido recebido,{" "}
-                  <span className="gradient-green">{form.name.split(" ")[0]}</span>!
+              </div>
+            </div>
+          ) : (
+            <div className="balcao__grid">
+              <div className="balcao__texto">
+                <h2 className="display-s">
+                  Pedido recebido, {form.name.split(" ")[0]}!
                 </h2>
-                <p className="text-lg text-white/70 max-w-md mx-auto mb-8">
+                <p className="lead">
                   Nossa equipe vai te chamar no WhatsApp em até{" "}
-                  <span className="text-white font-semibold">1 dia útil</span>{" "}
-                  pra liberar o acesso e fazer o setup junto com você.
+                  <strong>1 dia útil</strong> pra liberar o acesso e fazer o
+                  setup junto com você.
                 </p>
-
-                <div className="glass-card-strong rounded-2xl p-6 max-w-md mx-auto mb-8 text-left">
-                  <p className="text-xs font-bold text-white/50 uppercase tracking-wider mb-3">
-                    Próximos passos
-                  </p>
-                  <ul className="space-y-2.5 text-sm text-white/80">
-                    <li className="flex gap-2.5">
-                      <span className="text-green-400 font-mono">01</span>
-                      <span>A gente te chama no WhatsApp em até 1 dia útil</span>
-                    </li>
-                    <li className="flex gap-2.5">
-                      <span className="text-green-400 font-mono">02</span>
-                      <span>Setup do seu ambiente, junto com você</span>
-                    </li>
-                    <li className="flex gap-2.5">
-                      <span className="text-green-400 font-mono">03</span>
-                      <span>30 dias de uso completo, com suporte humano</span>
-                    </li>
-                  </ul>
+                <div className="actions">
+                  <button
+                    type="button"
+                    onClick={() => navigate("/")}
+                    className="btn"
+                  >
+                    Voltar pra página inicial
+                  </button>
                 </div>
+              </div>
 
-                <Button
-                  onClick={() => navigate("/")}
-                  variant="outline"
-                  className="bg-white/5 border-white/15 text-white hover:bg-white/10"
-                >
-                  Voltar pra página inicial
-                </Button>
-              </motion.div>
-            )}
-          </AnimatePresence>
+              <div className="painel">
+                <h3>Próximos passos</h3>
+                <ol className="proximos">
+                  <li>A gente te chama no WhatsApp em até 1 dia útil</li>
+                  <li>Setup do seu ambiente, junto com você</li>
+                  <li>30 dias de uso completo, com suporte humano</li>
+                </ol>
+              </div>
+            </div>
+          )}
         </div>
-      </div>
+      </main>
 
       {/* Rodapé completo: esta página coleta dados, então os links legais
           e a identificação do fornecedor precisam estar alcançáveis aqui
           sem voltar pra home. */}
-      <div className="relative z-10">
-        <Footer />
-      </div>
-    </div>
-  );
-}
-
-const inputCls =
-  "w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-sm placeholder:text-white/55 focus:outline-none focus:ring-2 focus:ring-green-500/30 focus:border-green-500/40 transition-all";
-
-/**
- * Rótulo + campo. O `htmlFor` é obrigatório: sem ele o leitor de tela
- * anuncia "caixa de edição" sem dizer o quê, e clicar no rótulo não
- * move o foco pro campo. Quem usa `Field` passa o mesmo valor no `id`
- * do input que está dentro.
- */
-function Field({
-  label,
-  htmlFor,
-  icon,
-  children,
-}: {
-  label: string;
-  htmlFor: string;
-  icon?: React.ReactNode;
-  children: React.ReactNode;
-}) {
-  return (
-    <div>
-      <label
-        htmlFor={htmlFor}
-        className="text-xs font-bold text-white/70 uppercase tracking-wider mb-2 flex items-center gap-1.5"
-      >
-        {icon}
-        {label}
-      </label>
-      {children}
-    </div>
+      <SiteFooter />
+    </>
   );
 }

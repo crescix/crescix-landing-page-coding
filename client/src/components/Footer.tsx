@@ -1,19 +1,6 @@
 import { FaInstagram, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 import { useLocation } from "wouter";
-import { EMPRESA, identificacaoFornecedor } from "@/lib/empresa";
-
-/**
- * Os documentos legais do site. Vivem numa lista porque o rodapé precisa
- * mostrar todos e o Decreto 7.962/2013 pede que a identificação e as
- * condições da contratação fiquem em local de destaque — e rodapé de
- * todas as páginas é o lugar onde isso é esperado.
- */
-export const DOCS_LEGAIS = [
-  { path: "/privacidade", label: "Política de Privacidade" },
-  { path: "/termos", label: "Termos de uso" },
-  { path: "/cookies", label: "Política de Cookies" },
-  { path: "/reembolso", label: "Troca e reembolso" },
-];
+import { DOCS_LEGAIS, EMPRESA, identificacaoFornecedor } from "@/lib/empresa";
 
 export default function Footer() {
   const [, navigate] = useLocation();
